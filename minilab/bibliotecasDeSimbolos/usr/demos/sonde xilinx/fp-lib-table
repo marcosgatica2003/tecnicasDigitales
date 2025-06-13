@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "sonde-xilinx")(type "KiCad")(uri "${KIPRJMOD}/sonde-xilinx.pretty")(options "")(descr ""))
+)
