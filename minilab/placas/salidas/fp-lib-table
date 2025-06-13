@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "CD4069")(type "KiCad")(uri "C:/Users/marco/OneDrive/Escritorio/MiniLAB/CD4069UBE")(options "")(descr "")(disabled))
+)
