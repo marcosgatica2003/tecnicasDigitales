@@ -1,0 +1,15 @@
+#TecnicasDigitales2 Final de ayer 4/07/17. Corre el rumor de que no está más Canali y al parecer al final lo hizo Toledo. Abunda el Assembler
+ y muy poco de CAS.
+1- Señal senoidal, te da la señal y el valor del error, pide sacar n y tiempo de adquisición máximo para ese error.
+( Está resuelto en la página de la cátedra y en varios finales, se resuelve derivando la señal)
+2- Esquema de un conversar AD Flash, simple sin mucho detalle.
+3- Calcular el error de cuantizacion de un conversor, si quiero reducir el error a la mitad, duplicó la
+ cantidad de bits? Justificar 
+4- Múltiple choice de Conversor Doble Rampa.
+5- Código en C para traducir a Assembler, if g>h g=g+h else g=g-h . Eran dos códigos muy parecidos
+6- Assembler, negar los tres bits más significativos de la variable en tal registro y guardarla en tal otro 
+7- Daba la dirección de dos registros e instrucciones en Assembler (LDR y STR con varios agregados ) pedía
+ la dirección de memoria efectiva del resultado .
+8- Sin usar MUL multiplicar el registro tal por 35 y guardarlo en tal registro, tenias que hacerlo en dos operaciones.
+9- Encontrar el número 42 en un vector de 250 elementos, guardar el índice de posición en el que
+ se encontraba el 42, si no estaba guardar un -1. Daba condiciones de dónde poner cada cosa (registros)

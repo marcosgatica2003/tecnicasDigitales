@@ -1,0 +1,7 @@
+https://paruro.pe/aprende/arduino/b%C3%A1sico/arduino-b%C3%A1sico-lectura-de-voltaje-anal%C3%B3gico
+
+http://www.prometec.net/puertas-analogicas/
+
+http://www.ardumania.es/ejercicio-2-blink-without-delay/
+
+https://translate.googleusercontent.com/translate_c?depth=1&hl=es&prev=search&rurl=translate.google.com.ar&sl=en&u=https://github.com/ivanseidel/DueTimer&usg=ALkJrhh0SJTDqcylc67mILRkLpPkX4bvMA

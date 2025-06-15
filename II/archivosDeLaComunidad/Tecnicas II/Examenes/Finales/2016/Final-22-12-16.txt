@@ -1,0 +1,2 @@
+Puedo agregar que tomo tambien mapear una memoria de 64Kx8 y un programa en assembler que pedia
+ sacar el promedio de 16 valores de 32 bits

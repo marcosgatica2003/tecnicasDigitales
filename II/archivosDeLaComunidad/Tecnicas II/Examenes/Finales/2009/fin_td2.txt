@@ -1,0 +1,14 @@
+Describa el prefijo repne, para ello, mediante una instrucción de cadena que pueda utilizar este prefijo, realice un ejemplo y describa cronológicamente los pasos internos que se producen en la instrucción completa ( repne + instrucción de cadena )
+
+Enumere los saltos condicionales para números con signo con su equivalente para saltos condicionales sin signo.
+
+Necesitamos digitalizar una señal con un rango de -100 a 100mV, en pasos de 0.1 mV.  
+Calcular cantidad de bits del ADC y amplificación total de la señal suponiendo que la amplitud del rango del ADC es 5 V 
+
+Una memoria de 2 Kb se encuentra mapeada a partir de la dirección 0x4E800, para el direccionamiento externo se utilizaron solo las lineas A19,A18 y A15., generando por lo tanto imágenes de la misma en el mapa.
+Si el microprocesador  realiza lecturas en las siguientes direcciones absolutas, en que caso se direcciona la memoria y cual es la posición leída dentro de ella.
+0x7FFFF
+0x46800
+0x6A9FF
+
+Describa el funcionamiento de las instrucciones pop y push, cual es su función, que registros modifica y en que posición de memoria leen o escriben un dato, además, si antes de llamar a una subrutina guardo un valor en el stack, de que manera lo puedo leer dentro de la subrutina sin alterar el correcto funcionamiento del programa.

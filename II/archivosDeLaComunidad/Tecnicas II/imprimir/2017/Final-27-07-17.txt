@@ -1,0 +1,9 @@
+Los primeros 5 puntos eran cálculos de adc... Calcular bits, tiempo de conversión, ganancia, error de ganancia, tolerancia
+ etc.. Hay varios finales así ( apunte de sebastian azcurra) eran ejercicios faciles.. No había que hacer circuito de
+ adaptación. 
+6- Te daba dos instrucciones if-else en C (fáciles) y tenías que hacer el assembler 
+7- Multiplicar dos registros por 35 y guardarlo en otro registro sin usar MUL y hacerlo en dos instrucciones..
+ ( en la wiki en los trabajos prácticos de assembler hay un ejercicio que muestra como se hace, se usa ADD con LSL)
+8- Definir máscara de interrupción y como se configura( escribir el funcionamiendo y configuración de VIC y EXTMODE)
+9- Definir saltos condicionales aritmeticos y logicos... Dar dos ejemplos de cada uno 
+10- Definir los tipos de punto flotante mas utilizados y como están compuestos (float,, double, long double)

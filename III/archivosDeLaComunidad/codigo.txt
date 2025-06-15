@@ -1,0 +1,25 @@
+SOS=SOS/2
+
+
+
+
+Num_fix = fi(SOS,1,16,15);
+S={};
+s={};
+
+
+
+for i=1:6
+    
+       S{end+1}=['0x' hex(Num_fix(i)) ','];
+    
+end
+
+
+for i=1:6
+    
+       s{end+1}=['' S{i} '']
+    
+end
+
+

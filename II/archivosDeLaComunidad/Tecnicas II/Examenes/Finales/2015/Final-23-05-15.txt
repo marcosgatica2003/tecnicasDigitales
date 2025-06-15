@@ -1,0 +1,8 @@
+Hola gente, les cuento que salió en el examen del jueves pasado:
+
+-Calcular tiempo de conversión mínimo para dos señales de 20 hz a 12,4 khz que van a ingresar a un adc.
+- Diseñar el circuito de sample and hold.
+
+- Se tiene que medir una señal de 2,4 mVpp, diseñar adaptación para un adc de 3V de referencia para que funcione en un solo cuadrante.
+
+la otra parte de lo que tomaron está en la siguiente imagen. Fue el mismo examen que el último turno de febrero.

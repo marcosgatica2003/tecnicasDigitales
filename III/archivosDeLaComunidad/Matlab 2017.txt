@@ -1,0 +1,107 @@
+%--- Especificaciones del filtro
+fc1 = 2850;   %3000Herts
+fc2 = 3150;
+fs = 39062; 
+%BT = 10;   No me hace falta porque uso como máximo  600 taps
+
+%----- frecuencias digitales
+fc_d1 = 2fc1fs; 
+fc_d2 = 2fc2fs;
+
+%-------- Cantidad de taps
+% M como máximo 600
+M = 399;
+
+%------ Generacion funcion sinc pasa bajos
+h_pb1 = zeros(M,1);
+h_pb2 = zeros(M,1);
+h_pb1_aux = zeros((M-1)2 + 1,1);
+h_pb2_aux = zeros((M-1)2 + 1,1);
+
+for i=1((M-1)2)+1
+    h_pb1_aux(i)  = sinc( (i-1)fc_d1 );
+    h_pb2_aux(i)  = sinc( (i-1)fc_d2 );
+end
+
+k=M2+0.5;
+for i=1  (M-1)2 
+     h_pb1(i) = h_pb1_aux(k);
+     h_pb2(i) = h_pb2_aux(k);
+     k=k-1;
+end
+
+k=M2+0.5;
+for i=1  ((M-1)2)
+     h_pb1(k) = h_pb1_aux(i);
+     h_pb2(k) = h_pb2_aux(i);
+     k=k+1;
+end
+
+for i=1  M
+    h_pb1(i) = h_pb1(i)fc_d1;
+    h_pb2(i) = h_pb2(i)fc_d2;
+end
+
+%creo a Filtro pasa altos
+h_pa = zeros(M,1);       %Inicializacion del filtro pasa altos normalizado
+
+%Genero delta(n) retardado
+Retardo = zeros(k);
+Retardo(M2+0.5)=1;
+
+for i=1  k 
+        h_pa(i) = Retardo(i) - h_pb2(i);
+end
+
+%------ ventaneo el kernel
+vent = blackman(M);
+for i=1M
+    h_pb1(i) = h_pb1(i)vent(i);
+    h_pa(i) = h_pa(i)vent(i);
+end
+
+
+%----- generacion del kernel eliminabanda
+h_eb = zeros(M,1);
+for i=1M
+    h_eb(i) = h_pb1(i) + h_pa(i);
+end
+
+for i=1M
+      disp('Antes de la cuantificacion')
+      disp(h_eb(i))  % Muestra la cadena por consola
+end
+
+
+%generacion del kernel eliminabanda, y muestra en consola despues de
+%cuantificar
+for i=1M
+      disp('Despeus de la cuantificacion')
+      h_hex = fi(h_eb(i),1,16,15);  % Convierte los coeficientes en S16.15
+      s = ['0x' h_hex.hex];   %Crea una cadena y antepone 0x
+      disp(s)  % Muestra la cadena por consola
+end
+
+%busco respuesta en frecuencia
+K=8000;
+H_eliminabanda = fft(h_eb,K);
+
+%Paso a frecuencia digital
+Y_eliminabanda = zeros(K2,1);
+X = zeros(K2,1);
+
+for i=1  (K2-1)
+    Y_eliminabanda(i,1) = H_eliminabanda(i);
+end
+
+for i=1  (K2-1)
+    X(i,1) = i39016K;
+end
+
+%Grafico superposicion de pasabajos y pasa altos
+plot(X, 20log(abs(Y_eliminabanda)));
+xlabel('Frecuencia Hz')
+ylabel('Ganancia dB')
+title('Respuesta Eliminabanda')
+
+

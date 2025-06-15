@@ -1,0 +1,7 @@
+Yo rendí el jueves, tomo dos ejercicios. Uno te daba una señal de 20 mV pap con un ADC de 14 bits. 
+Diseñar el cas para la máxima resolución. Tolerancia de los componentes y porque elegimos los
+ componentes activos que elegimos.diseñar interface para que el micro lea por nterrupcion,
+ y describir como hace la lectura
+Otro punto era calcular el circuito para que en menos de 2ms el micro detecte el cambio de estado
+ de la entrada y te daba el pulsador con la r conectado a 24 vca
+Y el ultimo activar un contactor de 220v 350mA. Nada más. Bastante sencillo.

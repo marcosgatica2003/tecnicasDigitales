@@ -1,0 +1,18 @@
+Examen final #TecnicasDigitales2 19/02/2015
+
+1-Se desea medir hasta la séptima armónica de una señal monofásica de red domestica.
+1a) Frecuencia de muestreo necesaria.
+1b) Circuito de muestreo para operar por interrupciones. Si ha de usar sample
+ and hold establecer circuito, tiempo de sample y tiempo de hold. Especificar el tipo de interrupción utilizada.
+1c) Diseño del circuito para entrar al adc con una tensión alterna 350V pico respecto al neutro. 
+Establecer tolerancia de los elementos pasivos para un error total de 2%.
+
+2- Se tiene un transductor, cuya función de transferencia es 0.4uA/0.1K. Se desea medir desde -10 a 50 °C. 
+2a) Con una resolución de 0.1°C ¿Puede utilizar el adc del arm? Y con una resolución de 0.01!c?
+2b)Realizar circuito de adaptación de la señal, establecer tolerancia de elementos pasivos
+ para un error total de 1%.
+2c) Se tienen 4 lecturas del adc en direcciones consecutivas de memoria.
+ La posición actual esta en el registro R4, se debe escribir la rutina de assembler
+ para calcular el promedio de las lecturas.
+
+para aprobar cuatro puntos deben estar bien.

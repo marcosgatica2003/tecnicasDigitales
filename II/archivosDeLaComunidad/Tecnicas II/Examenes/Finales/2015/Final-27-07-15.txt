@@ -1,0 +1,8 @@
+#TecnicasDigitales2 Turno de 2/7/2015 tomo 1 ejercicio con 2 puntos. Dificultad fácil. 
+a) Diseñar circuito de adaptación sobre el peso de un tanque de
+ 1780Kg y que puede almacenar 8m^3 de agua medido con
+ galga extensiométrica de 0,4uV/Kg. Es el ejercicio del final del 20/11/2014
+b) Assembler que determine la máxima variación de peso medido,
+ te daba de dato la posición de memoria en donde se guardan 
+las lecturas. Este ejercicio no lo ví en ningún examen final anterior.
+No fueron rigurosos ni precisos para corregir.

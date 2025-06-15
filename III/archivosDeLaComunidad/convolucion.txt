@@ -1,0 +1,87 @@
+%-------------------------algoritmo convolucion--------------------------%
+
+xleft=x(:,1);
+xleft=xleft';
+xright=x(:,2);
+xright=xright';
+
+hleft=h(:,1);
+hleft=hleft';
+
+hright=h(:,2);
+hright=hright';
+
+sizexleft=length(xleft);
+sizexright=length(xright);
+sizehleft=length(hleft);
+sizehright=length(hright);
+
+
+xleft = [xleft, zeros(1, sizehleft-1)];
+xright = [xright, zeros(1, sizehright-1)];
+
+
+hleft = [hleft, zeros(1, sizexleft-1)];
+hright = [hright, zeros(1, sizexright-1)];
+
+tic
+for i=1: (sizexleft+sizehleft-1)
+
+for j=1:i
+auxa=auxa+x(j)*hleft(i-j+1);
+auxb=auxb+x(j)*hright(i-j+1);
+end
+yleft(i)=auxa;
+yright(i)=auxb;
+auxa=0;
+auxb=0;
+
+end
+yconv(:,1)=yleft;
+yconv(:,2)=yright;
+toc
+
+%convolucion vector 10000 producto matricial
+
+xleft=x(:,1);
+xleft=xleft';
+xright=x(:,2);
+xright=xright';
+
+hleft=h(:,1);
+hleft=hleft';
+
+hright=h(:,2);
+hright=hright';
+
+sizexleft=length(xleft);
+sizexright=length(xright);
+sizehleft=length(hleft);
+sizehright=length(hright);
+
+y2left=zeros(1,sizehleft+sizexleft-1);
+y2right=zeros(1,sizehright+sizexright-1);
+
+jsleft = zeros(1,sizexleft);
+jsright = zeros(1,sizexright);
+
+xleft = [xleft zeros(1,sizexleft)];
+xright = [xright zeros(1,sizexright)];
+hleft = [hleft zeros(1,sizexleft-sizehleft)];
+hright = [hright zeros(1,sizexright-sizehright)];
+
+tic
+
+for n=1:sizehleft+sizexleft-1 
+    
+jsleft = [xleft(n) jsleft(1:+sizexleft-1)];
+jsright = [xright(n) jsright(1:+sizexright-1)];
+
+Eleft=jsleft*hleft';
+Eright=jsright*hright';
+
+y2left(n)= y2left(n) + Eleft;
+y2right(n)= y2right(n) + Eright;
+    
+end
+toc

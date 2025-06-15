@@ -1,0 +1,21 @@
+Examen 23/02/2017
+
+1) Determinar n° de bits para rango de temperatura de -10 a 60°C con resolución 0.01 °C.
+
+2) Calcular ganancia del CAS. Daba como dato la FdT del sensor y la Vref. El numero de bits es el del punto anterior.
+
+3) Calcular Error de Ganancia para un error total de 0.05%
+
+4) Tolerancia de los componentes resistivos (Error de Ganancia / 10)
+
+5) Circuito de sincronismo para RS 232 de 1200 bps. Explicar a grandes rasgos como funciona. Calculo de la fclk.
+
+6) Circuito de lectura y carga de datos de RS 232.
+
+7) Circuito de detección de paridad de RS 232.
+
+8) Como se llama a interrupciones en el ARM? Configuración de interrupciones.
+
+9) Diferencia de saltos condicionales lógicos y aritméticos. 2 ejemplos de cada uno.
+
+10) Describir como esta formado el punto flotante de 32 y 80 bits.

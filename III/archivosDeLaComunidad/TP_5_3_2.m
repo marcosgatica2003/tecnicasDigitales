@@ -1,0 +1,25 @@
+N=100;
+K=5;
+Y1=zeros(N,K);
+Y2=zeros(N,K);
+Y3=zeros(N,K);
+Y4=zeros(N,K);
+for n=0:N 
+  
+    
+for k=0:K
+    Y3(n+1,k+1)=(-1)*(1/(pi*k))*sin((2*k*pi*n)/N);
+    if ((-1)^(k) > 0)
+        Y1(n+1,k+1)=0;
+        Y2(n+1,k+1)=0;
+    else
+        Y1(n+1,k+1)=(8/pi)*(((-1)^((k-1)/2))/k^2)*sin((2*k*pi*n)/N);
+        Y2(n+1,k+1)=(4/(pi*k))*sin((2*k*pi*n)/N);
+
+    end
+    Y4(n+1,k+1)=Y1(n+1,k+1)+Y2(n+1,k+1)+Y3(n+1,k+1);
+end
+
+end
+
+plot(Y4);

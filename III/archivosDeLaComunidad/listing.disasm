@@ -1,0 +1,812 @@
+Disassembly Listing for Entrega_guia_5
+Generated From:
+C:/Users/Lucas/MPLABXProjects/Entrega_guia_5.X/dist/XC16_dsPIC33FJ128GP804/production/Entrega_guia_5.X.production.elf
+31/08/2017 20:51:24
+
+---  C:/Users/Lucas/MPLABXProjects/Entrega_guia_5.X/user.c  ---------------------------------------------
+1:                 /******************************************************************************/
+2:                 /* Files to Include                                                           */
+3:                 /******************************************************************************/
+4:                 
+5:                 /* Device header file */
+6:                 #if defined(__XC16__)
+7:                     #include <xc.h>
+8:                 #elif defined(__C30__)
+9:                     #if defined(__dsPIC33E__)
+10:                    	#include <p33Exxxx.h>
+11:                    #elif defined(__dsPIC33F__)
+12:                    	#include <p33Fxxxx.h>
+13:                    #endif
+14:                #endif
+15:                
+16:                #include <stdint.h>          /* For uint16_t definition                       */
+17:                #include <stdbool.h>         /* For true/false definition                     */
+18:                #include "user.h"            /* variables/params used by user.c               */
+19:                
+20:                /******************************************************************************/
+21:                /* User Functions                                                             */
+22:                /******************************************************************************/
+23:                
+24:                /* <Initialize variables in user.h and insert code for user algorithms.> */
+25:                
+26:                void InitApp(void)
+27:                {
+000378  FA0000     LNK #0x0
+28:                    /* TODO Initialize User Ports/Peripherals/Project here */
+29:                
+30:                    /* Setup analog functionality and port direction */
+31:                
+32:                    /* Initialize peripherals */
+33:                }
+00037A  FA8000     ULNK
+00037C  060000     RETURN
+34:                
+35:                void configurarpuertos(void)
+36:                {
+00037E  FA0000     LNK #0x0
+37:                    TRISBbits.TRISB7 = 1;
+000380  A8E2C8     BSET TRISB, #7
+38:                    TRISCbits.TRISC8 = 0;
+000382  A902D1     BCLR 0x2D1, #0
+39:                    TRISCbits.TRISC6 = 0;
+000384  A9C2D0     BCLR TRISC, #6
+40:                    TRISCbits.TRISC7 = 0;
+000386  A9E2D0     BCLR TRISC, #7
+41:                    
+42:                }
+000388  FA8000     ULNK
+00038A  060000     RETURN
+43:                
+44:                void encenderled (void)
+45:                {   uint8_t valor;
+00038C  FA0002     LNK #0x2
+46:                    
+47:                    valor = PORTBbits.RB7;
+00038E  801650     MOV PORTB, W0
+000390  DE0047     LSR W0, #7, W0
+000392  604061     AND.B W0, #0x1, W0
+000394  784F00     MOV.B W0, [W14]
+48:                    LATCbits.LATC8 = valor;
+000396  78409E     MOV.B [W14], W1
+000398  60C061     AND.B W1, #0x1, W0
+00039A  FB8000     ZE W0, W0
+00039C  600061     AND W0, #0x1, W0
+00039E  DD0048     SL W0, #8, W0
+0003A0  8016A1     MOV LATC, W1
+0003A2  A18001     BCLR W1, #8
+0003A4  700001     IOR W0, W1, W0
+0003A6  8816A0     MOV W0, LATC
+49:                
+50:                }
+0003A8  FA8000     ULNK
+0003AA  060000     RETURN
+51:                uint32_t i;
+52:                void toggleoled(void)
+53:                {
+0003AC  FA0000     LNK #0x0
+54:                    LATCbits.LATC6 =  !LATCbits.LATC6 ;
+0003AE  8016A1     MOV LATC, W1
+0003B0  200400     MOV #0x40, W0
+0003B2  608000     AND W1, W0, W0
+0003B4  A7F000     BTSC W0, #15
+0003B6  EA0000     NEG W0, W0
+0003B8  E90000     DEC W0, W0
+0003BA  DE004F     LSR W0, #15, W0
+0003BC  784000     MOV.B W0, W0
+0003BE  FB8000     ZE W0, W0
+0003C0  600061     AND W0, #0x1, W0
+0003C2  DD0046     SL W0, #6, W0
+0003C4  8016A1     MOV LATC, W1
+0003C6  A16001     BCLR W1, #6
+0003C8  700001     IOR W0, W1, W0
+0003CA  8816A0     MOV W0, LATC
+55:                    for(i=0;i<263214;i=i+1);               /* N=1seg.(7,37M/2). cant_operaciones*/
+0003CC  EF2804     CLR i
+0003CE  EF2806     CLR 0x806
+0003D0  370006     BRA 0x3DE
+0003D2  804020     MOV i, W0
+0003D4  804031     MOV 0x806, W1
+0003D6  400061     ADD W0, #0x1, W0
+0003D8  4880E0     ADDC W1, #0x0, W1
+0003DA  884020     MOV W0, i
+0003DC  884031     MOV W1, 0x806
+0003DE  804022     MOV i, W2
+0003E0  804033     MOV 0x806, W3
+0003E2  2042D0     MOV #0x42D, W0
+0003E4  200041     MOV #0x4, W1
+0003E6  510F80     SUB W2, W0, [W15]
+0003E8  598F81     SUBB W3, W1, [W15]
+0003EA  36FFF3     BRA LEU, 0x3D2
+56:                }                                          /*ir a Window>Debugging>Output>Dessembly*/
+0003EC  FA8000     ULNK
+0003EE  060000     RETURN
+57:                                                           /*14 operaciones*/
+58:                                                           /*1seg=263214(155000)*/
+59:                
+60:                void configtimer(void)
+61:                {  T3CONbits.TON = 0; // Parar a cualquier operacion de Timer 3 de 16-bit.
+0003F0  FA0000     LNK #0x0
+0003F2  A9E113     BCLR 0x113, #7
+62:                    T2CONbits.TON = 0; // Stop any 16/32-bit Timer2 operation
+0003F4  A9E111     BCLR 0x111, #7
+63:                    T2CONbits.T32 = 1; // Habilitar modo Timer 32-bit
+0003F6  A86110     BSET T2CON, #3
+64:                    T2CONbits.TCS = 0; // Seleccionar clock interno de ciclo de instrucciones
+0003F8  A92110     BCLR T2CON, #1
+65:                    T2CONbits.TGATE = 0; // Deshabilitar modo timer disparado.Disable Gated Timer mode
+0003FA  A9C110     BCLR T2CON, #6
+66:                    T2CONbits.TCKPS = 0b00; // Seteamos el PLL en 1:1 - EL CLOCK DEL TIMER ES EL CLOCK DE INSTRUCCION (CLOCK INTERNO/2 = 40MHZ)
+0003FC  800881     MOV T2CON, W1
+0003FE  2FFCF0     MOV #0xFFCF, W0
+000400  608000     AND W1, W0, W0
+000402  880880     MOV W0, T2CON
+67:                    TMR3 = 0x00; // Clear 32-bit Timer (msw)
+000404  EF210A     CLR TMR3
+68:                    TMR2 = 0x00; // Clear 32-bit Timer (lsw)
+000406  EF2106     CLR TMR2
+69:                    PR3 = 0x0262; // Cargo los 16 bits mas signifativos. (msw) 
+000408  202620     MOV #0x262, W0
+00040A  880870     MOV W0, PR3
+70:                    PR2 = 0x5A00; // Cargo los 16 bits menos significativos. (lsw)
+00040C  25A000     MOV #0x5A00, W0
+00040E  880860     MOV W0, PR2
+71:                    IPC2bits.T3IP = 0x01; // Set Timer3 Interrupt Priority Level
+000410  800541     MOV IPC2, W1
+000412  2FFF80     MOV #0xFFF8, W0
+000414  608000     AND W1, W0, W0
+000416  A00000     BSET W0, #0
+000418  880540     MOV W0, IPC2
+72:                    IFS0bits.T3IF = 0; // Clear Timer3 Interrupt Flag
+00041A  A90085     BCLR 0x85, #0
+73:                    IEC0bits.T3IE = 1; // Enable Timer3 interrupt
+00041C  A80095     BSET 0x95, #0
+74:                    T2CONbits.TON = 1;
+00041E  A8E111     BSET 0x111, #7
+75:                }
+000420  FA8000     ULNK
+000422  060000     RETURN
+76:                void ConfigureDAC() {
+000424  FA0000     LNK #0x0
+77:                    /*
+78:                    AUDIO DAC OPERATION WITHOUT DMA
+79:                    Example 33-1 demonstrates a typical configuration for the Audio DAC module. In this example,
+80:                    the interrupts for both channels are set to occur every time the corresponding FIFO is not full.
+81:                    When the DAC Enable (DACEN) bit in the DAC Control (DACxCON<15>) register gets set, DAC
+82:                    interrupts are generated for both channels. Since the FIFO is initially empty, the first data value
+83:                    is read from the DAC Default (DACxDFLT) register. For this example, the default is set to a
+84:                    midpoint value of 0x8000.
+85:                     */
+86:                    DAC1STATbits.ROEN = 1; /* Habilitamos canal derecho */
+000426  A8E3F2     BSET DAC1STAT, #7
+87:                    DAC1STATbits.LOEN = 1; /* Habilitamos canal izquierdo */
+000428  A8E3F3     BSET 0x3F3, #7
+88:                    DAC1STATbits.RITYPE = 1; /* Interrupcion del canal derecho si la FIFO está vacía */
+00042A  A843F2     BSET DAC1STAT, #2
+89:                    DAC1STATbits.LITYPE = 1; /* Interrupcion del canal izquierdo si la FIFO está vacía */
+00042C  A843F3     BSET 0x3F3, #2
+90:                    DAC1CONbits.AMPON = 0; /* Amplificador deshabilitado durante Sleep and Idle Modes */
+00042E  A983F1     BCLR 0x3F1, #4
+91:                
+92:                    DAC1CONbits.DACFDIV = 3; /* Divide el clock por 4*/
+000430  801F81     MOV DAC1CON, W1
+000432  2FF800     MOV #0xFF80, W0
+000434  608000     AND W1, W0, W0
+000436  B30030     IOR #0x3, W0
+000438  881F80     MOV W0, DAC1CON
+93:                    /* fdac = 39062.5
+94:                     * fin = 40MHz / 256
+95:                     * fdac = fin / (DACFDIV + 1)
+96:                     * DACFDIV = (fin/fdac) - 1 = 3 
+97:                     */
+98:                
+99:                    DAC1CONbits.FORM = 1; /* Determina el formato de los datos, 1 con signo, 0 sin signo. Son del tipo int */
+00043A  A803F1     BSET 0x3F1, #0
+100:                   DAC1DFLT = 0x8000; /* Valor por defecto que se usa cuando la fifo esta vacia, en este caso el valor es 0 */
+00043C  280000     MOV #0x8000, W0
+00043E  881FA0     MOV W0, DAC1DFLT
+101:                   IFS4bits.DAC1RIF = 0; /* Clear Right Channel Interrupt Flag */
+000440  A9C08D     BCLR 0x8D, #6
+102:                   IFS4bits.DAC1LIF = 0; /* Clear Left Channel Interrupt Flag */
+000442  A9E08D     BCLR 0x8D, #7
+103:                   IEC4bits.DAC1RIE = 1; /* Habilitamos la interrupcion del canal derecho */
+000444  A8C09D     BSET 0x9D, #6
+104:                   IEC4bits.DAC1LIE = 1; /* Left Channel Interrupt Enabled */
+000446  A8E09D     BSET 0x9D, #7
+105:                   DAC1CONbits.DACEN = 1; /* DAC1 Module Enabled */
+000448  A8E3F1     BSET 0x3F1, #7
+106:               }
+00044A  FA8000     ULNK
+00044C  060000     RETURN
+---  C:/Users/Lucas/MPLABXProjects/Entrega_guia_5.X/traps.c  --------------------------------------------
+1:                 /******************************************************************************/
+2:                 /* Files to Include                                                           */
+3:                 /******************************************************************************/
+4:                 
+5:                 /* Device header file */
+6:                 #if defined(__XC16__)
+7:                     #include <xc.h>
+8:                 #elif defined(__C30__)
+9:                     #if defined(__dsPIC33E__)
+10:                    	#include <p33Exxxx.h>
+11:                    #elif defined(__dsPIC33F__)
+12:                    	#include <p33Fxxxx.h>
+13:                    #endif
+14:                #endif
+15:                
+16:                #include <stdint.h>        /* Includes uint16_t definition */
+17:                #include <stdbool.h>       /* Includes true/false definition */
+18:                
+19:                /******************************************************************************/
+20:                /* Trap Function Prototypes                                                   */
+21:                /******************************************************************************/
+22:                
+23:                /* <Other function prototypes for debugging trap code may be inserted here>   */
+24:                
+25:                /* Use if INTCON2 ALTIVT=1 */
+26:                void __attribute__((interrupt,no_auto_psv)) _OscillatorFail(void);
+27:                void __attribute__((interrupt,no_auto_psv)) _AddressError(void);
+28:                void __attribute__((interrupt,no_auto_psv)) _StackError(void);
+29:                void __attribute__((interrupt,no_auto_psv)) _MathError(void);
+30:                
+31:                #if defined(__HAS_DMA__)
+32:                
+33:                void __attribute__((interrupt,no_auto_psv)) _DMACError(void);
+34:                
+35:                #endif
+36:                
+37:                #if defined(__dsPIC33F__)
+38:                
+39:                /* Use if INTCON2 ALTIVT=0 */
+40:                void __attribute__((interrupt,no_auto_psv)) _AltOscillatorFail(void);
+41:                void __attribute__((interrupt,no_auto_psv)) _AltAddressError(void);
+42:                void __attribute__((interrupt,no_auto_psv)) _AltStackError(void);
+43:                void __attribute__((interrupt,no_auto_psv)) _AltMathError(void);
+44:                
+45:                    #if defined(__HAS_DMA__)
+46:                
+47:                    void __attribute__((interrupt,no_auto_psv)) _AltDMACError(void);
+48:                
+49:                    #endif
+50:                
+51:                #endif
+52:                
+53:                /* Default interrupt handler */
+54:                void __attribute__((interrupt,no_auto_psv)) _DefaultInterrupt(void);
+55:                
+56:                #if defined(__dsPIC33E__)
+57:                
+58:                /* These are additional traps in the 33E family.  Refer to the PIC33E
+59:                migration guide.  There are no Alternate Vectors in the 33E family. */
+60:                void __attribute__((interrupt,no_auto_psv)) _HardTrapError(void);
+61:                void __attribute__((interrupt,no_auto_psv)) _SoftTrapError(void);
+62:                
+63:                #endif
+64:                
+65:                /******************************************************************************/
+66:                /* Trap Handling                                                              */
+67:                /*                                                                            */
+68:                /* These trap routines simply ensure that the device continuously loops       */
+69:                /* within each routine.  Users who actually experience one of these traps     */
+70:                /* can add code to handle the error.  Some basic examples for trap code,      */
+71:                /* including assembly routines that process trap sources, are available at    */
+72:                /* www.microchip.com/codeexamples                                             */
+73:                /******************************************************************************/
+74:                
+75:                /* Primary (non-alternate) address error trap function declarations */
+76:                void __attribute__((interrupt,no_auto_psv)) _OscillatorFail(void)
+77:                {
+000336  FA0000     LNK #0x0
+78:                        INTCON1bits.OSCFAIL = 0;        /* Clear the trap flag */
+000338  A92080     BCLR INTCON1, #1
+79:                        while(1);
+00033A  37FFFF     BRA 0x33A
+80:                }
+81:                
+82:                void __attribute__((interrupt,no_auto_psv)) _AddressError(void)
+83:                {
+00033C  FA0000     LNK #0x0
+84:                        INTCON1bits.ADDRERR = 0;        /* Clear the trap flag */
+00033E  A96080     BCLR INTCON1, #3
+85:                        while (1);
+000340  37FFFF     BRA 0x340
+86:                }
+87:                void __attribute__((interrupt,no_auto_psv)) _StackError(void)
+88:                {
+000342  FA0000     LNK #0x0
+89:                        INTCON1bits.STKERR = 0;         /* Clear the trap flag */
+000344  A94080     BCLR INTCON1, #2
+90:                        while (1);
+000346  37FFFF     BRA 0x346
+91:                }
+92:                
+93:                void __attribute__((interrupt,no_auto_psv)) _MathError(void)
+94:                {
+000348  FA0000     LNK #0x0
+95:                        INTCON1bits.MATHERR = 0;        /* Clear the trap flag */
+00034A  A98080     BCLR INTCON1, #4
+96:                        while (1);
+00034C  37FFFF     BRA 0x34C
+97:                }
+98:                
+99:                #if defined(__HAS_DMA__)
+100:               
+101:               void __attribute__((interrupt,no_auto_psv)) _DMACError(void)
+102:               {
+00034E  FA0000     LNK #0x0
+103:                       INTCON1bits.DMACERR = 0;        /* Clear the trap flag */
+000350  A9A080     BCLR INTCON1, #5
+104:                       while (1);
+000352  37FFFF     BRA 0x352
+105:               }
+106:               
+107:               #endif
+108:               
+109:               #if defined(__dsPIC33F__)
+110:               
+111:               /* Alternate address error trap function declarations */
+112:               void __attribute__((interrupt,no_auto_psv)) _AltOscillatorFail(void)
+113:               {
+000354  FA0000     LNK #0x0
+114:                       INTCON1bits.OSCFAIL = 0;        /* Clear the trap flag */
+000356  A92080     BCLR INTCON1, #1
+115:                       while (1);
+000358  37FFFF     BRA 0x358
+116:               }
+117:               
+118:               void __attribute__((interrupt,no_auto_psv)) _AltAddressError(void)
+119:               {
+00035A  FA0000     LNK #0x0
+120:                       INTCON1bits.ADDRERR = 0;        /* Clear the trap flag */
+00035C  A96080     BCLR INTCON1, #3
+121:                       while (1);
+00035E  37FFFF     BRA 0x35E
+122:               }
+123:               
+124:               void __attribute__((interrupt,no_auto_psv)) _AltStackError(void)
+125:               {
+000360  FA0000     LNK #0x0
+126:                       INTCON1bits.STKERR = 0;         /* Clear the trap flag */
+000362  A94080     BCLR INTCON1, #2
+127:                       while (1);
+000364  37FFFF     BRA 0x364
+128:               }
+129:               
+130:               void __attribute__((interrupt,no_auto_psv)) _AltMathError(void)
+131:               {
+000366  FA0000     LNK #0x0
+132:                       INTCON1bits.MATHERR = 0;        /* Clear the trap flag */
+000368  A98080     BCLR INTCON1, #4
+133:                       while (1);
+00036A  37FFFF     BRA 0x36A
+134:               }
+135:               
+136:                   #if defined(__HAS_DMA__)
+137:               
+138:                   void __attribute__((interrupt,no_auto_psv)) _AltDMACError(void)
+139:                   {
+00036C  FA0000     LNK #0x0
+140:                        INTCON1bits.DMACERR = 0;        /* Clear the trap flag */
+00036E  A9A080     BCLR INTCON1, #5
+141:                        while (1);
+000370  37FFFF     BRA 0x370
+142:                   }
+143:               
+144:                   #endif
+145:               
+146:               #endif
+147:               
+148:               /******************************************************************************/
+149:               /* Default Interrupt Handler                                                  */
+150:               /*                                                                            */
+151:               /* This executes when an interrupt occurs for an interrupt source with an     */
+152:               /* improperly defined or undefined interrupt handling routine.                */
+153:               /******************************************************************************/
+154:               void __attribute__((interrupt,no_auto_psv)) _DefaultInterrupt(void)
+155:               {
+000372  FA0000     LNK #0x0
+156:                       while(1);
+000374  37FFFF     BRA 0x374
+157:               }
+158:               
+159:               #if defined(__dsPIC33E__)
+160:               
+161:               /* These traps are new to the dsPIC33E family.  Refer to the device Interrupt
+162:               chapter of the FRM to understand trap priority. */
+163:               void __attribute__((interrupt,no_auto_psv)) _HardTrapError(void)
+164:               {
+165:                   while(1);
+166:               }
+167:               void __attribute__((interrupt,no_auto_psv)) _SoftTrapError(void)
+168:               {
+169:                   while(1);
+170:               }
+171:               
+172:               #endif
+---  C:/Users/Lucas/MPLABXProjects/Entrega_guia_5.X/system.c  -------------------------------------------
+1:                 /******************************************************************************/
+2:                 /* Files to Include                                                           */
+3:                 /******************************************************************************/
+4:                 
+5:                 /* Device header file */
+6:                 #if defined(__XC16__)
+7:                     #include <xc.h>
+8:                 #elif defined(__C30__)
+9:                     #if defined(__dsPIC33E__)
+10:                    	#include <p33Exxxx.h>
+11:                    #elif defined(__dsPIC33F__)
+12:                    	#include <p33Fxxxx.h>
+13:                    #endif
+14:                #endif
+15:                
+16:                
+17:                #include <stdint.h>          /* For uint16_t definition                       */
+18:                #include <stdbool.h>         /* For true/false definition                     */
+19:                
+20:                #include "system.h"          /* variables/params used by system.c             */
+21:                
+22:                /******************************************************************************/
+23:                /* System Level Functions                                                     */
+24:                /*                                                                            */
+25:                /* Custom oscillator configuration funtions, reset source evaluation          */
+26:                /* functions, and other non-peripheral microcontroller initialization         */
+27:                /* functions get placed in system.c.                                          */
+28:                /*                                                                            */
+29:                /******************************************************************************/
+30:                
+31:                /* Refer to the device Family Reference Manual Oscillator section for
+32:                information about available oscillator configurations.  Typically
+33:                this would involve configuring the oscillator tuning register or clock
+34:                switching useing the compiler's __builtin_write_OSCCON functions.
+35:                Refer to the C Compiler for PIC24 MCUs and dsPIC DSCs User Guide in the
+36:                compiler installation directory /doc folder for documentation on the
+37:                __builtin functions.*/
+38:                
+39:                /* TODO Add clock switching code if appropriate.  An example stub is below.   */
+40:                void ConfigureOscillator(void)
+41:                {
+00044E  FA0000     LNK #0x0
+42:                    
+43:                #if 1
+44:                    // Configure PLL prescaler, PLL postscaler, PLL divisor
+45:                        PLLFBD=30; // M = 32
+000450  2001E0     MOV #0x1E, W0
+000452  883A30     MOV W0, PLLFBD
+46:                        CLKDIVbits.PLLPOST=0; // N2 = 2
+000454  803A21     MOV CLKDIV, W1
+000456  2FF3F0     MOV #0xFF3F, W0
+000458  608000     AND W1, W0, W0
+00045A  883A20     MOV W0, CLKDIV
+47:                        CLKDIVbits.PLLPRE=0; // N1 = 2
+00045C  803A21     MOV CLKDIV, W1
+00045E  2FFE00     MOV #0xFFE0, W0
+000460  608000     AND W1, W0, W0
+000462  883A20     MOV W0, CLKDIV
+48:                        /* Disable Watch Dog Timer */
+49:                        RCONbits.SWDTEN = 0;
+000464  A9A740     BCLR RCON, #5
+50:                
+51:                        /* When clock switch occurs switch to Primary Osc (HS, XT, EC) */
+52:                        __builtin_write_OSCCONH(0x03);  /* Set OSCCONH for clock switch */
+000466  200032     MOV #0x3, W2
+000468  200780     MOV #0x78, W0
+00046A  2009A1     MOV #0x9A, W1
+00046C  207433     MOV #0x743, W3
+00046E  784980     MOV.B W0, [W3]
+000470  784981     MOV.B W1, [W3]
+000472  784982     MOV.B W2, [W3]
+53:                        __builtin_write_OSCCONL(OSCCON | 0x01);  /* Start clock switching */
+000474  803A10     MOV OSCCON, W0
+000476  780100     MOV W0, W2
+000478  A00002     BSET W2, #0
+00047A  200460     MOV #0x46, W0
+00047C  200571     MOV #0x57, W1
+00047E  207423     MOV #0x742, W3
+000480  784980     MOV.B W0, [W3]
+000482  784981     MOV.B W1, [W3]
+000484  784982     MOV.B W2, [W3]
+54:                        
+55:                        /* Wait for Clock switch to occur */
+56:                        while(OSCCONbits.COSC != 0b011);
+000486  000000     NOP
+000488  803A11     MOV OSCCON, W1
+00048A  270000     MOV #0x7000, W0
+00048C  608080     AND W1, W0, W1
+00048E  230000     MOV #0x3000, W0
+000490  508F80     SUB W1, W0, [W15]
+000492  3AFFFA     BRA NZ, 0x488
+57:                        /* Wait for PLL to lock, only if PLL is needed */
+58:                        while(OSCCONbits.LOCK != 1);
+000494  000000     NOP
+000496  803A11     MOV OSCCON, W1
+000498  200200     MOV #0x20, W0
+00049A  608000     AND W1, W0, W0
+00049C  E00000     CP0 W0
+00049E  32FFFB     BRA Z, 0x496
+59:                #endif
+60:                }
+0004A0  FA8000     ULNK
+0004A2  060000     RETURN
+---  C:/Users/Lucas/MPLABXProjects/Entrega_guia_5.X/main.c  ---------------------------------------------
+1:                 /******************************************************************************/
+2:                 /* Files to Include                                                           */
+3:                 /******************************************************************************/
+4:                 
+5:                 /* Device header file */
+6:                 #if defined(__XC16__)
+7:                     #include <xc.h>
+8:                 #elif defined(__C30__)
+9:                     #if defined(__dsPIC33E__)
+10:                    	#include <p33Exxxx.h>
+11:                    #elif defined(__dsPIC33F__)
+12:                    	#include <p33Fxxxx.h>
+13:                    #endif
+14:                #endif
+15:                
+16:                
+17:                #include <stdint.h>        /* Includes uint16_t definition                    */
+18:                #include <stdbool.h>       /* Includes true/false definition                  */
+19:                
+20:                #include "system.h"        /* System funct/params, like osc/peripheral config */
+21:                #include "user.h"          /* User funct/params, such as InitApp              */
+22:                
+23:                
+24:                //Variables usadas para la salida del DAC
+25:                uint16_t salida_DAC_R = 0;
+26:                uint16_t salida_DAC_L = 0;
+27:                
+28:                /******************************************************************************/
+29:                /* Global Variable Declaration                                                */
+30:                /******************************************************************************/
+31:                
+32:                /* i.e. uint16_t <variable_name>; */
+33:                
+34:                /******************************************************************************/
+35:                /* Main Program                                                               */
+36:                /******************************************************************************/
+37:                
+38:                int16_t main(void)
+39:                {
+0004A4  FA0000     LNK #0x0
+40:                
+41:                    /* Configure the oscillator for the device */
+42:                    ConfigureOscillator();
+0004A6  07FFD3     RCALL ConfigureOscillator
+43:                
+44:                    /* Initialize IO ports and peripherals */
+45:                    InitApp();
+0004A8  07FF67     RCALL InitApp
+46:                    configurarpuertos();
+0004AA  07FF69     RCALL configurarpuertos
+47:                    configtimer();
+0004AC  07FFA1     RCALL configtimer
+48:                    ConfigureDAC();
+0004AE  07FFBA     RCALL ConfigureDAC
+49:                    
+50:                    /* TODO <INSERT USER APPLICATION CODE HERE> */
+51:                
+52:                    while(1)
+53:                    {
+54:                        encenderled();
+0004B0  07FF6D     RCALL encenderled
+55:                        toggleoled();
+0004B2  07FF7C     RCALL toggleoled
+56:                    }
+0004B4  37FFFD     BRA 0x4B0
+57:                }
+---  C:/Users/Lucas/MPLABXProjects/Entrega_guia_5.X/interrupts.c  ---------------------------------------
+1:                 /******************************************************************************/
+2:                 /* Files to Include                                                           */
+3:                 /******************************************************************************/
+4:                 
+5:                 /* Device header file */
+6:                 #if defined(__XC16__)
+7:                     #include <xc.h>
+8:                 #elif defined(__C30__)
+9:                     #if defined(__dsPIC33E__)
+10:                    	#include <p33Exxxx.h>
+11:                    #elif defined(__dsPIC33F__)
+12:                    	#include <p33Fxxxx.h>
+13:                    #endif
+14:                #endif
+15:                
+16:                #include <stdint.h>        /* Includes uint16_t definition   */
+17:                #include <stdbool.h>       /* Includes true/false definition */
+18:                
+19:                extern uint16_t salida_DAC_R;
+20:                extern uint16_t salida_DAC_L;
+21:                
+22:                /******************************************************************************/
+23:                /* Interrupt Vector Options                                                   */
+24:                /******************************************************************************/
+25:                /*                                                                            */
+26:                /* Refer to the C30 (MPLAB C Compiler for PIC24F MCUs and dsPIC33F DSCs) User */
+27:                /* Guide for an up to date list of the available interrupt options.           */
+28:                /* Alternately these names can be pulled from the device linker scripts.      */
+29:                /*                                                                            */
+30:                /* dsPIC33F Primary Interrupt Vector Names:                                   */
+31:                /*                                                                            */
+32:                /* _INT0Interrupt      _C1Interrupt                                           */
+33:                /* _IC1Interrupt       _DMA3Interrupt                                         */
+34:                /* _OC1Interrupt       _IC3Interrupt                                          */
+35:                /* _T1Interrupt        _IC4Interrupt                                          */
+36:                /* _DMA0Interrupt      _IC5Interrupt                                          */
+37:                /* _IC2Interrupt       _IC6Interrupt                                          */
+38:                /* _OC2Interrupt       _OC5Interrupt                                          */
+39:                /* _T2Interrupt        _OC6Interrupt                                          */
+40:                /* _T3Interrupt        _OC7Interrupt                                          */
+41:                /* _SPI1ErrInterrupt   _OC8Interrupt                                          */
+42:                /* _SPI1Interrupt      _DMA4Interrupt                                         */
+43:                /* _U1RXInterrupt      _T6Interrupt                                           */
+44:                /* _U1TXInterrupt      _T7Interrupt                                           */
+45:                /* _ADC1Interrupt      _SI2C2Interrupt                                        */
+46:                /* _DMA1Interrupt      _MI2C2Interrupt                                        */
+47:                /* _SI2C1Interrupt     _T8Interrupt                                           */
+48:                /* _MI2C1Interrupt     _T9Interrupt                                           */
+49:                /* _CNInterrupt        _INT3Interrupt                                         */
+50:                /* _INT1Interrupt      _INT4Interrupt                                         */
+51:                /* _ADC2Interrupt      _C2RxRdyInterrupt                                      */
+52:                /* _DMA2Interrupt      _C2Interrupt                                           */
+53:                /* _OC3Interrupt       _DCIErrInterrupt                                       */
+54:                /* _OC4Interrupt       _DCIInterrupt                                          */
+55:                /* _T4Interrupt        _DMA5Interrupt                                         */
+56:                /* _T5Interrupt        _U1ErrInterrupt                                        */
+57:                /* _INT2Interrupt      _U2ErrInterrupt                                        */
+58:                /* _U2RXInterrupt      _DMA6Interrupt                                         */
+59:                /* _U2TXInterrupt      _DMA7Interrupt                                         */
+60:                /* _SPI2ErrInterrupt   _C1TxReqInterrupt                                      */
+61:                /* _SPI2Interrupt      _C2TxReqInterrupt                                      */
+62:                /* _C1RxRdyInterrupt                                                          */
+63:                /*                                                                            */
+64:                /* dsPIC33E Primary Interrupt Vector Names:                                   */
+65:                /*                                                                            */
+66:                /* _INT0Interrupt     _IC4Interrupt      _U4TXInterrupt                       */
+67:                /* _IC1Interrupt      _IC5Interrupt      _SPI3ErrInterrupt                    */
+68:                /* _OC1Interrupt      _IC6Interrupt      _SPI3Interrupt                       */
+69:                /* _T1Interrupt       _OC5Interrupt      _OC9Interrupt                        */
+70:                /* _DMA0Interrupt     _OC6Interrupt      _IC9Interrupt                        */
+71:                /* _IC2Interrupt      _OC7Interrupt      _PWM1Interrupt                       */
+72:                /* _OC2Interrupt      _OC8Interrupt      _PWM2Interrupt                       */
+73:                /* _T2Interrupt       _PMPInterrupt      _PWM3Interrupt                       */
+74:                /* _T3Interrupt       _DMA4Interrupt     _PWM4Interrupt                       */
+75:                /* _SPI1ErrInterrupt  _T6Interrupt       _PWM5Interrupt                       */
+76:                /* _SPI1Interrupt     _T7Interrupt       _PWM6Interrupt                       */
+77:                /* _U1RXInterrupt     _SI2C2Interrupt    _PWM7Interrupt                       */
+78:                /* _U1TXInterrupt     _MI2C2Interrupt    _DMA8Interrupt                       */
+79:                /* _AD1Interrupt      _T8Interrupt       _DMA9Interrupt                       */
+80:                /* _DMA1Interrupt     _T9Interrupt       _DMA10Interrupt                      */
+81:                /* _NVMInterrupt      _INT3Interrupt     _DMA11Interrupt                      */
+82:                /* _SI2C1Interrupt    _INT4Interrupt     _SPI4ErrInterrupt                    */
+83:                /* _MI2C1Interrupt    _C2RxRdyInterrupt  _SPI4Interrupt                       */
+84:                /* _CM1Interrupt      _C2Interrupt       _OC10Interrupt                       */
+85:                /* _CNInterrupt       _QEI1Interrupt     _IC10Interrupt                       */
+86:                /* _INT1Interrupt     _DCIEInterrupt     _OC11Interrupt                       */
+87:                /* _AD2Interrupt      _DCIInterrupt      _IC11Interrupt                       */
+88:                /* _IC7Interrupt      _DMA5Interrupt     _OC12Interrupt                       */
+89:                /* _IC8Interrupt      _RTCCInterrupt     _IC12Interrupt                       */
+90:                /* _DMA2Interrupt     _U1ErrInterrupt    _DMA12Interrupt                      */
+91:                /* _OC3Interrupt      _U2ErrInterrupt    _DMA13Interrupt                      */
+92:                /* _OC4Interrupt      _CRCInterrupt      _DMA14Interrupt                      */
+93:                /* _T4Interrupt       _DMA6Interrupt     _OC13Interrupt                       */
+94:                /* _T5Interrupt       _DMA7Interrupt     _IC13Interrupt                       */
+95:                /* _INT2Interrupt     _C1TxReqInterrupt  _OC14Interrupt                       */
+96:                /* _U2RXInterrupt     _C2TxReqInterrupt  _IC14Interrupt                       */
+97:                /* _U2TXInterrupt     _QEI2Interrupt     _OC15Interrupt                       */
+98:                /* _SPI2ErrInterrupt  _U3ErrInterrupt    _IC15Interrupt                       */
+99:                /* _SPI2Interrupt     _U3RXInterrupt     _OC16Interrupt                       */
+100:               /* _C1RxRdyInterrupt  _U3TXInterrupt     _IC16Interrupt                       */
+101:               /* _C1Interrupt       _USB1Interrupt     _ICDInterrupt                        */
+102:               /* _DMA3Interrupt     _U4ErrInterrupt    _PWMSpEventMatchInterrupt            */
+103:               /* _IC3Interrupt      _U4RXInterrupt     _PWMSecSpEventMatchInterrupt         */
+104:               /*                                                                            */
+105:               /* For alternate interrupt vector naming, simply add 'Alt' between the prim.  */
+106:               /* interrupt vector name '_' and the first character of the primary interrupt */
+107:               /* vector name.  There is no Alternate Vector or 'AIVT' for the 33E family.   */
+108:               /*                                                                            */
+109:               /* For example, the vector name _ADC2Interrupt becomes _AltADC2Interrupt in   */
+110:               /* the alternate vector table.                                                */
+111:               /*                                                                            */
+112:               /* Example Syntax:                                                            */
+113:               /*                                                                            */
+114:               /* void __attribute__((interrupt,auto_psv)) <Vector Name>(void)               */
+115:               /* {                                                                          */
+116:               /*     <Clear Interrupt Flag>                                                 */
+117:               /* }                                                                          */
+118:               /*                                                                            */
+119:               /* For more comprehensive interrupt examples refer to the C30 (MPLAB C        */
+120:               /* Compiler for PIC24 MCUs and dsPIC DSCs) User Guide in the                  */
+121:               /* <C30 compiler instal directory>/doc directory for the latest compiler      */
+122:               /* release.  For XC16, refer to the MPLAB XC16 C Compiler User's Guide in the */
+123:               /* <XC16 compiler instal directory>/doc folder.                               */
+124:               /*                                                                            */
+125:               /******************************************************************************/
+126:               /* Interrupt Routines                                                         */
+127:               /******************************************************************************/
+128:               
+129:               /* TODO Add interrupt routine code here. */
+130:               void __attribute__((__interrupt__, no_auto_psv)) _T3Interrupt(void)
+131:               {
+0002C8  BE9F80     MOV.D W0, [W15++]
+0002CA  FA0000     LNK #0x0
+132:                   /* Interrupt Service Routine code goes here */
+133:                   LATCbits.LATC7 = !LATCbits.LATC7;
+0002CC  8016A1     MOV LATC, W1
+0002CE  200800     MOV #0x80, W0
+0002D0  608000     AND W1, W0, W0
+0002D2  A7F000     BTSC W0, #15
+0002D4  EA0000     NEG W0, W0
+0002D6  E90000     DEC W0, W0
+0002D8  DE004F     LSR W0, #15, W0
+0002DA  784000     MOV.B W0, W0
+0002DC  FB8000     ZE W0, W0
+0002DE  600061     AND W0, #0x1, W0
+0002E0  DD0047     SL W0, #7, W0
+0002E2  8016A1     MOV LATC, W1
+0002E4  A17001     BCLR W1, #7
+0002E6  700001     IOR W0, W1, W0
+0002E8  8816A0     MOV W0, LATC
+134:                   IFS0bits.T3IF = 0; // Clear Timer3 Interrupt Flag
+0002EA  A90085     BCLR 0x85, #0
+135:               }
+0002EC  FA8000     ULNK
+0002EE  BE004F     MOV.D [--W15], W0
+0002F0  064000     RETFIE
+136:               
+137:               
+138:               
+139:               /* Codigo para interrupcion del DAC */
+140:               
+141:               //Canal derecho
+142:               void __attribute__((interrupt, no_auto_psv))_DAC1RInterrupt(void) {
+0002F2  BE9F80     MOV.D W0, [W15++]
+0002F4  FA0000     LNK #0x0
+143:                   IFS4bits.DAC1RIF = 0; /* Clear Right Channel Interrupt Flag */
+0002F6  A9C08D     BCLR 0x8D, #6
+144:                   if (salida_DAC_R == 0x7FFF) {
+0002F8  804001     MOV salida_DAC_R, W1
+0002FA  27FFF0     MOV #0x7FFF, W0
+0002FC  508F80     SUB W1, W0, [W15]
+0002FE  3A0003     BRA NZ, 0x306
+145:                       salida_DAC_R = 0x8000;
+000300  280000     MOV #0x8000, W0
+000302  884000     MOV W0, salida_DAC_R
+000304  370002     BRA 0x30A
+146:                   } else {
+147:                       salida_DAC_R = 0x7FFF;
+000306  27FFF0     MOV #0x7FFF, W0
+000308  884000     MOV W0, salida_DAC_R
+148:                   }
+149:                   DAC1RDAT = salida_DAC_R; /* User Code to Write to FIFO Goes Here */
+00030A  804000     MOV salida_DAC_R, W0
+00030C  881FB0     MOV W0, DAC1RDAT
+150:               }
+00030E  FA8000     ULNK
+000310  BE004F     MOV.D [--W15], W0
+000312  064000     RETFIE
+151:               
+152:               //Canal izquierdo
+153:               void __attribute__((interrupt, no_auto_psv))_DAC1LInterrupt(void) {
+000314  BE9F80     MOV.D W0, [W15++]
+000316  FA0000     LNK #0x0
+154:                   IFS4bits.DAC1LIF = 0; /* Clear Left Channel Interrupt Flag */
+000318  A9E08D     BCLR 0x8D, #7
+155:                   if (salida_DAC_L == 0x7FFF) {
+00031A  804011     MOV salida_DAC_L, W1
+00031C  27FFF0     MOV #0x7FFF, W0
+00031E  508F80     SUB W1, W0, [W15]
+000320  3A0003     BRA NZ, 0x328
+156:                       salida_DAC_L = 0x8000;
+000322  280000     MOV #0x8000, W0
+000324  884010     MOV W0, salida_DAC_L
+000326  370002     BRA 0x32C
+157:                   } else {
+158:                       salida_DAC_L = 0x7FFF;
+000328  27FFF0     MOV #0x7FFF, W0
+00032A  884010     MOV W0, salida_DAC_L
+159:                   }
+160:                   DAC1LDAT = salida_DAC_L; /* User Code to Write to FIFO Goes Here */
+00032C  804010     MOV salida_DAC_L, W0
+00032E  881FC0     MOV W0, DAC1LDAT
+161:               }
+000330  FA8000     ULNK
+000332  BE004F     MOV.D [--W15], W0
+000334  064000     RETFIE

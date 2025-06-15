@@ -1,0 +1,6 @@
+ Tomaron dos drivers uno para manejar una tensión de 24vca y otro.
+ Un contactor donde usas el triac.... El primer ejercicio te
+ daba una tension 120mVpp teniaas que hacer el circuito con amplificador
+ lsacando la ganancia, la rg , y explicando las caracteristicas del operacional que usaste... 
+Despues teniendo un error del 0,1 calcular los componentes ... Y otro. Punto que no me acuerdo sobre
+ interrupciones ... Eran dos problemas .. Dos arpartados cada uno

@@ -1,0 +1,13 @@
+N = 75;
+K = 25;
+y = zeros(N,K);
+for (n = 0:25)
+    for (n = 0:99)
+        if (n < 50)
+            y(n+1,K)=K*(1i/50);
+        else
+            y(n+1,K)=K*((100-n)/50);
+        end
+    end
+end
+stem(y);
