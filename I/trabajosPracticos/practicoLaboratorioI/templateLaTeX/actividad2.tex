@@ -105,6 +105,28 @@ Se pide:
 \subsubsection{Implementación y simulación}
 \imagen[Implementación con MiniLab]{8cm}{./imagenes/exceso3Minilab.jpg}
 \imagen[Circuito simulado en Falstab]{8cm}{./imagenes/simulacionExceso3.jpg}
+\begin{center}
+\begin{figure}[h!]
+\centering
+\begin{subfigure}[b]{0.45\linewidth}
+\includegraphics[width=\linewidth]{./imagenes/cd4069.png}
+\caption{Inversor CD4069 x1}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\linewidth}
+\includegraphics[width=\linewidth]{./imagenes/cd4081.png}
+\caption{AND dos entradas x2}
+\end{subfigure}
+\begin{subfigure}[c]{0.45\linewidth}
+\includegraphics[width=\linewidth]{./imagenes/cd4075.png}
+\caption{OR tres entradas x1}
+\end{subfigure}
+\begin{subfigure}[d]{0.45\linewidth}
+\includegraphics[width=\linewidth]{./imagenes/cd4071.png}
+\caption{OR dos entradas x1}
+\end{subfigure}
+\caption{Integrados usados}
+\end{figure}
+\end{center}
 \thispagestyle{fancy}
 
 \inicioCodigo{}
@@ -247,8 +269,37 @@ Se pide:
 \ecuacion{S_2 = (\overline{A_0} \cdot \overline{B_0} + A_0 \cdot B_0) \cdot (\overline{A_1} \cdot \overline{B_1} + A_1 \cdot B_1)}
 \ecuacion{S_2 = \overline{(A_0 \oplus B_0)} \cdot \overline{(A_1 \oplus B_1)}}
 \subsubsection{Implementación y simulación}
+\imagen[Implementación para el MiniLab]{8cm}{./imagenes/comparadorMinilab.jpg}
 \imagen[Circuito para la simulación de Falstab]{8cm}{./imagenes/simulacionComparador.jpg}
+\begin{center}
+\begin{figure}[h!]
+\centering
+\begin{subfigure}[b]{0.45\linewidth}
+\includegraphics[width=\linewidth]{./imagenes/cd4069.png}
+\caption{Inversor CD4069 x1}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\linewidth}
+\includegraphics[width=\linewidth]{./imagenes/cd4081.png}
+\caption{AND dos entradas x3}
+\end{subfigure}
+\begin{subfigure}[c]{0.45\linewidth}
+\includegraphics[width=\linewidth]{./imagenes/cd4075.png}
+\caption{OR tres entradas x1}
+\end{subfigure}
+\begin{subfigure}[d]{0.45\linewidth}
+\includegraphics[width=\linewidth]{./imagenes/cd4071.png}
+\caption{OR dos entradas x1}
+\end{subfigure}
+\begin{subfigure}[d]{0.45\linewidth}
+\includegraphics[width=\linewidth]{./imagenes/cd4077.png}
+\caption{XNOR dos entradas x1}
+\end{subfigure}
 
+\caption{Integrados usados}
+\end{figure}
+\end{center}
+
+\thispagestyle{fancy}
 
 \inicioCodigo{}
 \subsubsection{Circuito con compuertas lógicas}
@@ -326,3 +377,14 @@ Se pide:
 	\draw (13.154, -6.75) -| (13.614, -7.47);
 \end{tikzpicture}
 \finalCodigo{}
+\section{Conclusiones}
+\subsection{Dificultades enfrentadas}
+
+''La principal dificultad que hemos tenido fue en el desarrollo del mini-laboratorio, ya que quisimos experimentar con el diseño de placas por KiCad y el método casero para hacer placas de circuitos. En cierto punto decidimos frenar y pasar a hacer el mini-laboratorio con protoboards.'' \\
+\sangria{}''En cuanto al desarrollo del trabajo práctico, la otra dificultad enfrentada fue la selección de los integrados a usar y la forma de la que íbamos a conectarlos, porque también quisimos experimentar con el uso de placas hechas en casa. Decidimos abandonar brevemente la idea para hacer las conexiones por protoboard, que resultó difícil por sus conecxiones.''
+
+\subsection{Objetivos alcanzados}
+
+''Se logró aplicar lo aprendido sobre mapas de Karnaugh, simplificaciones y circuitos combinacionales para diseñar el BCD-Exceso 3 y el comparador binario, una forma más real de ver las salidas de un sistema.''
+
+
