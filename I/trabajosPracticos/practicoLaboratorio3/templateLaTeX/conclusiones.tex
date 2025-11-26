@@ -1,0 +1,35 @@
+\section{CONCLUSIONES}
+\sangria{} Se recomienda leer las notas del documentador, forman parte de nuestras conclusiones. Las respuestas a las siguientes preguntas son citas de comentarios de los autores:
+\begin{enumerate}
+    \item \textbf{¿Cuáles fueron los principales desafíos encontrados durante el diseño y las simulaciones del circuito analógico CMOS?}
+    ''El primer desafío que tuvimos fue adaptar el script a nuestro sistema operativo, ya que pareciera estar escrito solo para Debian y derivados. En parte no fue algo serio más allá de un cambio de paquetería y solventar un error en el script: el link que trae el código fuente de Ngspice estaba roto y lo arreglamos modificando la URL.'' \\ ''Nuestro problema principal fue el simulador Magic, ya que su terminal no reconocía ciertos comandos como:'' 
+\begin{verbatim}
+% ext2spice -lvs
+\end{verbatim}
+ó
+\begin{verbatim}
+% drc show
+\end{verbatim}
+''Lo solucionamos buscando otras alternativas, como el indicador de 0 en el checkBox del simulador o (posteriormente de haber hablado con el profesor Leandro) con el comando:''
+\begin{verbatim}
+% drc count # devuelve 0 si no hay error
+% drc statictics # devuelve un resumen
+\end{verbatim}
+    \item \textbf{¿Cómo influyeron las reglas de diseño físico y las características del proceso CMOS en las decisiones del diseño?}
+        ''El diseño físico fue influenciado mayormente por las reglas del proceso de SKY130, ya que fijan los anchos mínimos, distancias entre las capas, requerimientos en la ubicación del pozo n para el pmos y la forma de organizar el layout.'' \\ ''Con respecto al cableado, también hay reglas del PDK que fijaron la ubicación del $V_{DD}$ y el $GND$, así como la conexión de los bulks.''
+    \item \textbf{¿Qué parámetros eléctricos y físicos del circuito fueron los más críticos para cumplir con las especifícaciones iniciales?}
+''Los parámetros más críticos son la relación entre $W_p$ y $W_n$, el tiempo de retardo del inversor, la tensión de alimentación de $1,8V$ de $V_{DD}$ y los componentes analizados en la comprobación de LVS (resistencias y capacitancias parasitarias).''
+    \item \textbf{¿Cómo se logró validar el funcionamiento del circuito a través de simulaciones antes del diseño físico?}
+        ''El principal componente que nos validó el funcionamiento del circuito fue el gráfico hecho en Xschem gracias a Ngspice, donde vemos que al subir la tensión pico de entrada, la salida marca 0 y viceversa. Si bien una cuestión que tratamos fue la caída de la tensión de salida del inversor, que esparabámos que sea igual a un pico de $V_{IN}$ en un lapso de tiempo anterior. Atribuímos esto a deficiencias en nuestro diseño y a los parámetros de construcción iniciales.''
+    \item \textbf{¿Qué aprendizajes se obtuvieron sobre la importancia de la integración entre diseño esquemático, simulación y layout?}
+    ''Un aprendizaje que nos llevamos es cada revisión que se le hace a cada etapa de diseño de un integrado como este inversor: cada verificación en el circuito, la construcción de un bloque inversor y su implementación en silicio. Nos queda  como objetivo secundario el investigar cómo reducir las características parasitarias (LVS) para obtener integrados más eficientes y que respondan lo más pronto posible (viendo esto como un test de frecuencias altas).''
+    \item \textbf{¿Cómo puede este diseño aplicarse a situaciones reales o a otros proyectos de circuitos analógicos?}
+    ''Una aplicación que rápidamente se nos vino a la mente fue la construcción de un biestable:''
+    \imagen[Biestable]{10cm}{./imagenes/biestable.png}
+    ''Estos son la forma más básica de luego hacer un latch, flip flops y futuras memorias.''
+
+    \item \textbf{¿Qué mejoras o ajustes considerarías para futuros diseños similares basados en la experiencia de este TP?}
+        ''Un diseño posterior a este TP y posiblemente aplicable sería una compuerta NAND:''
+        \imagen[Diseño de transistores de compuerta NAND]{10cm}{./imagenes/nand.png}
+        ''A nivel de construcción de transistores, creemos que un ajuste en la relación $W / L$ podría mejorar la velocidad, así como mencionamos nuestro interés en reducir los parasitismos, buscamos trabajar con estándares que nos permitan diseñar a anchos de canal más actuales como los 7nm.''
+\end{enumerate}

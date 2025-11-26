@@ -1,0 +1,217 @@
+\section{Descripción en HDL y Hardware}
+
+\subsection{Código Verilog}
+La descripción del hardware se realizó utilizando el lenguaje Verilog. El módulo principal, denominado \texttt{monta}, implementa la máquina de estados descrita anteriormente.
+
+\subsubsection{Código}
+
+\begin{lstlisting}
+`timescale 1ns / 1ps
+module monta(
+ input clk, //pulso de reloj
+ output en, //habilitador del display
+ input reset, //botón de reset
+ input P1, //piso 1
+ input P2, //piso 2
+ input P3, //piso 3
+ input fc1, //fin de carrera 1
+ input fc2, //fin de carrera 2
+ input fc3, //fin de carrera 3
+ output reg [1:0] S, //leds de movimiento
+ output reg [6:0] D //display
+);
+assign en = 0;
+
+reg [2:0] state; //estado
+reg [2:0] nextstate; //estado siguiente
+
+parameter piso1 = 3'b000;
+parameter piso2 = 3'b010;
+parameter piso3 = 3'b100;
+
+parameter sube2 = 3'b001;
+parameter baja1 = 3'b011;
+parameter sube3 = 3'b101;
+parameter baja2 = 3'b110;
+
+always @ (posedge clk, posedge reset) //bucle del estado siguiente
+ if (reset) state <= piso1; //reseteo
+ else state <= nextstate; //estado siguiente
+
+always @(P1, P2, P3, fc1, fc2, fc3, state, nextstate)
+ case(state) //estado actual
+/////////////////////////////////////////////////////////////////
+  piso1:
+   if(P2) //piso seleccionado
+    begin
+     nextstate <= sube2;
+     S <= 2'b01;
+     D <= 7'b0000000;
+    end
+   else if(P3)
+    begin
+     nextstate <= sube3;
+     S <= 2'b01;
+     D <= 7'b0000000;
+    end
+   else
+    begin
+     nextstate <= state;
+     S <= 2'b00;
+     D <= 7'b0110000;
+    end
+///////////////////////////////////////////////////////////////
+  sube2:
+   if(fc2)
+    begin
+     nextstate <= piso2;
+     S <= 2'b00;
+     D <= 7'b1101101;
+    end
+   else
+    begin
+     nextstate <= state;
+     S <= 2'b01;
+     D <= 7'b0000000;
+    end
+///////////////////////////////////////////////////////////////
+
+  sube3:
+   if(fc3)
+    begin
+     nextstate <= piso3;
+     S <= 2'b00;
+     D <= 7'b1111001;
+    end
+   else
+    begin
+     nextstate <= state;
+     S <= 2'b01;
+     D <= 7'b0000000;
+    end
+//////////////////////////////////////////////////////////////
+
+  piso2:
+   if(P1)
+    begin
+     nextstate <= baja1;
+     S <= 2'b10;
+     D <= 7'b0000000;
+    end
+   else if(P3)
+    begin
+     nextstate <= sube3;
+     S <= 2'b01;
+     D <= 7'b0000000;
+    end
+   else
+    begin
+     nextstate <= state;
+     S <= 2'b00;
+     D <= 7'b1101101;
+    end
+/////////////////////////////////////////////////////////////////////
+  baja1:
+   if(fc1)
+    begin
+     nextstate <= piso1;
+     S <= 2'b00;
+     D <= 7'b0110000;
+    end
+  else
+   begin
+    nextstate <= state;
+    S <= 2'b10;
+    D <= 7'b0000000;
+   end
+///////////////////////////////////////////////////////////////////
+  piso3:
+   if(P1)
+    begin
+     nextstate <= baja1;
+     S<= 2'b10;
+     D <= 7'b0000000;
+    end
+   else if(P2)
+    begin
+     nextstate <= baja2;
+     S<= 2'b10;
+     D <= 7'b0000000;
+    end
+   else
+    begin
+     nextstate <= state;
+     S <= 2'b00;
+     D <= 7'b1111001;
+    end
+//////////////////////////////////////////////////////////////////
+  baja2:
+   if(fc2)
+    begin
+     nextstate <= piso2;
+     S <= 2'b00;
+     D <= 7'b1101101;
+    end
+   else
+    begin
+     nextstate <= state;
+     S <= 2'b10;
+     D <= 7'b0000000;
+    end
+//////////////////////////////////////////////////////////////////
+
+  default: nextstate <= piso1; //en caso de piso inválido, regresar al piso 1
+ endcase
+endmodule
+\end{lstlisting}
+
+\subsubsection{Estructura del Módulo}
+El diseño se divide en dos bloques principales dentro del módulo:
+
+\begin{enumerate}
+    \item \textbf{Lógica Secuencial (Memoria de Estado):}
+    Se utiliza un bloque \texttt{always @ (posedge clk, posedge reset)} para actualizar el estado del sistema.
+    \begin{itemize}
+        \item Si la señal de \texttt{reset} es alta, el sistema se fuerza asincrónicamente al estado \texttt{piso1} (estado inicial).
+        \item En cada flanco positivo del reloj (\texttt{clk}), el registro \texttt{state} toma el valor de \texttt{nextstate}.
+    \end{itemize}
+
+    \item \textbf{Lógica Combinacional (Estado Siguiente y Salida):}
+    Se utiliza un bloque \texttt{always @(...)} sensible a todas las entradas y al estado actual. Mediante una sentencia \texttt{case}, se evalúa el estado presente para determinar:
+    \begin{itemize}
+        \item El valor de \texttt{nextstate} según las entradas de los pulsadores ($P$) y finales de carrera ($fc$).
+        \item Los valores de las salidas $S$ (motor) y $D$ (display).
+    \end{itemize}
+    Se definieron parámetros (ej. \texttt{parameter piso1 = 3'b000}) para hacer el código más legible y facilitar el mantenimiento.
+\end{enumerate}
+
+\subsection{Implementación en FPGA/CPLD}
+El diseño fue sintetizado e implementado en el kit de desarrollo de la cátedra, basado en un CPLD de Xilinx. La asignación de pines (User Constraints) se realizó de acuerdo a la disposición física de los periféricos en la placa.
+
+\subsubsection{Asignación de Puertos}
+A continuación se detalla el mapeo físico entre las señales del diseño Verilog y los pines del dispositivo CPLD:
+
+\begin{table}[H]
+\centering
+\caption{Asignación de Pines en el CPLD}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Señal Verilog} & \textbf{Pin CPLD} & \textbf{Descripción del Periférico} \\ \hline
+\texttt{clk} & P6 & Señal de reloj (Frecuencia Variable) \\ \hline
+\texttt{reset} & P38 & Switch para reinicio del sistema \\ \hline
+\texttt{P1, P2, P3} & P34, P35, P36 & Switches para selección de piso \\ \hline
+\texttt{fc1, fc2} & P27, P33 & Pulsadores (Lógica inversa: 0 presionado) \\ \hline
+\texttt{fc3} & P37 & Switch (Simulación de final de carrera superior) \\ \hline
+\texttt{S} & P14 & LED indicador de estado del motor \\ \hline
+\texttt{en} & P28 & Habilitador del Display (Transistor) \\ \hline
+\texttt{D[6:0]} & P18 - P26 & Segmentos del Display 7-Segmentos (a-g) \\ \hline
+\end{tabular}
+\label{tab:pines}
+\end{table}
+
+\subsubsection{Consideraciones de Hardware}
+\begin{itemize}
+    \item \textbf{Display de 7 Segmentos:} Los segmentos están conectados a los pines P18 a P26. El código envía los vectores de bits correspondientes para formar los números '1', '2' y '3'. El pin P28 controla el habilitador común del display.
+    \item \textbf{Entradas de Usuario:} Se utilizaron switches (P34-P36) para simular las llamadas de los pisos, permitiendo mantener la señal activa.
+    \item \textbf{Sensores de Posición:} Para los finales de carrera 1 y 2 se utilizaron los pulsadores de la placa (P27 y P33), los cuales operan con lógica negativa (envían un '0' al ser presionados). Para el final de carrera 3, se utilizó un switch (P37) por disponibilidad de hardware.
+\end{itemize}

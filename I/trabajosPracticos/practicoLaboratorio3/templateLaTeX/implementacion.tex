@@ -1,0 +1,126 @@
+\section{Implementación del Diseño}
+
+\subsection{Descripción del Sistema}
+El objetivo del diseño es la automatización de un montacargas de tres niveles. El sistema debe ser capaz de recibir comandos de llamada desde tres pulsadores ($P1, P2, P3$), detectar la posición de la cabina mediante finales de carrera ($fc1, fc2, fc3$) y controlar tanto el motor de tracción como un indicador visual de posición.
+
+El núcleo del control se basa en una \textbf{Máquina de Estados Finitos (FSM)} que gestiona la lógica secuencial del movimiento. Debido a la necesidad de una respuesta inmediata de las salidas (indicadores de motor y display) ante cambios en las entradas, se optó por una arquitectura de \textbf{Máquina de Mealy}.
+
+\subsection{Máquina de Estados Finita (FSM)}
+La FSM diseñada consta de 7 estados lógicos, codificados en un registro de 3 bits. La selección del modelo de Mealy permite que las salidas ($S$ para el motor y $D$ para el display) dependan tanto del estado actual como de las entradas presentes, lo que reduce la latencia en la indicación de las acciones.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        ->,                     % Flechas dirigidas
+        >=Stealth,              % Estilo de punta de flecha
+        shorten >=1pt,          % Espacio antes de tocar el nodo
+        auto,                   % Posiciona texto automáticamente
+        node distance=3.5cm,    % Distancia vertical
+        semithick,              % Grosor de línea
+        every state/.style={    % Estilo de los nodos
+            draw=blue!50!black,
+            thick,
+            fill=blue!5,
+            minimum size=1.8cm,
+            align=center,
+            font=\footnotesize\bfseries
+        },
+        initial text=$ $        % Sin texto en la flecha inicial
+    ]
+
+    % --- NODOS (ESTRUCTURA VERTICAL) ---
+
+    % Columna Central
+    \node[state, initial, initial where=below] (p1) {PISO 1\\(000)};
+    \node[state] (p2) [above=of p1] {PISO 2\\(010)};
+    \node[state] (p3) [above=of p2] {PISO 3\\(100)};
+
+    % Columna Derecha (Subida)
+    % Ajustamos 'yshift' para centrarlos entre los pisos
+    \node[state] (s2) [right=3cm of p1, yshift=1.75cm] {SUBE 2\\(001)};
+    \node[state] (s3) [right=3cm of p2, yshift=1.75cm] {SUBE 3\\(101)};
+
+    % Columna Izquierda (Bajada)
+    \node[state] (b1) [left=3cm of p1, yshift=1.75cm] {BAJA 1\\(011)};
+    \node[state] (b2) [left=3cm of p2, yshift=1.75cm] {BAJA 2\\(110)};
+
+
+    % --- TRANSICIONES (FLECHAS) ---
+
+    % 1. Lado Derecho (Subida)
+
+    % P1 -> S2
+    \path (p1) edge [bend right=15] node[below right] {P2} (s2);
+    % S2 -> P2
+    \path (s2) edge [bend right=15] node[above right] {fc2} (p2);
+
+    % P2 -> S3
+    \path (p2) edge [bend right=15] node[below right] {P3} (s3);
+    % S3 -> P3
+    \path (s3) edge [bend right=15] node[above right] {fc3} (p3);
+
+    % *** CORRECCIÓN CLAVE: Salto largo P1 -> S3 ***
+    % 'out=-20' sale un poco hacia abajo-derecha
+    % 'in=-90' entra a S3 desde abajo (verticalmente)
+    % 'looseness=1.4' hace la curva más amplia para rodear a S2 por fuera
+    \draw (p1) to[out=-20, in=-90, looseness=1.4] node[right, pos=0.7] {P3} (s3);
+
+
+    % 2. Lado Izquierdo (Bajada)
+
+    % P3 -> B2
+    \path (p3) edge [bend right=15] node[above left] {P2} (b2);
+    % B2 -> P2
+    \path (b2) edge [bend right=15] node[below left] {fc2} (p2);
+
+    % P2 -> B1
+    \path (p2) edge [bend right=15] node[above left] {P1} (b1);
+    % B1 -> P1
+    \path (b1) edge [bend right=15] node[below left] {fc1} (p1);
+
+    % *** CORRECCIÓN CLAVE: Salto largo P3 -> B1 ***
+    % 'out=200' sale hacia izquierda-abajo
+    % 'in=90' entra a B1 desde arriba
+    % 'looseness=1.4' rodea a B2 por fuera
+    \draw (p3) to[out=200, in=90, looseness=1.4] node[left, pos=0.7] {P1} (b1);
+
+    \end{tikzpicture}
+    \caption{Diagrama de Estados (FSM) del Montacargas.}
+    \label{fig:fsm_montacargas}
+\end{figure}
+
+\subsubsection{Definición de Estados}
+Los estados se clasifican en dos categorías funcionales:
+\begin{itemize}
+    \item \textbf{Estados de Reposo (Estacionarios):} Representan la permanencia del montacargas en un piso específico.
+    \begin{itemize}
+        \item \textbf{PISO 1:} Estado inicial y de reposo en el primer nivel. Salidas: $S=00$ (Quieto), $D=1$ (Piso 1).
+        \item \textbf{PISO 2:} Estado de reposo en el segundo nivel. Salidas: $S=00$, $D=2$.
+        \item \textbf{PISO 3:} Estado de reposo en el tercer nivel. Salidas: $S=00$, $D=3$.
+    \end{itemize}
+    \item \textbf{Estados de Transición (Movimiento):} Representan el desplazamiento de la cabina entre niveles.
+    \begin{itemize}
+        \item \textbf{SUBE 2:} Movimiento ascendente hacia el piso 2. Salidas: $S=01$ (Sube), $D=$ Apagado.
+        \item \textbf{SUBE 3:} Movimiento ascendente hacia el piso 3. Salidas: $S=01$, $D=$ Apagado.
+        \item \textbf{BAJA 1:} Movimiento descendente hacia el piso 1. Salidas: $S=10$ (Baja), $D=$ Apagado.
+        \item \textbf{BAJA 2:} Movimiento descendente hacia el piso 2. Salidas: $S=10$, $D=$ Apagado.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Lógica de Transiciones}
+El diagrama de estados se comporta de la siguiente manera:
+\begin{enumerate}
+    \item Estando en \textbf{PISO 1}: Si se activa $P2$, transita a \textit{SUBE 2}. Si se activa $P3$, transita a \textit{SUBE 3}.
+    \item Estando en \textbf{SUBE 2}: Permanece en este estado hasta que $fc2$ se activa, momento en el que transita a \textit{PISO 2}.
+    \item Estando en \textbf{PISO 2}: Si se activa $P3$, transita a \textit{SUBE 3}. Si se activa $P1$, transita a \textit{BAJA 1}.
+    \item Estando en \textbf{SUBE 3}: Permanece en este estado hasta que $fc3$ se activa, provocando la transición a \textit{PISO 3}.
+    \item Estando en \textbf{PISO 3}: Si se activa $P2$, transita a \textit{BAJA 2}. Si se activa $P1$, transita a \textit{BAJA 1}.
+    \item Estando en \textbf{BAJA 2} o \textbf{BAJA 1}: El sistema mantiene el movimiento descendente hasta que se activa el final de carrera correspondiente ($fc2$ o $fc1$), retornando al estado de reposo respectivo.
+\end{enumerate}
+
+\subsection{Salidas del Sistema}
+El comportamiento de las salidas en función del estado y las entradas se resume a continuación:
+\begin{itemize}
+    \item \textbf{Motor (S):} 2 bits. '00' detiene el motor, '01' activa la subida y '10' activa la bajada.
+    \item \textbf{Display (D):} 7 bits. Muestra el número del piso actual solo cuando el montacargas está detenido (en estados PISO X). Durante los estados de movimiento, el display permanece apagado para indicar tránsito.
+\end{itemize}
