@@ -8,86 +8,96 @@ El núcleo del control se basa en una \textbf{Máquina de Estados Finitos (FSM)}
 \subsection{Máquina de Estados Finita (FSM)}
 La FSM diseñada consta de 7 estados lógicos, codificados en un registro de 3 bits. La selección del modelo de Mealy permite que las salidas ($S$ para el motor y $D$ para el display) dependan tanto del estado actual como de las entradas presentes, lo que reduce la latencia en la indicación de las acciones.
 
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}[
-        ->,                     % Flechas dirigidas
-        >=Stealth,              % Estilo de punta de flecha
-        shorten >=1pt,          % Espacio antes de tocar el nodo
-        auto,                   % Posiciona texto automáticamente
-        node distance=3.5cm,    % Distancia vertical
-        semithick,              % Grosor de línea
-        every state/.style={    % Estilo de los nodos
-            draw=blue!50!black,
-            thick,
-            fill=blue!5,
-            minimum size=1.8cm,
-            align=center,
-            font=\footnotesize\bfseries
-        },
-        initial text=$ $        % Sin texto en la flecha inicial
-    ]
-
-    % --- NODOS (ESTRUCTURA VERTICAL) ---
-
-    % Columna Central
-    \node[state, initial, initial where=below] (p1) {PISO 1\\(000)};
-    \node[state] (p2) [above=of p1] {PISO 2\\(010)};
-    \node[state] (p3) [above=of p2] {PISO 3\\(100)};
-
-    % Columna Derecha (Subida)
-    % Ajustamos 'yshift' para centrarlos entre los pisos
-    \node[state] (s2) [right=3cm of p1, yshift=1.75cm] {SUBE 2\\(001)};
-    \node[state] (s3) [right=3cm of p2, yshift=1.75cm] {SUBE 3\\(101)};
-
-    % Columna Izquierda (Bajada)
-    \node[state] (b1) [left=3cm of p1, yshift=1.75cm] {BAJA 1\\(011)};
-    \node[state] (b2) [left=3cm of p2, yshift=1.75cm] {BAJA 2\\(110)};
 
 
-    % --- TRANSICIONES (FLECHAS) ---
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
 
-    % 1. Lado Derecho (Subida)
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,432); %set diagram left start at 0, and has height of 432
 
-    % P1 -> S2
-    \path (p1) edge [bend right=15] node[below right] {P2} (s2);
-    % S2 -> P2
-    \path (s2) edge [bend right=15] node[above right] {fc2} (p2);
+%Shape: Circle [id:dp8422975507173965]
+\draw   (107,71) .. controls (107,57.19) and (118.19,46) .. (132,46) .. controls (145.81,46) and (157,57.19) .. (157,71) .. controls (157,84.81) and (145.81,96) .. (132,96) .. controls (118.19,96) and (107,84.81) .. (107,71) -- cycle ;
+%Flowchart: Connector [id:dp7678102365376042]
+\draw   (232.5,45) .. controls (232.5,31.19) and (244.03,20) .. (258.25,20) .. controls (272.47,20) and (284,31.19) .. (284,45) .. controls (284,58.81) and (272.47,70) .. (258.25,70) .. controls (244.03,70) and (232.5,58.81) .. (232.5,45) -- cycle ;
+%Shape: Circle [id:dp9236195072271722]
+\draw   (366,75) .. controls (366,61.19) and (377.19,50) .. (391,50) .. controls (404.81,50) and (416,61.19) .. (416,75) .. controls (416,88.81) and (404.81,100) .. (391,100) .. controls (377.19,100) and (366,88.81) .. (366,75) -- cycle ;
+%Shape: Circle [id:dp20177079502880357]
+\draw   (237.6,247) .. controls (237.6,233.19) and (248.79,222) .. (262.6,222) .. controls (276.41,222) and (287.6,233.19) .. (287.6,247) .. controls (287.6,260.81) and (276.41,272) .. (262.6,272) .. controls (248.79,272) and (237.6,260.81) .. (237.6,247) -- cycle ;
+%Shape: Circle [id:dp8972357128166435]
+\draw   (105.6,195) .. controls (105.6,181.19) and (116.79,170) .. (130.6,170) .. controls (144.41,170) and (155.6,181.19) .. (155.6,195) .. controls (155.6,208.81) and (144.41,220) .. (130.6,220) .. controls (116.79,220) and (105.6,208.81) .. (105.6,195) -- cycle ;
+%Shape: Circle [id:dp5547460354385172]
+\draw   (363.6,208) .. controls (363.6,194.19) and (374.79,183) .. (388.6,183) .. controls (402.41,183) and (413.6,194.19) .. (413.6,208) .. controls (413.6,221.81) and (402.41,233) .. (388.6,233) .. controls (374.79,233) and (363.6,221.81) .. (363.6,208) -- cycle ;
+%Curve Lines [id:da5115956921605481]
+\draw    (154.6,63) .. controls (164.99,17.63) and (206.49,26.32) .. (230.36,41.37) ;
+\draw [shift={(231.8,42.3)}, rotate = 213.47] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da7788845060307221]
+\draw    (281.7,33.25) .. controls (326.52,13.01) and (354.36,19.5) .. (370.95,57.49) ;
+\draw [shift={(371.7,59.25)}, rotate = 247.35] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da9753865787641531]
+\draw    (367.3,82.25) .. controls (331.48,60.36) and (223.49,104.55) .. (150.3,176.41) ;
+\draw [shift={(149.2,177.5)}, rotate = 315.28] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da7786642901677974]
+\draw    (156,78.9) .. controls (195.6,49.2) and (183.25,114.57) .. (235.4,152.75) ;
+\draw [shift={(237,153.9)}, rotate = 215.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Shape: Circle [id:dp3878777355879428]
+\draw   (235.8,162) .. controls (235.8,148.19) and (246.99,137) .. (260.8,137) .. controls (274.61,137) and (285.8,148.19) .. (285.8,162) .. controls (285.8,175.81) and (274.61,187) .. (260.8,187) .. controls (246.99,187) and (235.8,175.81) .. (235.8,162) -- cycle ;
+%Curve Lines [id:da8587692145450346]
+\draw    (373,90.9) .. controls (337.36,64.17) and (317.4,110.95) .. (283.05,146.82) ;
+\draw [shift={(282,147.9)}, rotate = 314.19] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da9730101438239867]
+\draw    (389.4,182.95) .. controls (390.29,171.12) and (420.78,147.43) .. (391.31,100.38) ;
+\draw [shift={(390.4,98.95)}, rotate = 57.14] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da841036905553302]
+\draw    (237.8,175.1) .. controls (214.16,182) and (219.63,201.5) .. (247.51,225.02) ;
+\draw [shift={(248.8,226.1)}, rotate = 219.61] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da4451319303070028]
+\draw    (286.6,253) .. controls (322.26,286.59) and (359.85,257.11) .. (387.54,232.23) ;
+\draw [shift={(388.8,231.1)}, rotate = 137.92] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da8282928641033299]
+\draw    (244.8,265.1) .. controls (211.14,287.87) and (155.92,266.54) .. (143.17,219.53) ;
+\draw [shift={(142.8,218.1)}, rotate = 75.96] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Curve Lines [id:da5885541061829214]
+\draw    (124.8,171.1) .. controls (111.14,173.18) and (79.44,124.1) .. (117.62,94.01) ;
+\draw [shift={(118.8,93.1)}, rotate = 143.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
 
-    % P2 -> S3
-    \path (p2) edge [bend right=15] node[below right] {P3} (s3);
-    % S3 -> P3
-    \path (s3) edge [bend right=15] node[above right] {fc3} (p3);
+% Text Node
+\draw (117.6,60) node [anchor=north west][inner sep=0.75pt]  [font=\normalsize] [align=left] {000};
+% Text Node
+\draw (246.6,37) node [anchor=north west][inner sep=0.75pt]  [font=\normalsize] [align=left] {001};
+% Text Node
+\draw (377.6,71) node [anchor=north west][inner sep=0.75pt]   [align=left] {010};
+% Text Node
+\draw (377.6,199) node [anchor=north west][inner sep=0.75pt]   [align=left] {110};
+% Text Node
+\draw (247.6,152) node [anchor=north west][inner sep=0.75pt]   [align=left] {101};
+% Text Node
+\draw (248.6,241) node [anchor=north west][inner sep=0.75pt]   [align=left] {100};
+% Text Node
+\draw (117.6,189) node [anchor=north west][inner sep=0.75pt]   [align=left] {011};
+% Text Node
+\draw (67.6,121) node [anchor=north west][inner sep=0.75pt]   [align=left] {FC1};
+% Text Node
+\draw (152.6,15) node [anchor=north west][inner sep=0.75pt]   [align=left] {P2};
+% Text Node
+\draw (355.6,22) node [anchor=north west][inner sep=0.75pt]   [align=left] {FC2};
+% Text Node
+\draw (190.6,69) node [anchor=north west][inner sep=0.75pt]   [align=left] {P3};
+% Text Node
+\draw (294.6,63) node [anchor=north west][inner sep=0.75pt]   [align=left] {P1};
+% Text Node
+\draw (316.6,108) node [anchor=north west][inner sep=0.75pt]   [align=left] {P3};
+% Text Node
+\draw (231.6,189) node [anchor=north west][inner sep=0.75pt]   [align=left] {FC3};
+% Text Node
+\draw (169.6,271) node [anchor=north west][inner sep=0.75pt]   [align=left] {P1};
+% Text Node
+\draw (328.6,272) node [anchor=north west][inner sep=0.75pt]   [align=left] {P2};
+% Text Node
+\draw (404.6,151) node [anchor=north west][inner sep=0.75pt]   [align=left] {FC2};
 
-    % *** CORRECCIÓN CLAVE: Salto largo P1 -> S3 ***
-    % 'out=-20' sale un poco hacia abajo-derecha
-    % 'in=-90' entra a S3 desde abajo (verticalmente)
-    % 'looseness=1.4' hace la curva más amplia para rodear a S2 por fuera
-    \draw (p1) to[out=-20, in=-90, looseness=1.4] node[right, pos=0.7] {P3} (s3);
 
+\end{tikzpicture}
 
-    % 2. Lado Izquierdo (Bajada)
-
-    % P3 -> B2
-    \path (p3) edge [bend right=15] node[above left] {P2} (b2);
-    % B2 -> P2
-    \path (b2) edge [bend right=15] node[below left] {fc2} (p2);
-
-    % P2 -> B1
-    \path (p2) edge [bend right=15] node[above left] {P1} (b1);
-    % B1 -> P1
-    \path (b1) edge [bend right=15] node[below left] {fc1} (p1);
-
-    % *** CORRECCIÓN CLAVE: Salto largo P3 -> B1 ***
-    % 'out=200' sale hacia izquierda-abajo
-    % 'in=90' entra a B1 desde arriba
-    % 'looseness=1.4' rodea a B2 por fuera
-    \draw (p3) to[out=200, in=90, looseness=1.4] node[left, pos=0.7] {P1} (b1);
-
-    \end{tikzpicture}
-    \caption{Diagrama de Estados (FSM) del Montacargas.}
-    \label{fig:fsm_montacargas}
-\end{figure}
 
 \subsubsection{Definición de Estados}
 Los estados se clasifican en dos categorías funcionales:
