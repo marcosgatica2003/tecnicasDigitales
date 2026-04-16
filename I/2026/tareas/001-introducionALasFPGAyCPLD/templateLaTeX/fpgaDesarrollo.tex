@@ -1,0 +1,12 @@
+\section{Los FPGA}
+    \subsection{Definición}
+        Son circuitos integrados diseñados con la arquitectura basada en CLBs y LUTs, programables mediante SRAM. Las siglas provienen de \textit{Field-Programmable Gate Array}, que por separado hacen referencia a:
+        \begin{itemize}
+            \item \textit{Field-Programmable}: El usuario puede reprogramar el integrado sin la necesidad de mandarlo de vuelta a la fábrica para aplicar cambios.
+            \item \textit{Gate Array}: matriz de compuertas.
+        \end{itemize}
+        \sangria{} La propiedad de que sean reprogramables viene del primer FPGA fabricado por Xilinx cuyo diseño implementaba la SRAM (Static-RAM): una memoria que contiene las conexiones entre transistores. Antiguamente se usaba unos ''fusibles'', por lo que la reprogramación era imposible de llevar a cabo. Los términos CLB y LUT vienen de la SRAM:
+        \begin{itemize}
+            \item \textbf{LUT}: de \textit{Look-Up Table}, es una pequeña parte de la memoria SRAM con $2^N$ entradas que corresponden luego a las celdas de memoria, permitiendo representar cualquier función booleana porque cubre todas las combinaciones posibles según la cantidad de entradas que se den.
+            \item \textbf{CLB}: de \textit{Configurable Logic Block}, contiene uno o varios LUTs más un Flip-Flop. Los LUTs hacen la lógica secuencial, y el Flip-Flop agrega la capacidad de memoria/secuencial.
+        \end{itemize}
