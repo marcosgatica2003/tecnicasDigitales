@@ -8,6 +8,7 @@
 \documentclass[a4paper]{article}
 
 \input{packages}
+\addbibresource{referencias.bib}
 \input{comandos}
 
 \begin{document}
@@ -18,5 +19,11 @@
     \input{introduccion.tex}
     \input{fpgaDesarrollo.tex}
     \input{cpldDesarrollo.tex}
+    \input{diferenciasFpgaCpld.tex}
+    \input{otrasSiglasDetectadas.tex}
+    \nocite{*}
+    \printbibliography[heading=bibnumbered]
+    % \cite{fpga_video}
+    % \cite{harris}
 \end{document}
 
