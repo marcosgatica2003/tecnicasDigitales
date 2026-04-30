@@ -35,7 +35,7 @@
     {\scshape\Large Técnicas Digitales I \par}
     \vspace{2cm}
 
-    {\Huge\bfseries MERCADONA \par}
+    {\Huge\bfseries Práctico de laboratorio N$^o$ 0 \par}
     \vspace{0.5cm}
     {\LARGE MiniLab \par}
 
@@ -43,15 +43,19 @@
 
     \begin{flushleft}
     \textbf{Integrantes:} \\
-    Nombre y Apellido -- Legajo \\
-    Nombre y Apellido -- Legajo \\
-    Nombre y Apellido -- Legajo \\
+    Diego Antonio Gallardo Tuanama -- Leg. 405800 \\
+    Marcos Antonio Acevedo -- Leg. 402898 \\
+    Marcos Raúl Gatica -- Leg. 402006 \\
 
     \vspace{0.5cm}
 
-    \textbf{Curso:} 3R\_X \\
+    \textbf{Curso:} 3R2 \\
     \textbf{Grupo:} XX \\
-    \textbf{Docente:} Ing. Florencia Belén Molla \\
+    \textbf{Docentes:} 
+    \begin{itemize}
+        \item Ing. Sergio Daniel Olmedo
+        \item Ing. Jorge Nicolás Mercado
+    \end{itemize}
     \textbf{Año:} 2026 \\
     \end{flushleft}
 
@@ -59,9 +63,8 @@
 
 \end{titlepage}
 \thispagestyle{empty}
-
-\vspace{1cm}
-
+\text{}
+\newpage
 \tableofcontents
 \newpage
 
@@ -69,27 +72,93 @@
 \section{Introducción}
 %--------------------------------
 
-\textit{Describir brevemente el objetivo del trabajo práctico y para qué se construye el MiniLab.}
+% \textit{Describir brevemente el objetivo del trabajo práctico y para qué se construye el MiniLab.}
 
+El presente trabajo práctico consiste en el diseño y construcción de un laboratorio portátil denominado \textbf{MiniLab}. Este dispositivo surge como una necesidad fundamental para la cátedra de Técnicas Digitales I, con el fin de proporcionar a cada estudiante una plataforma autónoma para la experimentación y verificación de circuitos lógicos.
+
+A diferencia de los montajes temporales en protoboard, el MiniLab integra en un solo gabinete los bloques esenciales para el desarrollo electrónico: una fuente de alimentación regulada, interfaces de entrada y salida con indicadores visuales, y un generador de señales de frecuencia variable. 
+
+La construcción de este módulo busca reforzar los conceptos teóricos de la materia mediante la práctica directa, desarrollando simultáneamente habilidades críticas en el uso de instrumentos de medición, técnicas de soldadura y el análisis de hojas de datos de componentes semiconductores.
 \vspace{0.5cm}
 
 %--------------------------------
 \section{Objetivos}
 %--------------------------------
 
-\textit{Indicar qué se busca lograr con este trabajo (ej: construir el MiniLab, comprender su funcionamiento, etc.).}
+% \textit{Indicar qué se busca lograr con este trabajo (ej: construir el MiniLab, comprender su funcionamiento, etc.).}
 
+\subsection{Objetivo general}
+Diseñar y construir un mini laboratorio portátil (MiniLab) que sirva como plataforma para realizar prácticas de electrónica digital de manera autónoma, facilitando la comprensión de los conceptos fundamentales de la materia mediante la experimentación directa.
+
+\subsection{Objetivos específicos}
+Para alcanzar el objetivo general, se plantean las siguientes metas técnicas y formativas:
+
+\begin{itemize}
+	\item \textbf{Implementación de Hardware:} Construir un dispositivo que integre 6 entradas y 6 salidas digitales para la prueba de circuitos lógicos.
+	\item \textbf{Gestión de Energía:} Incorporar una fuente de alimentación regulada de 5V utilizando el regulador LM7805, permitiendo el uso tanto de red eléctrica como de baterías de 9V[cite: 1].
+	\item \textbf{Visualización de Estados:} Implementar indicadores luminosos mediante LEDs para representar de forma clara los niveles lógicos "0" (apagado) y "1" (encendido)[cite: 1].
+	\item \textbf{Generación de Señales:} Integrar un oscilador de onda cuadrada basado en el temporizador NE555 con frecuencia ajustable entre 1 Hz y 1 kHz[cite: 1].
+	\item \textbf{Desarrollo de Habilidades:} Adquirir destreza en el uso de herramientas de laboratorio (soldador, multímetro, pinzas) y en la interpretación de hojas de datos de componentes como el CD4049 y el LM7805[cite: 1].
+\end{itemize}
 %--------------------------------
 \section{Desarrollo}
 %--------------------------------
 
 \subsection{Descripción del sistema}
+El MiniLab se define como un sistema modular integrado por cuatro bloques funcionales principales, diseñados para interactuar con circuitos lógicos externos montados sobre las placas de prototipado (protoboards).
 
-\textit{Explicar cómo está compuesto el MiniLab (entradas, salidas, fuente, etc.).}
-
+\begin{enumerate}
+	\item \textbf{Bloque de Alimentación:} Basado en el regulador de tensión \textbf{LM7805}. Su función es convertir una entrada variable (como una batería de 9V o una fuente de celular) en una salida estable de 5V DC, necesaria para alimentar circuitos integrados TTL y CMOS. Incluye capacitores de filtrado y desacople para eliminar ruidos en la señal de alimentación.
+	
+	\item \textbf{Interfaz de Entradas Digitales:} Consta de 6 puntos de prueba destinados a monitorear señales externas. Utiliza el circuito integrado \textbf{CD4049} (hex buffer/inverter) para manejar los indicadores visuales sin cargar eléctricamente el circuito bajo prueba[cite: 1]. Cada entrada cuenta con un LED que se enciende ante un nivel lógico alto (5V)[cite: 1].
+	
+	\item \textbf{Interfaz de Salidas Digitales:} Provee 6 señales lógicas controladas manualmente mediante llaves. Estas salidas entregan niveles de tensión definidos: 0V para el estado "0" y 5V para el estado "1"[cite: 1].
+	
+	\item \textbf{Generador de Señal (Oscilador):} Un bloque basado en el temporizador \textbf{NE555} configurado en modo astable[cite: 1]. Permite generar una onda cuadrada cuya frecuencia es ajustable mediante un potenciómetro en un rango de 1 Hz a 1 kHz, ideal para pruebas de circuitos secuenciales o de tiempo[cite: 1].
+\end{enumerate}
+	
 \subsection{Circuito implementado}
+El diseño sigue el esquema circuital propuesto por la cátedra, asegurando la correcta polarización de los componentes y la protección de los LEDs mediante resistencias limitadoras de corriente (470 $\Omega$). 
 
-\textit{Incluir el esquema o una imagen del circuito armado.}
+\begin{figure}[H]
+	\centering
+	% Recordá que cuando tengas la foto, debés subirla con el nombre 'circuito.png'
+	%\includegraphics[width=0.7\textwidth]{circuito.png} 
+	\caption{Diagrama circuital del MiniLab según especificaciones de la cátedra.}
+\end{figure}
+%--------------------------------
+\section{Materiales}
+%--------------------------------
+Para la construcción del MiniLab se utilizaron los componentes detallados en la siguiente tabla, siguiendo las especificaciones técnicas requeridas para asegurar la compatibilidad con los niveles lógicos TTL/CMOS[cite: 117].
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|l|}
+		\hline
+		\textbf{Componente} & \textbf{Cantidad} & \textbf{Descripción} \\ \hline
+		CD4049 & 1 & Compuerta lógica NOT (Buffer/Inversor)  \\ \hline
+		LM7805 & 1 & Regulador de voltaje de 5V  \\ \hline
+		CI NE555 & 1 & Temporizador para generador de señal (opcional)  \\ \hline
+		LED & 7 & Indicadores luminosos de estado y Power  \\ \hline
+		Capacitor electrolítico & 2 & 470 $\mu$F para filtrado de fuente  \\ \hline
+		Capacitor cerámico & 6 & 0.1 $\mu$F para desacople de integrados  \\ \hline
+		Resistencia 10 k$\Omega$ & 4 & Pull-up / Polarización  \\ \hline
+		Resistencia 1 k$\Omega$ & 4 & Uso general  \\ \hline
+		Resistencia 470 $\Omega$ & 6 & Limitación de corriente en LEDs  \\ \hline
+		Potenciómetro 5 k$\Omega$ & 1 & Ajuste de frecuencia del oscilador  \\ \hline
+		Llave simple / Switch & 6 & Control de entradas digitales  \\ \hline
+		Protoboard & 1 & Placa de prototipado (830 puntos) [cite: 119, 73] \\ \hline
+		Gabinete & 1 & Estructura física protectora [cite: 119, 75] \\ \hline
+	\end{tabular}
+	\caption{Lista detallada de materiales del MiniLab[cite: 120].}
+\end{table}
+% \subsection{Descripción del sistema}
+
+% \textit{Explicar cómo está compuesto el MiniLab (entradas, salidas, fuente, etc.).}
+
+% \subsection{Circuito implementado}
+
+% \textit{Incluir el esquema o una imagen del circuito armado.}
 
 % \begin{figure}[H]
 %     \centering
@@ -97,10 +166,25 @@
 %     \caption{Circuito del MiniLab}
 % \end{figure}
 
+\subsection{Herramientas utilizadas}
+Para el ensamblaje y verificación del sistema, se emplearon las siguientes herramientas de laboratorio[cite: 121]:
+\begin{itemize}
+	% \item \textbf{Soldador y estaño:} Para la fijación definitiva de componentes en placa[cite: 125, 126].
+	\item \textbf{Multímetro digital:} Para la medición de tensiones y verificación de continuidad[cite: 47].
+	\item \textbf{Herramientas de mano:} Alicate de corte, pinza de punta y destornilladores[cite: 123, 124, 127].
+\end{itemize}
+%	\begin{figure}[H]
+%		%\centering
+%		% Asegurate de que el archivo 'circuito.png' esté en la misma carpeta que este .tex
+%		%\includegraphics[width=0.7\textwidth]{circuito.png} 
+%		%\caption{Esquema eléctrico del MiniLab.}
+%	\end{figure}
+% \subsection{Funcionamiento}
+
+% \textit{Explicar cómo funciona el sistema en general.}
+
 \subsection{Funcionamiento}
-
-\textit{Explicar cómo funciona el sistema en general.}
-
+	El funcionamiento se basa en la manipulación de las entradas digitales mediante los interruptores. Cuando un interruptor es accionado, se aplica un nivel de tensión correspondiente a un '1' lógico (Vcc) o un '0' lógico (GND) a los pines de entrada. El sistema permite conectar estas señales a diferentes compuertas lógicas o dispositivos de lógica programable (CPLD/FPGA), observando la respuesta inmediata en los LEDs de salida, los cuales se encienden ante la presencia de un nivel alto de tensión.
 %--------------------------------
 \section{Resultados}
 %--------------------------------
@@ -117,8 +201,13 @@
 \section{Conclusión}
 %--------------------------------
 
-\textit{Reflexionar sobre lo aprendido en el trabajo práctico.}
+% \textit{Reflexionar sobre lo aprendido en el trabajo práctico.}
 
+La construcción del \textbf{MiniLab} permitió integrar de manera práctica los conceptos teóricos fundamentales de la electrónica digital. A través de este proyecto, se logró comprender la importancia de contar con una fuente de alimentación estable y regulada mediante el \textbf{LM7805}, asegurando que los niveles lógicos "0" , "1" se mantengan dentro de los estándares de tensión requeridos para evitar daños en los componentes semiconductores.
+
+Asimismo, la implementación de la etapa de entradas y salidas permitió observar en tiempo real el comportamiento de las señales digitales. Se destaca el uso del circuito integrado \textbf{CD4049}, el cual actúa como una interfaz de protección (buffer) que facilita la visualización del estado lógico sin interferir con el funcionamiento del circuito bajo prueba.
+
+En conclusión, este mini laboratorio no representa únicamente el cumplimiento de un objetivo académico inicial, sino que se constituye como una herramienta de trabajo esencial y versátil. Su diseño compacto y funcional garantiza que podrá ser utilizado con éxito en las futuras experiencias de laboratorio de la cátedra \textbf{Técnicas Digitales I}, permitiendo un aprendizaje dinámico y autónomo en el análisis de sistemas digitales complejos.
 %--------------------------------
 \section{Anexos (opcional)}
 %--------------------------------
