@@ -1,0 +1,16 @@
+@video{fpga_video,
+    author = {{El Gamer Desempleado}},
+    title = {El dios de silicio: la historia prohibida de las FPGA y por qué tu emulador te miente},
+    date = {2026},
+    url = {https://www.youtube.com/watch?v=trBiZkW6POk},
+    urldate = {2026-03-17},
+    organization = {Youtube}
+}
+
+@inbook{fpga_siglas1,
+	author = {Jeffrey L. Hilbert},
+	title = {Application Specific Integrated Circuit (ASIC) Technology},
+	date = {1991},
+	publisher = {ACADEMIC PRESS, INC},
+	pages = {1--1}
+}
