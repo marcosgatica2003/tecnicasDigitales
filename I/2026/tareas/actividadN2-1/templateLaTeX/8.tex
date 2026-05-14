@@ -1,0 +1,54 @@
+\subsection{VIII)}
+
+{\large
+    \begin{align*}
+    F(A, B, C, D) &= \prod(0, 4, 6, 7, 8, 9, 13, 15) \quad x = 1;
+    \end{align*}
+}
+
+\subsubsection{Obtener la mínima expresión booleana.}
+
+\begin{center}
+\begin{tabular}{c|cccc|c}
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{9AFF99}$M$ & $A$ & $B$ & $C$ & $D$ & \cellcolor[HTML]{FFFFC7}$F(A,B,C,D)$ \\ \hline
+0                           & 0   & 0   & 0   & 0   & 0                                    \\
+1                           & 0   & 0   & 0   & 1   & $x$                                     \\
+2                           & 0   & 0   & 1   & 0   &                                      \\
+3                           & 0   & 0   & 1   & 1   &                                      \\
+4                           & 0   & 1   & 0   & 0   & 0                                    \\
+5                           & 0   & 1   & 0   & 1   &                                      \\
+6                           & 0   & 1   & 1   & 0   & 0                                    \\
+7                           & 0   & 1   & 1   & 1   & 0                                    \\
+8                           & 1   & 0   & 0   & 0   & 0                                    \\
+9                           & 1   & 0   & 0   & 1   & 0                                    \\
+10                          & 1   & 0   & 1   & 0   &                                      \\
+11                          & 1   & 0   & 1   & 1   &                                      \\
+12                          & 1   & 1   & 0   & 0   &                                      \\
+13                          & 1   & 1   & 0   & 1   & 0                                    \\
+14                          & 1   & 1   & 1   & 0   &                                      \\
+15                          & 1   & 1   & 1   & 1   & 0                                   
+\end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{karnaugh-map}[4][4][1][$C\qquad D$][$A\qquad B$]
+        \maxterms{0,4,6,7,8,9,13,15}
+        \terms{1}{$x$}
+        \implicant{0}{4}\implicant{7}{6}\implicant{13}{15}\implicant{8}{9}
+    \end{karnaugh-map}
+\end{center}
+
+\begin{itemize}[nosep]
+    \item Primer bloque ($M_0$ y $M_4$) cambia $B$ y quedan sin negar el resto de entradas.
+    \item Segundo bloque ($M_7$ y $M_6$) cambia $D$ y hay que negar $B$ y $C$.
+    \item Tercer bloque ($M_{13}$ y $M_{15}$) cambia $C$ y hay que negar todas las entradas individualmente.
+    \item Cuarto bloque ($M_{8}$ y $M_{9}$) cambia $D$ y hay que negar $A$.
+    \item La función simplificada queda:
+\end{itemize}
+
+\begin{center}
+    \begin{align*}
+        F(A,B,C,D) &= (A+C+D)\cdot{}(A+\overline{B}+\overline{C})\cdot{}(\overline{A}+\overline{B}+\overline{D})\cdot{}(\overline{A}+B+C)
+    \end{align*}
+\end{center}

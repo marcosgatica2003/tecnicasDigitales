@@ -1,0 +1,40 @@
+\subsection{II)}
+
+{\noindent\large\begin{align*}\displaystyle F(x, y, z) &= \sum(1, 2, 3, 5, 6, 7)\end{align*}}
+\subsubsection{Obtener la mínima expresión booleana}
+\begin{center}
+\begin{tabular}{c|ccc|c}
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{9AFF99}m & x & y & z & \cellcolor[HTML]{FFFFC7}F(x,y,z) \\ \hline
+0                         & 0 & 0 & 0 &                                  \\
+1                         & 0 & 0 & 1 & 1                                \\
+2                         & 0 & 1 & 0 & 1                                \\
+3                         & 0 & 1 & 1 & 1                                \\
+4                         & 1 & 0 & 0 &                                  \\
+5                         & 1 & 0 & 1 & 1                                \\
+6                         & 1 & 1 & 0 & 1                                \\
+7                         & 1 & 1 & 1 & 1                               
+\end{tabular}
+\end{center}
+\noindent Los ''1'' de la función pasan, mientras que los ''0'' se los niega. Es una suma de productos de las entradas.
+{\large\begin{align*}
+    F(x,y,z) &= \overline{x}\cdot\overline{y}\cdot z + \overline{x}\cdot y\cdot\overline{z} + \overline{x}\cdot y\cdot z + x\cdot\overline{y}\cdot z + x\cdot y\cdot\overline{z} + x\cdot y\cdot z
+\end{align*}}
+\noindent Simplificación por Karnaugh:
+
+\begin{center}
+    \begin{karnaugh-map}[2][4][1][$z$][$x\qquad y$]
+        \minterms{1,2,3,5,6,7}
+        \implicant{1}{5}
+        \implicant{2}{7}
+    \end{karnaugh-map}
+\end{center}
+\begin{itemize}[nosep]
+    \item Primer bloque ($m_1$, $m_3$, $m_7$ y $m_5$) permanece constante $z$, el resto se sacan.
+    \item Segundo bloque ($m_2$, $m_3$, $m_6$ y $m_7$) permanece constante $y$, el resto salen.
+    \item La función simplificada queda:
+\end{itemize}
+{\large\begin{align*}F(x,y,z) &= z + y \end{align*}}
+
+\subsubsection{Simulación}
+\imagen[]{10cm}{./imagenes/ejercicio2Falstad.png}
