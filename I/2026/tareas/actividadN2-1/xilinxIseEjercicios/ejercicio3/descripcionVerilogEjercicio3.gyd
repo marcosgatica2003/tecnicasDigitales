@@ -1,0 +1,16 @@
+Pin Freeze File:  version P.20131013
+
+9572XL44PC XC9572XL-10-PC44
+inputZ S:PIN34
+outputFunction S:PIN1
+
+
+;The remaining section of the .gyd file is for documentation purposes only.
+;It shows where your internal equations were placed in the last successful fit.
+
+PARTITION FB1_2 outputFunction_OBUF
+
+
+
+
+

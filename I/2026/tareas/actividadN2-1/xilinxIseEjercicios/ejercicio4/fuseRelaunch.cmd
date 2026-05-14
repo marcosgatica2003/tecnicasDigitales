@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "uni9000_ver" -lib "aim_ver" -lib "cpld_ver" -lib "xilinxcorelib_ver" -o "/home/xilinx/proyectos/ejercicio4/verilogTestFixtureEjercicio4_isim_beh.exe" -prj "/home/xilinx/proyectos/ejercicio4/verilogTestFixtureEjercicio4_beh.prj" "work.verilogTestFixtureEjercicio4" "work.glbl" 

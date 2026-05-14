@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/xilinx/proyectos/ejercicio6/descripcionVerilogEjercicio6.xst" -ofn "/home/xilinx/proyectos/ejercicio6/descripcionVerilogEjercicio6.syr" 

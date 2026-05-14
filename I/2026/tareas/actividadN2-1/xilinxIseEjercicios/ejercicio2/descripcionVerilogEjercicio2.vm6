@@ -1,0 +1,70 @@
+NDS Database:  version P.20131013
+
+NDS_INFO | xc9500xl | 9572XL44PC | XC9572XL-10-PC44
+
+DEVICE | 9572XL | 9572XL44PC | 
+
+NETWORK | descripcionVerilogEjercicio2 | 0 | 0 | 16391
+
+INPUT_INSTANCE | 0 | 0 | NULL | inputZ_IBUF | descripcionVerilogEjercicio2_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_NODE_TYPE | 0 | 5 | II_IN
+NODE | inputZ | 27 | PI | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
+NODE | inputZ_IBUF | 23 | ? | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | NULL | inputZ_IBUF | 0 | 5 | II_IMUX
+
+INPUT_INSTANCE | 0 | 0 | NULL | inputY_IBUF | descripcionVerilogEjercicio2_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_NODE_TYPE | 0 | 5 | II_IN
+NODE | inputY | 28 | PI | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
+NODE | inputY_IBUF | 24 | ? | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | NULL | inputY_IBUF | 0 | 5 | II_IMUX
+
+MACROCELL_INSTANCE | Inv+OptxMapped | outputFunction_OBUF | descripcionVerilogEjercicio2_COPY_0_COPY_0 | 2155872512 | 2 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | inputZ_IBUF | 23 | ? | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | NULL | inputZ_IBUF | 0 | 5 | II_IMUX
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | inputY_IBUF | 24 | ? | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | NULL | inputY_IBUF | 0 | 5 | II_IMUX
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | outputFunction_OBUF | 25 | ? | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | outputFunction_OBUF.Q | outputFunction_OBUF | 0 | 0 | MC_Q
+
+SIGNAL_INSTANCE | outputFunction_OBUF.SI | outputFunction_OBUF | 0 | 2 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | inputZ_IBUF | 23 | ? | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | NULL | inputZ_IBUF | 0 | 5 | II_IMUX
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | inputY_IBUF | 24 | ? | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | NULL | inputY_IBUF | 0 | 5 | II_IMUX
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | outputFunction_OBUF.D1 | 30 | ? | 0 | 4096 | outputFunction_OBUF | NULL | NULL | outputFunction_OBUF.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | outputFunction_OBUF.D2 | 31 | ? | 0 | 4096 | outputFunction_OBUF | NULL | NULL | outputFunction_OBUF.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_FALSE | inputZ_IBUF | IV_FALSE | inputY_IBUF
+
+SRFF_INSTANCE | outputFunction_OBUF.REG | outputFunction_OBUF | 0 | 1 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | outputFunction_OBUF.D | 29 | ? | 0 | 0 | outputFunction_OBUF | NULL | NULL | outputFunction_OBUF.XOR | 0 | 7 | ALU_F
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | outputFunction_OBUF.Q | 32 | ? | 0 | 0 | outputFunction_OBUF | NULL | NULL | outputFunction_OBUF.REG | 0 | 8 | SRFF_Q
+
+OUTPUT_INSTANCE | 0 | outputFunction | descripcionVerilogEjercicio2_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | outputFunction_OBUF | 25 | ? | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | outputFunction_OBUF.Q | outputFunction_OBUF | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | outputFunction | 26 | PO | 0 | 0 | descripcionVerilogEjercicio2_COPY_0_COPY_0 | NULL | NULL | outputFunction | 0 | 6 | OI_OUT
+
+FB_INSTANCE | FOOBAR1_ | descripcionVerilogEjercicio2_COPY_0_COPY_0 | 0 | 0 | 0
+FBPIN | 2 | outputFunction_OBUF | 1 | NULL | 0 | outputFunction | 1 | 1 | 49152
+
+FB_INSTANCE | FOOBAR2_ | descripcionVerilogEjercicio2_COPY_0_COPY_0 | 0 | 0 | 0
+FBPIN | 6 | NULL | 0 | inputZ_IBUF | 1 | NULL | 0 | 37 | 49152
+
+FB_INSTANCE | FOOBAR3_ | descripcionVerilogEjercicio2_COPY_0_COPY_0 | 0 | 0 | 0
+
+FB_INSTANCE | FOOBAR4_ | descripcionVerilogEjercicio2_COPY_0_COPY_0 | 0 | 0 | 0
+FBPIN | 17 | NULL | 0 | inputY_IBUF | 1 | NULL | 0 | 34 | 49152
+
+FB_INSTANCE | INPUTPINS_FOOBAR5_ | descripcionVerilogEjercicio2_COPY_0_COPY_0 | 0 | 0 | 0
+
+
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 1 | inputY | 34 | 10 | inputZ | 37
+
+FB_IMUX_INDEX | FOOBAR1_ | -1 | 73 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 82 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1
+

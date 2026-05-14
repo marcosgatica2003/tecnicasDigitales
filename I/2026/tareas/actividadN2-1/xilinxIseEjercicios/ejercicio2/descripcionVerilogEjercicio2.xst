@@ -1,0 +1,5 @@
+set -tmpdir "/home/xilinx/proyectos/ejercicio2/xst/projnav.tmp"
+set -xsthdpdir "/home/xilinx/proyectos/ejercicio2/xst"
+elaborate
+-ifn descripcionVerilogEjercicio2.prj
+-ifmt mixed

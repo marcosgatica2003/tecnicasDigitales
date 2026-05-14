@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="ejercicio8.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name=".lso"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="descripcionVerilogEjercicio8.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="descripcionVerilogEjercicio8.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="descripcionVerilogEjercicio8.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="descripcionVerilogEjercicio8.ngr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="descripcionVerilogEjercicio8.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="descripcionVerilogEjercicio8.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="descripcionVerilogEjercicio8.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="descripcionVerilogEjercicio8.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="descripcionVerilogEjercicio8_summary.html"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="descripcionVerilogEjercicio8_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="verilogTestFixture_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1778778124" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1778778124">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1778778124" xil_pn:in_ck="-614813903741165481" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1778778124">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="descripcionVerilogEjercicio8.v"/>
+      <outfile xil_pn:name="verilogTestFixture.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1778777579" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1778777579">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1778777579" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-3788256002809207977" xil_pn:start_ts="1778777579">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1778777583" xil_pn:in_ck="-6934924525210859884" xil_pn:name="TRANEXT_xstsynthesize_xc9500xl" xil_pn:prop_ck="1927435615999663904" xil_pn:start_ts="1778777579">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name=".lso"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="descripcionVerilogEjercicio8.lso"/>
+      <outfile xil_pn:name="descripcionVerilogEjercicio8.ngc"/>
+      <outfile xil_pn:name="descripcionVerilogEjercicio8.ngr"/>
+      <outfile xil_pn:name="descripcionVerilogEjercicio8.prj"/>
+      <outfile xil_pn:name="descripcionVerilogEjercicio8.stx"/>
+      <outfile xil_pn:name="descripcionVerilogEjercicio8.syr"/>
+      <outfile xil_pn:name="descripcionVerilogEjercicio8.xst"/>
+      <outfile xil_pn:name="descripcionVerilogEjercicio8_xst.xrpt"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+  </transforms>
+
+</generated_project>

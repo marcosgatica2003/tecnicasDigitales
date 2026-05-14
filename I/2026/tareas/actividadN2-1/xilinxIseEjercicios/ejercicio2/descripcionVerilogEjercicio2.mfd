@@ -1,0 +1,12 @@
+MDF Database:  version 1.0
+MDF_INFO | descripcionVerilogEjercicio2 | XC9572XL-10-PC44
+MACROCELL | 0 | 1 | outputFunction_OBUF
+ATTRIBUTES | 264962 | 0
+INPUTS | 2 | inputZ  | inputY
+INPUTP | 2 | 89 | 83
+EQ | 1 | 
+   !outputFunction = !inputZ & !inputY;
+
+PIN | inputZ | 64 | 0 | N/A | 89 | 1 | 0 | 1
+PIN | inputY | 64 | 0 | N/A | 83 | 1 | 0 | 1
+PIN | outputFunction | 536871040 | 0 | N/A | 11

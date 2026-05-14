@@ -1,0 +1,3 @@
+verilog work "descripcionVerilogEjercicio2.v"
+verilog work "verilogTestFixtureEjercicio2.v"
+verilog work "/opt/xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
