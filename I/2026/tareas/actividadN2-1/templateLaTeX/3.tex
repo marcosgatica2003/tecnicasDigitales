@@ -27,3 +27,68 @@
     F(x,y,z) &= \overline{z}
 \end{align*}}
 \imagen[]{10cm}{./imagenes/ejercicio3Falstad.png}
+\subsubsection{Descripción en Verilog}
+\begin{lstlisting}
+module descripcionVerilogEjercicio3(
+    input inputX,
+    input inputY,
+    input inputZ,
+    output outputFunction
+    );
+	 assign outputFunction = ~inputZ;
+
+endmodule
+\end{lstlisting}
+\subsubsection{RTL output}
+\imagen[Bloque RTL]{15cm}{./imagenes/rtlEjercicio3Verilog.png}
+\imagen[Implementación con compuertas]{15cm}{./imagenes/rtlCompuertasEjercicio3Verilog.png}
+
+\subsubsection{Simulación temporal}
+\noindent Código del módulo Verilog Test Fixture:
+\begin{lstlisting}
+module verilogTestFixtureEjercicio3;
+
+	// Inputs
+	reg inputX;
+	reg inputY;
+	reg inputZ;
+
+	// Outputs
+	wire outputFunction;
+
+	// Instantiate the Unit Under Test (UUT)
+	descripcionVerilogEjercicio3 uut (
+		.inputX(inputX), 
+		.inputY(inputY), 
+		.inputZ(inputZ), 
+		.outputFunction(outputFunction)
+	);
+
+	initial begin
+		// Initialize Inputs
+		inputX = 0;
+		inputY = 0;
+		inputZ = 0;
+
+		// Wait 100 ns for global reset to finish
+		#100;
+      inputX = 0; inputY = 0; inputZ = 1;
+		#100;
+      inputX = 0; inputY = 1; inputZ = 0;
+		#100;
+      inputX = 0; inputY = 1; inputZ = 1;
+		#100;
+      inputX = 1; inputY = 0; inputZ = 0;
+		#100;
+      inputX = 1; inputY = 0; inputZ = 1;
+		#100;
+      inputX = 1; inputY = 1; inputZ = 0;
+		#100;
+      inputX = 1; inputY = 1; inputZ = 1;		
+		// Add stimulus here
+
+	end
+      
+endmodule
+\end{lstlisting}
+\imagen[Simulación temporal]{15cm}{./imagenes/simulacionTemporalEjercicio3.png}

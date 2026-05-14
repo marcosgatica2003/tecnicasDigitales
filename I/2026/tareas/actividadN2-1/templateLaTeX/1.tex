@@ -77,4 +77,55 @@ endmodule
 
 \subsubsection{Simulación temporal}
 
+\noindent Código del módulo Verilog Test Fixture:
 
+\begin{lstlisting}
+module verilogTestFixtureEjercicio1;
+
+	// Inputs
+	reg inputX;
+	reg inputY;
+	reg inputZ;
+
+	// Outputs
+	wire outputFunction;
+
+	// Instantiate the Unit Under Test (UUT)
+	descripcionVerilogEjercicio1 uut (
+		.inputX(inputX), 
+		.inputY(inputY), 
+		.inputZ(inputZ), 
+		.outputFunction(outputFunction)
+	);
+
+	initial begin
+		// Initialize Inputs
+		inputX = 0;
+		inputY = 0;
+		inputZ = 0;
+
+		// Wait 100 ns for global reset to finish
+		#100;
+        
+		// Add stimulus here
+		
+		inputX = 0;	inputY = 0; inputZ = 1;
+		#100;
+		inputX = 0; inputY = 1;	inputZ = 0;
+		#100;
+		inputX = 0; inputY = 1; inputZ = 1;
+		#100;
+		inputX = 1; inputY = 0; inputZ = 0;
+		#100;
+		inputX = 1; inputY = 0; inputZ = 1;
+		#100;
+		inputX = 1; inputY = 1; inputZ = 0;
+		#100;
+		inputX = 1; inputY = 1; inputZ = 1;
+		#100;
+	end
+      
+endmodule
+\end{lstlisting}
+
+\imagen[Simulación temporal]{15cm}{./imagenes/simulacionTemporalEjercicio1.png}
