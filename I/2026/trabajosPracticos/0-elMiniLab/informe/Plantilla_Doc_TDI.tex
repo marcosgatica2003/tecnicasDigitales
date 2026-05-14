@@ -15,6 +15,18 @@
 \geometry{margin=2.5cm}
 \usepackage{subcaption}
 
+\newcommand{\imagen}[3][]{
+    \begin{center}
+        \small
+        \includegraphics[width=#2]{#3}
+        \ifx\\#1\\
+            \captionof{figure}{}
+        \else
+            \captionof{figure}{#1}
+        \fi 
+        \label{fig:#2}
+    \end{center}
+}
 %--------------------------------
 % DATOS DEL INFORME (COMPLETAR)
 %--------------------------------
@@ -66,8 +78,8 @@
 \thispagestyle{empty}
 \text{}
 \newpage
-\tableofcontents
-\newpage
+\tableofcontents\thispagestyle{empty}\setcounter{page}{0}
+\newpage\text{}\thispagestyle{empty}\setcounter{page}{0}\newpage
 
 %--------------------------------
 \section{Introducción}
@@ -263,6 +275,9 @@ En conclusión, este mini laboratorio representa una herramienta de trabajo esen
 \section{Anexo: Fotografías del MiniLab}
 %--------------------------------
 
+\imagen[Vista superior MiniLab sin chasis]{8cm,angle=90}{./imagenes/minilab1.jpg}
+\imagen[]{10cm}{./imagenes/minilab2.jpg}
+
 % \begin{center}
 %     \includegraphics[width=7cm, angle=90]{./imagenes/minilab1.jpg}
 %     \includegraphics[width=13cm]{./imagenes/minilab2.jpg}
@@ -289,13 +304,13 @@ En conclusión, este mini laboratorio representa una herramienta de trabajo esen
 %     \caption{MiniLab}
 %     \label{fig:conjunto}
 % \end{figure}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=8cm, angle=90]{./imagenes/minilab1.jpg}
-    % \caption{a nice plot}
-    \includegraphics[width=15cm]{./imagenes/minilab2.jpg}
-    % \label{fig:mesh1}
-\end{figure}
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=8cm, angle=90]{./imagenes/minilab1.jpg}
+%     % \caption{a nice plot}
+%     \includegraphics[width=15cm]{./imagenes/minilab2.jpg}
+%     % \label{fig:mesh1}
+% \end{figure}
 
 % \begin{figure}[h]
 %     \centering
