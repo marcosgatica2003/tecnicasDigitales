@@ -1,0 +1,15 @@
+Realizar con transistores N-mos y Pmos mediante una herramienta de simulación las siguientes funciones lógicas.
+
+AND
+
+NAND
+
+NOT
+
+NOR
+
+OR
+
+/A & (B | C)
+
+Subir link o subir la captura del circuito
