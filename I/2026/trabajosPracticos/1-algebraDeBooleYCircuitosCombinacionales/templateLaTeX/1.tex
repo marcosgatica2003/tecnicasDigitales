@@ -1,0 +1,131 @@
+\section{RESPUESTAS}
+
+\subsection{I)}
+
+{\noindent\large\begin{align*}\displaystyle F(x, y, z) &= \sum(2, 3, 4, 5)\end{align*}}
+\subsubsection{Obtener la mínima expresión booleana}
+\begin{center}
+\begin{tabular}{c|ccc|c}
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{9AFF99}m & x & y & z & \cellcolor[HTML]{FFFFC7}F(x,y,z) \\ \hline
+0                         & 0 & 0 & 0 &                                  \\
+1                         & 0 & 0 & 1 &                                  \\
+2                         & 0 & 1 & 0 & 1                                \\
+3                         & 0 & 1 & 1 & 1                                \\
+4                         & 1 & 0 & 0 & 1                                \\
+5                         & 1 & 0 & 1 & 1                                \\
+6                         & 1 & 1 & 0 &                                  \\
+7                         & 1 & 1 & 1 &                                 
+\end{tabular}
+\end{center}
+\noindent Los ''1'' de la función pasan, mientras que los ''0'' se los niega. Es una suma de productos de las entradas.
+{\large\begin{align*}
+    F(x,y,z) &= \overline{x}\cdot y\cdot\overline{z} + \overline{x}\cdot y\cdot z + x\cdot\overline{y}\cdot\overline{z} + x\cdot\overline{y}\cdot z
+\end{align*}}
+\noindent Simplificación con Karnaugh:
+\begin{center}
+    \begin{karnaugh-map}[2][4][1][$z$][$x\qquad y$]
+    \minterms{2,3,4,5}
+    \autoterms[0]
+    \implicant{2}{3}\implicant{4}{5}
+\end{karnaugh-map}
+\end{center}
+\begin{itemize}[nosep] \item Primer bloque: ($m_2$ y $m_3$) cambia $z$ y hay que negar $x$.
+\item Segundo bloque: ($m_4$ y $m_5$) cambia $z$ y hay que negar $y$.
+\item La función simplificada queda:\end{itemize}
+    {\large\begin{align*}
+    F(x,y,z) &= \overline{x}\cdot y + x\overline{y}
+\end{align*}}
+
+\noindent Si se hace una tabla de verdad con las entradas $x$ e $y$ (las funcionales):
+
+\begin{center}
+\begin{tabular}{c|cc|c}
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{9AFF99}m & x & y & \cellcolor[HTML]{FFFC9E}F \\ \hline
+0                         & 0 & 0 & 0                         \\
+1                         & 0 & 1 & 1                         \\
+2                         & 1 & 0 & 1                         \\
+3                         & 1 & 1 & 0                        
+\end{tabular}
+
+
+\end{center}
+
+\noindent es identico a una tabla de verdad de $XOR$, por lo que la función se puede simplificar aún más a:
+
+{\large\begin{align*} F(x,y,z) &= x\oplus y\end{align*}}
+\subsubsection{Simulación}
+
+\imagen[]{10cm}{./imagenes/ejercicio1Falstad.png}
+
+\subsubsection{Descripción en Verilog}
+\begin{lstlisting}
+module descripcionVerilogEjercicio1(
+    input inputX,
+    input inputY,
+    input inputZ,
+    output outputFunction
+    );
+	 assign outputFunction = inputX ^ inputY;
+endmodule
+\end{lstlisting}
+\subsubsection{RTL output}
+
+\imagen[Bloque RTL]{15cm}{./imagenes/rtlEjercicio1Verilog.png}
+\imagen[Implementación de las compuertas]{15cm}{./imagenes/rtlCompuertasEjercicio1Verilog.png}
+
+\subsubsection{Simulación temporal}
+
+\noindent Código del módulo Verilog Test Fixture:
+
+\begin{lstlisting}
+module verilogTestFixtureEjercicio1;
+
+	// Inputs
+	reg inputX;
+	reg inputY;
+	reg inputZ;
+
+	// Outputs
+	wire outputFunction;
+
+	// Instantiate the Unit Under Test (UUT)
+	descripcionVerilogEjercicio1 uut (
+		.inputX(inputX), 
+		.inputY(inputY), 
+		.inputZ(inputZ), 
+		.outputFunction(outputFunction)
+	);
+
+	initial begin
+		// Initialize Inputs
+		inputX = 0;
+		inputY = 0;
+		inputZ = 0;
+
+		// Wait 100 ns for global reset to finish
+		#100;
+        
+		// Add stimulus here
+		
+		inputX = 0;	inputY = 0; inputZ = 1;
+		#100;
+		inputX = 0; inputY = 1;	inputZ = 0;
+		#100;
+		inputX = 0; inputY = 1; inputZ = 1;
+		#100;
+		inputX = 1; inputY = 0; inputZ = 0;
+		#100;
+		inputX = 1; inputY = 0; inputZ = 1;
+		#100;
+		inputX = 1; inputY = 1; inputZ = 0;
+		#100;
+		inputX = 1; inputY = 1; inputZ = 1;
+		#100;
+	end
+      
+endmodule
+\end{lstlisting}
+
+\imagen[Simulación temporal]{15cm}{./imagenes/simulacionTemporalEjercicio1.png}

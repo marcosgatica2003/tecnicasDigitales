@@ -1,0 +1,40 @@
+%%%%%%%%%%%%%% main.tex %%%%%%%%%%%%%%%%
+%% Archivo principal de templateLatex %%
+%% usado para construir el pdf.       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Por marcosgatica2003
+% Link del repositorio: https://github.com/marcosgatica2003/gaticonStandards
+
+\documentclass[a4paper]{article}
+
+\input{packages}
+\addbibresource{referencias.bib}
+\input{comandos}
+\lstset{
+    language=Verilog,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    numbers=left,
+    numberstyle=\tiny,
+    breaklines=true,
+    frame=single
+}
+\begin{document}
+    \input{caratula}
+    \input{fancyConfig}
+    \input{indiceConfig}
+    \pagestyle{fancy}
+    \input{introduccion.tex}
+    % \input{respuestas.tex}
+    \input{1.tex}
+    \input{2.tex}
+    \input{3.tex}
+    \input{4.tex}
+    \input{5.tex}
+    \input{6.tex}
+    \input{7.tex}
+    \input{8.tex}
+    \input{anexo.tex}
+\end{document}
+

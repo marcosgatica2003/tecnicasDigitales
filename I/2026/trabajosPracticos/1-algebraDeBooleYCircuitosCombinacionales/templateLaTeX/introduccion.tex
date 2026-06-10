@@ -1,0 +1,32 @@
+\section{INTRODUCCIÓN}
+El siguiente informe contiene la resolución de la actividad N2-1, la cual pide:
+\begin{itemize}[nosep]
+    \item Obtener la mínima expresión booleana.
+    \item Simular en Falstad (o cualquier simulador).
+    \item Describir en verilog.
+    \item Presentar la descripción.
+    \item Capturar imagen del RTL.
+    \item Capturar la simulación temporal.
+\end{itemize}
+\begin{enumerate}
+\item $\displaystyle F(x, y, z) = \sum(2, 3, 4, 5)$
+\item $\displaystyle F(x, y, z) = \sum(1, 2, 3, 5, 6, 7)$
+\item $\displaystyle F(x, y, z) = \sum(0, 2, 4, 6)$
+\item $\displaystyle F(x, y, z) = \sum(3, 4, 5, 6, 7)$
+\item $\displaystyle F(A, B, C, D) = \sum(3, 7, 11, 13, 14, 15) \quad x = 6; 2$
+\item $\displaystyle F(w, x, y, z) = \sum(2, 3, 12, 13, 14, 15) \quad x = 6; 7; 10; 11$
+\item $\displaystyle F(A, B, C, D) = \prod(1, 3, 5, 7, 13, 15)$
+\item $\displaystyle F(A, B, C, D) = \prod(0, 1, 4, 6, 7, 8, 9, 13, 15) \quad x = 1;$
+\end{enumerate}
+
+\subsection{Información del sistema y configuración de Xilinx ISE}
+
+Durante el desarrollo del informe, Xilinx ISE correrá en un contenedor Docker ejejecutando Debian 12 (Bookworm), bajo el servidor de video X11 (visualizado vía Xwayland en el host).
+El proyecto en Xilinx ISE tiene las siguientes carácteristicas de diseño:
+\begin{itemize}[nosep]
+    \item Family:   XC9500XL    CPLDs
+    \item Device:   XC9572XL
+    \item Package:  PC44
+    \item Speed:    -10 
+    \item Preferred Language:   Verilog
+\end{itemize}
