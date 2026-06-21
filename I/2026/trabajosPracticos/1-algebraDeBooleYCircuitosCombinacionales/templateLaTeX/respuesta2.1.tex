@@ -145,7 +145,9 @@ A & B & C & D & \cellcolor[HTML]{FFCCC9}Z(A,B,C,D) \\ \hline
     \maxterms{0,1,2,3,4}
     \terms{12,13,15,14,11,10}{$x$}
     \implicant{0}{2}\implicant{0}{4}
-    \end{karnaugh-map}$W = (A + B)\cdot{}(A + C +D)$\end{minipage}
+    \end{karnaugh-map}
+$W = (A + B)\cdot{}(A + C +D)$
+\end{minipage}
 \begin{minipage}{0.45\textwidth}\centering
     \begin{karnaugh-map}[4][4][1][$C\qquad{}D$][$A\qquad{}B$]
     \minterms{1,2,3,4,9}\maxterms{0,5,6,7,8}
@@ -169,8 +171,46 @@ $Y = \overline{C}\cdot{}\overline{D} + C\cdot{}D$
     \terms{12,13,15,14,11,10}{$x$}
     \implicant{0}{8}\implicant{2}{10}
 \end{karnaugh-map}
-$Z = \overline{C}\cdot\overline{D} + \overline{C}\cdot{}D$
+$Z = \overline{C}\cdot\overline{D} + C\cdot{}\overline{D}$
 \end{minipage}
 \end{center}
 
+\sangria{} Agrupando más las compuertas se puede llegar a:
 
+\begin{itemize}[nosep] \item La función $X$: \end{itemize}
+\begin{center}
+$X = (B + C +D )\cdot{}(\overline{B} + \overline{D})\cdot{}(\overline{B} + \overline{C})$ \\[5pt]
+$X = (B + C +D )\cdot{}(\overline{B} + \overline{C}\cdot{}\overline{D})$ \\[10pt]
+$X = (B+C+D)\cdot{}(\overline{B}+\overline{C+D}),\qquad{}T = C+D$ \\[10pt]
+$\Rightarrow{} X = (B+T)\cdot{}(\overline{B}+\overline{T})$ \\[10pt]
+$X = B\cdot{}\overline{B}+B\cdot\overline{T}+T\cdot{}\overline{B}+T\cdot\overline{T}$
+\end{center}
+\noindent{} Multiplicar una señal por su negado es $0$, por lo que:
+\begin{center}
+$X = \cancel{B\cdot{}\overline{B}}+B\cdot\overline{T}+T\cdot{}\overline{B}+\cancel{T\cdot\overline{T}}$ \\[10pt]
+$X = B \oplus T$ \\[10pt] 
+$X = B \oplus (C +D)$
+\end{center}
+
+\begin{itemize}[nosep] \item La función $Y$: \end{itemize} \begin{center}
+$Y = \overline{C}\cdot{}\overline{D} + C\cdot{}D$ \\[10pt]
+$Y = \overline{C \oplus{} D}$\end{center}
+
+\begin{itemize}[nosep] \item La función $Z$: \end{itemize} \begin{center}
+$Z = \overline{C}\cdot\overline{D} + C\cdot{}\overline{D}$ \\[10pt]
+$Z = \overline{D}\cdot{}(\overline{C} + C)$
+\end{center}
+\noindent{}$\overline{C} + C$ siempre vale $1$, por lo que:
+\begin{center}
+    $Z = \overline{D}$
+\end{center}
+
+\noindent{} En resumen:
+\begin{center}
+
+    $W = (A + B)\cdot{}(A + C +D)$ \\[10pt]
+    $X = B \oplus (C +D)$ \\[10pt]
+    $Y = \overline{C \oplus{} D}$ \\[10pt]
+    $Z = \overline{D}$
+\end{center}
+\subsubsection{Simulación con Fasltad}

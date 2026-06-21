@@ -1,0 +1,26 @@
+\subsection{Ejercicio 2.2}
+\subsubsection{Tabla de verdad}
+\sangria{} Se tienen 4 bits en total: 2 bits de $A$ y 2 bits $B$. La lógica responde a: \begin{center}$S_0 = 1\qquad{} si\quad{}A > B$ \\[10pt] $S_1 = 1\qquad{} si \quad{}A < B$ \\[10pt] $S_2 = 1\qquad{} si\quad{}A = B$\end{center}
+
+\begin{center}
+\begin{tabular}{cccc|ccc|c}
+\rowcolor[HTML]{FFCCC9} 
+\textbf{$A_0$} & \textbf{$A_1$} & \textbf{$B_0$} & \textbf{$B_1$} & \cellcolor[HTML]{ECF4FF}\textbf{$S_0$} & \cellcolor[HTML]{ECF4FF}\textbf{$S_1$} & \cellcolor[HTML]{ECF4FF}\textbf{$S_2$} & \cellcolor[HTML]{9AFF99}\textbf{Lógica} \\ \hline
+0              & 0              & 0              & 0              & 0                                      & 0                                      & 1                                      & $A = B$                                 \\
+0              & 0              & 0              & 1              & 0                                      & 1                                      & 0                                      & $A < B$                                 \\
+0              & 0              & 1              & 0              & 0                                      & 1                                      & 0                                      & $A < B$                                 \\
+0              & 0              & 1              & 1              & 0                                      & 1                                      & 0                                      & $A < B$                                 \\
+0              & 1              & 0              & 0              & 1                                      & 0                                      & 0                                      & $A > B$                                 \\
+0              & 1              & 0              & 1              & 0                                      & 0                                      & 1                                      & $A =B$                                  \\
+0              & 1              & 1              & 0              & 0                                      & 1                                      & 0                                      & $A < B$                                 \\
+0              & 1              & 1              & 1              & 0                                      & 1                                      & 0                                      & $A < B$                                 \\
+1              & 0              & 0              & 0              & 1                                      & 0                                      & 0                                      & $A > B$                                 \\
+1              & 0              & 0              & 1              & 1                                      & 0                                      & 0                                      & $A > B$                                 \\
+1              & 0              & 1              & 0              & 0                                      & 0                                      & 1                                      & $A = B$                                 \\
+1              & 0              & 1              & 1              & 0                                      & 1                                      & 0                                      & $A < B$                                 \\
+1              & 1              & 0              & 0              & 1                                      & 0                                      & 0                                      & $A > B$                                 \\
+1              & 1              & 0              & 1              & 1                                      & 0                                      & 0                                      & $A > B$                                 \\
+1              & 1              & 1              & 0              & 1                                      & 0                                      & 0                                      & $A > B$                                 \\
+1              & 1              & 1              & 1              & 0                                      & 0                                      & 1                                      & $A = B$                                
+\end{tabular}
+\end{center}
