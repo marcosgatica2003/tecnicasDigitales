@@ -24,3 +24,111 @@
 1              & 1              & 1              & 1              & 0                                      & 0                                      & 1                                      & $A = B$                                
 \end{tabular}
 \end{center}
+\subsubsection{Funciones canónicas}
+\begin{center}
+    \begin{minipage}{0.5\textwidth}\centering
+        \begin{tabular}{cccc|c}
+\rowcolor[HTML]{FFCCC9} 
+\textbf{$A_0$} & \textbf{$A_1$} & \textbf{$B_0$} & \textbf{$B_1$} & \cellcolor[HTML]{ECF4FF}\textbf{$S_0$} \\ \hline
+0              & 0              & 0              & 0              & 0                                      \\
+0              & 0              & 0              & 1              & 0                                      \\
+0              & 0              & 1              & 0              & 0                                      \\
+0              & 0              & 1              & 1              & 0                                      \\
+0              & 1              & 0              & 0              & 1                                      \\
+0              & 1              & 0              & 1              & 0                                      \\
+0              & 1              & 1              & 0              & 0                                      \\
+0              & 1              & 1              & 1              & 0                                      \\
+1              & 0              & 0              & 0              & 1                                      \\
+1              & 0              & 0              & 1              & 1                                      \\
+1              & 0              & 1              & 0              & 0                                      \\
+1              & 0              & 1              & 1              & 0                                      \\
+1              & 1              & 0              & 0              & 1                                      \\
+1              & 1              & 0              & 1              & 1                                      \\
+1              & 1              & 1              & 0              & 1                                      \\
+1              & 1              & 1              & 1              & 0                                     
+\end{tabular}\\[10pt] 
+$S_0 = \overline{A_0}\cdot{}A_1\cdot{}\overline{B_0}\cdot\overline{B_1} + A_0\cdot\overline{A_1}\cdot\overline{B_0}\cdot\overline{B_1}+A_0\cdot\overline{A_1}\cdot\overline{B_0}\cdot{}B_1+A_0\cdot{}A_1\cdot\overline{B_0}\cdot\overline{B_1}+A_0\cdot{}A_1\cdot{}\overline{B_0}\cdot{}B_1+A_0\cdot{}A_1\cdot{}B_0\cdot\overline{B_1}$ \\
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}\centering
+        \begin{tabular}{cccc|c}
+\rowcolor[HTML]{FFCCC9} 
+\textbf{$A_0$} & \textbf{$A_1$} & \textbf{$B_0$} & \textbf{$B_1$} & \cellcolor[HTML]{ECF4FF}\textbf{$S_1$} \\ \hline
+0              & 0              & 0              & 0              & 0                                      \\
+0              & 0              & 0              & 1              & 1                                      \\
+0              & 0              & 1              & 0              & 1                                      \\
+0              & 0              & 1              & 1              & 1                                      \\
+0              & 1              & 0              & 0              & 0                                      \\
+0              & 1              & 0              & 1              & 0                                      \\
+0              & 1              & 1              & 0              & 1                                      \\
+0              & 1              & 1              & 1              & 1                                      \\
+1              & 0              & 0              & 0              & 0                                      \\
+1              & 0              & 0              & 1              & 0                                      \\
+1              & 0              & 1              & 0              & 0                                      \\
+1              & 0              & 1              & 1              & 1                                      \\
+1              & 1              & 0              & 0              & 0                                      \\
+1              & 1              & 0              & 1              & 0                                      \\
+1              & 1              & 1              & 0              & 0                                      \\
+1              & 1              & 1              & 1              & 0                                     
+\end{tabular} \\[10pt]
+$S_1 = \overline{A_0}\cdot\overline{A_1}\cdot\overline{B_0}\cdot{}B_1 + \overline{A_0}\cdot\overline{A_1}\cdot{}B_0\cdot\overline{B_1}+\overline{A_0}\cdot\overline{A_1}\cdot{}B_0\cdot{}B_1+\overline{A_0}\cdot{}A_1\cdot{}B_0\cdot\overline{B_1}+\overline{A_0}\cdot{}A_1\cdot{}B_0\cdot{}B_1+A_1\cdot{}\overline{A_1}\cdot{}B_0\cdot{}B_1$
+\end{minipage}
+\end{center}
+\begin{center}
+\begin{tabular}{cccc|c}
+\rowcolor[HTML]{FFCCC9} 
+\textbf{$A_0$} & \textbf{$A_1$} & \textbf{$B_0$} & \textbf{$B_1$} & \cellcolor[HTML]{ECF4FF}\textbf{$S_2$} \\ \hline
+0              & 0              & 0              & 0              & 1                                      \\
+0              & 0              & 0              & 1              & 0                                      \\
+0              & 0              & 1              & 0              & 0                                      \\
+0              & 0              & 1              & 1              & 0                                      \\
+0              & 1              & 0              & 0              & 0                                      \\
+0              & 1              & 0              & 1              & 1                                      \\
+0              & 1              & 1              & 0              & 0                                      \\
+0              & 1              & 1              & 1              & 0                                      \\
+1              & 0              & 0              & 0              & 0                                      \\
+1              & 0              & 0              & 1              & 0                                      \\
+1              & 0              & 1              & 0              & 1                                      \\
+1              & 0              & 1              & 1              & 0                                      \\
+1              & 1              & 0              & 0              & 0                                      \\
+1              & 1              & 0              & 1              & 0                                      \\
+1              & 1              & 1              & 0              & 0                                      \\
+1              & 1              & 1              & 1              & 1                                     
+\end{tabular}\\[10pt]
+$S_2 = \overline{A_0}\cdot\overline{A_1}\cdot\overline{B_0}\cdot\overline{B_1} + \overline{A_0}\cdot{}A_1\cdot{}\overline{B_0}\cdot{}B_1+A_0\cdot{}\overline{A_1}\cdot{}B_0\cdot\overline{B_1}+A_0\cdot{}A_1\cdot{}B_0\cdot{}B_1$
+\end{center}
+\subsubsection{Minimización por mapa de Karnaugh}
+\begin{center}
+    \begin{minipage}{0.45\textwidth}\centering
+        \begin{karnaugh-map}[4][4][1][$B_0\qquad{}B_1$][$A_0\qquad{}A_1$]
+            \minterms{4,8,9,12,13,14}
+            \maxterms{0,1,2,3,5,6,7,10,11,15}
+            \implicant{12}{9}
+            \implicant{4}{12}
+            \implicantedge{12}{12}{14}{14}
+        \end{karnaugh-map}\\[10pt]
+        $S_0 = A_1\cdot\overline{B_0}\cdot\overline{B_1}+A_0\cdot\overline{B_0}+A_0\cdot{}A_1\cdot\overline{B_1}$
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}\centering
+        \begin{karnaugh-map}[4][4][1][$B_0\qquad{}B_1$][$A_0\qquad{}A_1$]
+            \minterms{1,2,3,6,7,11}
+            \maxterms{0,4,5,8,9,10,12,13,14,15}
+            \implicant{1}{3}\implicant{3}{6}\implicantedge{3}{3}{11}{11}
+        \end{karnaugh-map}\\[10pt]
+        $S_1 = \overline{A_0}\cdot\overline{A_1}\cdot{}B_1+B_0\cdot{}\overline{A_0}+B_0\cdot{}B_1\cdot\overline{A_1}$
+    \end{minipage}\\[20pt]
+    \begin{minipage}{0.45\textwidth}\centering
+        \begin{karnaugh-map}[4][4][1][$B_0\qquad{}B_1$][$A_0\qquad{}A_1$]
+            \minterms{0,5,10,15}
+            \maxterms{1,2,3,4,6,7,8,9,11,12,13,14}
+            \implicant{0}{0}\implicant{5}{5}\implicant{10}{10}\implicant{15}{15}
+        \end{karnaugh-map}
+    $S_2 = \overline{A_0}\cdot\overline{A_1}\cdot\overline{B_0}\cdot\overline{B_1} + \overline{A_0}\cdot{}A_1\cdot{}\overline{B_0}\cdot{}B_1+A_0\cdot{}\overline{A_1}\cdot{}B_0\cdot\overline{B_1}+A_0\cdot{}A_1\cdot{}B_0\cdot{}B_1$\end{minipage}
+\end{center}
+\subsubsection{Simplificación por álgebra de boole}
+\begin{itemize}[nosep]\item Función $S_0$: \end{itemize}
+\begin{center}
+$S_0 = A_1\cdot\overline{B_0}\cdot\overline{B_1}+A_0\cdot\overline{B_0}+A_0\cdot{}A_1\cdot\overline{B_1}$\\[10pt]
+$S_0 = \overline{\overline{A_1\cdot\overline{B_0}\cdot\overline{B_1}+A_0\cdot\overline{B_0}+A_0\cdot{}A_1\cdot\overline{B_1}}}$\\[10pt]
+$S_0 = \overline{(\overline{A_1\cdot\overline{B_0}\cdot\overline{B_1}})\cdot{}(\overline{A_0\cdot\overline{B_0}})\cdot{}(\overline{A_0\cdot{}A_1\cdot\overline{B_1}})}$\\[10pt]
+$S_0 = \overline{(\overline{A_1}+B_0+B_1)}$
+\end{center}
