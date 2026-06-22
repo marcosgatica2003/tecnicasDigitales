@@ -122,13 +122,27 @@ $S_2 = \overline{A_0}\cdot\overline{A_1}\cdot\overline{B_0}\cdot\overline{B_1} +
             \maxterms{1,2,3,4,6,7,8,9,11,12,13,14}
             \implicant{0}{0}\implicant{5}{5}\implicant{10}{10}\implicant{15}{15}
         \end{karnaugh-map}
-    $S_2 = \overline{A_0}\cdot\overline{A_1}\cdot\overline{B_0}\cdot\overline{B_1} + \overline{A_0}\cdot{}A_1\cdot{}\overline{B_0}\cdot{}B_1+A_0\cdot{}\overline{A_1}\cdot{}B_0\cdot\overline{B_1}+A_0\cdot{}A_1\cdot{}B_0\cdot{}B_1$\end{minipage}
+    $S_2 = \overline{A_0}\cdot\overline{A_1}\cdot\overline{B_0}\cdot\overline{B_1} + \overline{A_0}\cdot{}A_1\cdot{}\overline{B_0}\cdot{}B_1+A_0\cdot{}\overline{A_1}\cdot{}B_0\cdot\overline{B_1}+A_0\cdot{}A_1\cdot{}B_0\cdot{}B_1$
+\end{minipage}
 \end{center}
 \subsubsection{Simplificación por álgebra de boole}
 \begin{itemize}[nosep]\item Función $S_0$: \end{itemize}
 \begin{center}
 $S_0 = A_1\cdot\overline{B_0}\cdot\overline{B_1}+A_0\cdot\overline{B_0}+A_0\cdot{}A_1\cdot\overline{B_1}$\\[10pt]
-$S_0 = \overline{\overline{A_1\cdot\overline{B_0}\cdot\overline{B_1}+A_0\cdot\overline{B_0}+A_0\cdot{}A_1\cdot\overline{B_1}}}$\\[10pt]
-$S_0 = \overline{(\overline{A_1\cdot\overline{B_0}\cdot\overline{B_1}})\cdot{}(\overline{A_0\cdot\overline{B_0}})\cdot{}(\overline{A_0\cdot{}A_1\cdot\overline{B_1}})}$\\[10pt]
-$S_0 = \overline{(\overline{A_1}+B_0+B_1)}$
+% $S_0 = A_1\cdot{}\overline{B_1}(\overline{B_0}+A_0)+A_0\cdot\overline{B_0}$ \\[10pt]
+$S_0 = A_1\cdot{}\overline{B_0}\cdot{}\overline{B_1}+A_0\cdot{}(\overline{B_0}+A_1\cdot{}\overline{B_1}),\qquad{}\text{\textit{Se logró simplificar hasta acá.}}$ \\[10pt]
+\end{center}
+
+\begin{itemize}[nosep]\item Función $S_1$: \end{itemize}
+\begin{center}
+    $S_1 = \overline{A_0}\cdot\overline{A_1}\cdot{}B_1+B_0\cdot{}\overline{A_0}+B_0\cdot{}B_1\cdot\overline{A_1}$\\[10pt]
+    $S_1 = \overline{A_0}\cdot\overline{A_1}\cdot{}B_1+B_0\cdot{}(\overline{A_0}+B_1\cdot{}\overline{A_1}),\qquad{}\text{\textit{Se logró simplificar hasta acá.}}$
+\end{center}
+
+\begin{itemize}[nosep]\item Función $S_2$: \end{itemize}
+\begin{center}
+$S_2 = \overline{A_0}\cdot\overline{A_1}\cdot\overline{B_0}\cdot\overline{B_1} + \overline{A_0}\cdot{}A_1\cdot{}\overline{B_0}\cdot{}B_1+A_0\cdot{}\overline{A_1}\cdot{}B_0\cdot\overline{B_1}+A_0\cdot{}A_1\cdot{}B_0\cdot{}B_1$ \\[10pt]
+$S_2 = \overline{A_0}\cdot\overline{B_0}\cdot{}(\overline{A_1}\cdot{}\overline{B_1}+A_1\cdot{}B_1)+A_0\cdot{}B_0\cdot{}(\overline{A_1}\cdot\overline{B_1}+A_1\cdot{}B_1)$ \\[10pt]
+$S_2 = (\overline{A_0}\cdot\overline{B_0}+A_0\cdot{}B_0)\cdot{}(\overline{A_1}\cdot\overline{B_1}+A_1\cdot{}B_1)$ \\[10pt]
+$S_2 = \overline{(A_0\oplus{}B_0)}\cdot{}\overline{A_1\oplus{}B_1},\qquad{}\text{\textit{Se logró simplificar hasta acá.}}$
 \end{center}
