@@ -1,0 +1,165 @@
+\section{RESPUESTAS}
+\subsection{Tramas hamming}
+\subsubsection{Trama de datos A: 1010110110}
+\noindent{} \textit{A} es una trama de datos de 10 bits. Lo que se desea conocer es cuántos bits de paridad se deben usar.
+\begin{center}\Large
+    $2^k - 1 - k \geq n,\qquad{} k = \text{\textit{bits de paridad}}, n = \text{\textit{bits datos}}$
+\end{center}
+\noindent{} Con $k=4$:
+\begin{center}\Large
+    $2^4 - 1 - 4 \geq 10$ \\[5pt]
+    $11 \geq 10,\qquad\text{\textit{4 bits de paridad son suficientes}}$
+\end{center}
+\sangria{} La trama final, que contiene los bits de datos y los bits de paridad, son 14 bits en total. Los bits de paridad se posicionan según la potencia de 2 empezando en 1 (1,2,4,8,16...)
+\begin{center}
+\begin{tabular}{c|cccccccccccccc}
+\rowcolor[HTML]{FFFFC7} 
+\cellcolor[HTML]{FCFF2F}\textbf{N}     & 14                        & 13                        & 12                        & 11                        & 10                        & 9                         & 8                        & 7                         & 6                         & 5                         & 4                        & 3                         & 2                        & 1                        \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+\cellcolor[HTML]{9698ED}\textbf{Tipo}  & $D_9$                     & $D_8$                     & $D_7$                     & $D_6$                     & $D_5$                     & $D_4$                     & $K_4$                    & $D_3$                     & $D_2$                    & $D_1$                     & $K_2$                    & $D_0$                     & $K_1$                    & $K_0$                    \\ \cline{2-15} 
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{FD6864}\textbf{Valor} & 1                         & 0                         & 1                         & 0                         & 1                         & 1                         &                          & 0                         & 1                         & 1                         &                          & 0                         &                          &                          \\ \cline{2-15} 
+\cellcolor[HTML]{9AFF99}$K_0$          &                           & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}1 &                          & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}1 &                          & \cellcolor[HTML]{96FFFB}0 &                          & \cellcolor[HTML]{96FFFB} \\
+\cellcolor[HTML]{9AFF99}$K_1$          & \cellcolor[HTML]{96FFFB}1 &                           &                           & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 &                           &                          & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 &                           &                          & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB} &                          \\
+\cellcolor[HTML]{9AFF99}$K_2$          & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 &                           &                           &                           &                          & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB} &                           &                          &                          \\
+\cellcolor[HTML]{9AFF99}$K_3$          & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB} &                           &                           &                           &                          &                           &                          &                         
+\end{tabular}
+\end{center}
+\begin{itemize}[nosep]
+    \item $K_0$ = tiene cantidad par de 1, vale 0.
+    \item $K_1$ = tiene cantidad impar de 1, vale 1.
+    \item $K_2$ = tiene cantidad par de 1, vale 0.
+    \item $K_3$ = tiene cantidad par de 1, vale 0.
+\end{itemize}\vspace{10pt}
+\sangria{}Por lo que la tabla queda completa. La fila ''valor'' son la trama final de bits, que incluye los bits de datos junto a los bits de paridad.
+\begin{center}
+\begin{tabular}{c|cccccccccccccc}
+\rowcolor[HTML]{FFFFC7} 
+\cellcolor[HTML]{FCFF2F}\textbf{N}     & 14    & 13    & 12    & 11    & 10    & 9     & 8     & 7     & 6     & 5     & 4     & 3     & 2     & 1     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+\cellcolor[HTML]{9698ED}\textbf{Tipo}  & $D_9$ & $D_8$ & $D_7$ & $D_6$ & $D_5$ & $D_4$ & $K_4$ & $D_3$ & $D_2$ & $D_1$ & $K_2$ & $D_0$ & $K_1$ & $K_0$ \\ \cline{2-15} 
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{FD6864}\textbf{Valor} & 1     & 0     & 1     & 0     & 1     & 1     & 0     & 0     & 1     & 1     & 0     & 0     & 1     & 0     \\ \cline{2-15} 
+\end{tabular}
+\end{center}
+\subsubsection{Trama de datos B: 10110110}
+\noindent{} La trama de datos B está compuesto por 8 bits. Entonces:
+\begin{center}\Large
+    $2^k - 1 - k \geq n,\qquad{}n=8$
+\end{center}
+\noindent{} Probando con 3 bits de paridad:
+\begin{center}\Large
+    $2^3 - 1 - 3 \geq 8$ \\[5pt]
+    $4 \geq 8$
+\end{center}
+\noindent{} 3 bits de paridad no satisface, se usarán 4, que se calcularon en el tramo de datos A por lo que:
+\begin{center}\Large $11 \geq 8$ \end{center}
+\sangria{} La trama final de información estará compuesta de 4 bits de paridad y 8 bits de datos, por lo que suman 12 bits. A continuación, se conforma la tabla:
+\begin{center}
+\begin{tabular}{ccccccccccccc}
+\rowcolor[HTML]{FFFFC7} 
+\cellcolor[HTML]{FCFF2F}\textbf{N}     & 12                        & 11                        & 10                        & 9                         & 8                        & 7                         & 6                         & 5                         & 4                        & 3                         & 2                        & 1                        \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+\cellcolor[HTML]{9698ED}\textbf{Tipo}  & $D_7$                     & $D_6$                     & $D_5$                     & $D_4$                     & $K_4$                    & $D_3$                     & $D_2$                     & $D_1$                     & $K_2$                    & $D_0$                     & $K_1$                    & $K_0$                    \\ \cline{2-13} 
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{FD6864}\textbf{Valor} & 1                         & 0                         & 1                         & 1                         &                          & 0                         & 1                         & 1                         &                          & 0                         &                          &                          \\ \cline{2-13} 
+\cellcolor[HTML]{9AFF99}$K_0$          &                           & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}1 &                          & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}1 &                          & \cellcolor[HTML]{96FFFB}0 &                          & \cellcolor[HTML]{96FFFB} \\
+\cellcolor[HTML]{9AFF99}$K_1$          &                           & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 &                           &                          & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 &                           &                          & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB} &                          \\
+\cellcolor[HTML]{9AFF99}$K_2$          & \cellcolor[HTML]{96FFFB}1 &                           &                           &                           &                          & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB} &                           &                          &                          \\
+\cellcolor[HTML]{9AFF99}$K_3$          & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB} &                           &                           &                           &                          &                           &                          &                         
+\end{tabular}
+\end{center}
+\begin{itemize}[nosep]
+    \item $K_0$: cantidad par de 1, vale 0.
+    \item $K_1$: cantidad par de 1, vale 0.
+    \item $K_2$: cantidad impar de 1, vale 1.
+    \item $K_3$: cantidad impar de 1, vale 1.
+\end{itemize}\vspace{5pt}
+\noindent{} La trama de información, bits de datos + bits de paridad, queda conformada de la siguiente forma:
+\begin{center}
+\begin{tabular}{ccccccccccccc}
+\rowcolor[HTML]{FFFFC7} 
+\cellcolor[HTML]{FCFF2F}\textbf{N}     & 12    & 11    & 10    & 9     & 8     & 7     & 6     & 5     & 4     & 3     & 2     & 1     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+\cellcolor[HTML]{9698ED}\textbf{Tipo}  & $D_7$ & $D_6$ & $D_5$ & $D_4$ & $K_4$ & $D_3$ & $D_2$ & $D_1$ & $K_2$ & $D_0$ & $K_1$ & $K_0$ \\ \cline{2-13} 
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{FD6864}\textbf{Valor} & 1     & 0     & 1     & 1     & 1     & 0     & 1     & 1     & 1     & 0     & 0     & 0     \\ \cline{2-13} 
+\end{tabular}
+\end{center}
+
+\subsection{Corrección de datos}
+\subsubsection{Información C: 100110111000}
+\sangria{} Los bits de información de C contienen los bits de datos junto a los bits de paridad. Son 12 bits en total. En una tabla genérica que contemple 12 bits se tendría:
+\begin{center}
+\begin{tabular}{ccccccccccccc}
+\rowcolor[HTML]{FFFFC7} 
+\cellcolor[HTML]{FCFF2F}\textbf{N}     & 12                        & 11                        & 10                        & 9                         & 8                         & 7                         & 6                         & 5                         & 4                         & 3                         & 2                         & 1                         \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+\cellcolor[HTML]{9698ED}\textbf{Tipo}  & $D_7$                     & $D_6$                     & $D_5$                     & $D_4$                     & $K_4$                     & $D_3$                     & $D_2$                     & $D_1$                     & $K_2$                     & $D_0$                     & $K_1$                     & $K_0$                     \\ \cline{2-13} 
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{FD6864}\textbf{Valor} & 1                         & 0                         & 0                         & 1                         & 1                         & 0                         & 1                         & 1                         & 1                         & 0                         & 0                         & 0                         \\ \cline{2-13} 
+\cellcolor[HTML]{9AFF99}$K_0$          &                           & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}1 &                           & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}1 &                           & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}0 \\
+\cellcolor[HTML]{9AFF99}$K_1$          &                           & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}0 &                           &                           & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 &                           &                           & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}0 &                           \\
+\cellcolor[HTML]{9AFF99}$K_2$          & \cellcolor[HTML]{96FFFB}1 &                           &                           &                           &                           & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}1 &                           &                           &                           \\
+\cellcolor[HTML]{9AFF99}$K_3$          & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}1 &                           &                           &                           &                           &                           &                           &                          
+\end{tabular}
+\end{center}
+\noindent{} Cálculo del síndrome:
+\begin{itemize}[nosep]
+    \item $K_0$ = par $\rightarrow$ 0.
+    \item $K_1$ = impar $\rightarrow$ 1. 
+    \item $K_2$ = par $\rightarrow$ 0.
+    \item $K_3$ = impar $\rightarrow$ 1.
+\end{itemize}
+\begin{center}\Large
+    $K_3 K_2 K_1 K_0 \rightarrow 1010 \rightarrow 10_{10}$
+\end{center}
+\noindent{} En la posición 10, está el bit de dato $D_5$, que está mal. Aplicando la corrección se tendría:
+\begin{center}
+\begin{tabular}{ccccccccccccc}
+\rowcolor[HTML]{FFFFC7} 
+\cellcolor[HTML]{FCFF2F}\textbf{N}     & 12    & 11    & 10    & 9     & 8     & 7     & 6     & 5     & 4     & 3     & 2     & 1     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+\cellcolor[HTML]{9698ED}\textbf{Tipo}  & $D_7$ & $D_6$ & $D_5$ & $D_4$ & $K_4$ & $D_3$ & $D_2$ & $D_1$ & $K_2$ & $D_0$ & $K_1$ & $K_0$ \\ \cline{2-13} 
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{FD6864}\textbf{Valor} & 1     & 0     & 1     & 1     & 1     & 0     & 1     & 1     & 1     & 0     & 0     & 0     \\ \cline{2-13} 
+\end{tabular}
+\end{center}
+
+\subsubsection{Información D: 101110101101}
+\sangria{} Se tienen 12 bits, compuestos de bits de datos y paridad. Armando la tabla queda:
+\begin{center}
+\begin{tabular}{ccccccccccccc}
+\rowcolor[HTML]{FFFFC7} 
+\cellcolor[HTML]{FCFF2F}\textbf{N}     & 12                        & 11                        & 10                        & 9                         & 8                         & 7                         & 6                         & 5                         & 4                         & 3                         & 2                         & 1                         \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+\cellcolor[HTML]{9698ED}\textbf{Tipo}  & $D_7$                     & $D_6$                     & $D_5$                     & $D_4$                     & $K_4$                     & $D_3$                     & $D_2$                     & $D_1$                     & $K_2$                     & $D_0$                     & $K_1$                     & $K_0$                     \\ \cline{2-13} 
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{FD6864}\textbf{Valor} & 1                         & 0                         & 1                         & 1                         & 1                         & 0                         & 1                         & 0                         & 1                         & 1                         & 0                         & 1                         \\ \cline{2-13} 
+\cellcolor[HTML]{9AFF99}$K_0$          &                           & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}1 &                           & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}0 &                           & \cellcolor[HTML]{96FFFB}1 &                           & \cellcolor[HTML]{96FFFB}1 \\
+\cellcolor[HTML]{9AFF99}$K_1$          &                           & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 &                           &                           & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 &                           &                           & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}0 &                           \\
+\cellcolor[HTML]{9AFF99}$K_2$          & \cellcolor[HTML]{96FFFB}1 &                           &                           &                           &                           & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 &                           &                           &                           \\
+\cellcolor[HTML]{9AFF99}$K_3$          & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}0 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}1 & \cellcolor[HTML]{96FFFB}1 &                           &                           &                           &                           &                           &                           &                          
+\end{tabular}
+\end{center}
+\noindent{}Cálculo del síndrome:
+\begin{itemize}[nosep]
+    \item $K_0$ = impar $\rightarrow$ 1.
+    \item $K_1$ = impar $\rightarrow$ 1. 
+    \item $K_2$ = impar $\rightarrow$ 1.
+    \item $K_3$ = par $\rightarrow$ 0.
+\end{itemize}
+\begin{center}\Large
+    $K_3 K_2 K_1 K_0 \rightarrow 0111 \rightarrow 7_{10}$
+\end{center}
+\sangria{} La posición 7 corresponde al bit de dato $D_3$ que está mal, por lo que el tramo de información corregido queda:
+\begin{center}
+\begin{tabular}{ccccccccccccc}
+\rowcolor[HTML]{FFFFC7} 
+\cellcolor[HTML]{FCFF2F}\textbf{N}     & 12    & 11    & 10    & 9     & 8     & 7     & 6     & 5     & 4     & 3     & 2     & 1     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+\cellcolor[HTML]{9698ED}\textbf{Tipo}  & $D_7$ & $D_6$ & $D_5$ & $D_4$ & $K_4$ & $D_3$ & $D_2$ & $D_1$ & $K_2$ & $D_0$ & $K_1$ & $K_0$ \\ \cline{2-13} 
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{FD6864}\textbf{Valor} & 1     & 0     & 1     & 1     & 1     & 1     & 1     & 0     & 1     & 1     & 0     & 1     \\ \cline{2-13} 
+\end{tabular}
+\end{center}
