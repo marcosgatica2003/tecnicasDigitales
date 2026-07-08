@@ -1,0 +1,130 @@
+\subsection{V)}
+{\large\begin{align*}\displaystyle F(A, B, C, D) &= \sum(3, 7, 11, 13, 14, 15) \qquad x = 6; 2\end{align*}}
+
+\subsubsection{Obtener la mínima expresión booleana}
+\begin{center}
+\begin{tabular}{c|cccc|c}
+\rowcolor[HTML]{FFCCC9} 
+\cellcolor[HTML]{9AFF99}$m$ & $A$ & $B$ & $C$ & $D$ & \cellcolor[HTML]{FFFFC7}$F(A,B,C,D)$ \\ \hline
+0                           & 0   & 0   & 0   & 0   &                                    \\
+1                           & 0   & 0   & 0   & 1   &                                    \\
+2                           & 0   & 0   & 1   & 0   & $x$                                    \\
+3                           & 0   & 0   & 1   & 1   & 1                                  \\
+4                           & 0   & 1   & 0   & 0   &                                    \\
+5                           & 0   & 1   & 0   & 1   &                                    \\
+6                           & 0   & 1   & 1   & 0   & $x$                                   \\
+7                           & 0   & 1   & 1   & 1   & 1                                  \\
+8                           & 1   & 0   & 0   & 0   &                                    \\
+9                           & 1   & 0   & 0   & 1   &                                    \\
+10                          & 1   & 0   & 1   & 0   &                                    \\
+11                          & 1   & 0   & 1   & 1   & 1                                  \\
+12                          & 1   & 1   & 0   & 0   &                                    \\
+13                          & 1   & 1   & 0   & 1   & 1                                  \\
+14                          & 1   & 1   & 1   & 0   & 1                                  \\
+15                          & 1   & 1   & 1   & 1   & 1                                 
+\end{tabular}
+\end{center}
+\begin{center}
+    \begin{karnaugh-map}[4][4][1][$C\qquad D$][$A\qquad B$]
+        \minterms{3,7,11,13,14,15}
+        \terms{2,6}{$x$}
+        \implicant{13}{15}
+        \implicant{3}{6}
+        \implicant{3}{11}
+        \implicant{7}{14}
+    \end{karnaugh-map}
+\end{center}
+
+\begin{itemize}[nosep]
+    \item Primer bloque ($m_3$, $m_2$, $m_7$ y $m_6$) $B$ y $D$ cambian por lo que salen y hay que negar $A$. 
+    \item Segundo bloque ($m_7$, $m_6$, $m_15$ y $14$) $A$ y $D$ cambian por lo que salen.
+    \item Tercer bloque ($m_13$ y $m_15$) cambia $C$.
+    \item Cuarto bloque ($m_3$, $m_7$, $m_15$ y $m_11$) salen $A$ y $B$.
+    \item La función simplificada queda:
+\end{itemize}
+
+{\large\begin{align*}F(A,B,C,D) &= \overline{A}\cdot C + B\cdot C + A\cdot B\cdot D + C\cdot D\end{align*}}
+\noindent Se podría sacar factor común $C$:
+{\large\begin{align*}F(A,B,C,D) &= C\cdot(\overline{A}+B+D)+A\cdot{}B\cdot{}D\end{align*}}
+
+\subsubsection{Simulación}
+\imagen[]{10cm}{./imagenes/ejercicio5Falstad.png}
+\subsubsection{Descripción en verilog}
+\begin{lstlisting}
+module descripcionVerilogEjercicio5(
+    input inputA,
+    input inputB,
+    input inputC,
+    input inputD,
+    output outputFunction
+    );
+	 assign outputFunction = inputC & (~inputA | inputB | inputD) | inputA & inputB & inputD;
+
+endmodule
+\end{lstlisting}
+\subsubsection{RTL output}\imagen[Bloque RTL]{15cm}{./imagenes/rtlEjercicio5Verilog.png}\imagen[Implementación con compuertas]{15cm}{./imagenes/rtlCompuertasEjercicio5Verilog.png}\subsubsection{Simulación temporal}\noindent Código del módulo Verilog Test Fixture:\begin{lstlisting}
+module verilogTestFixtureEjercicio5;
+
+	// Inputs
+	reg inputA;
+	reg inputB;
+	reg inputC;
+	reg inputD;
+
+	// Outputs
+	wire outputFunction;
+
+	// Instantiate the Unit Under Test (UUT)
+	descripcionVerilogEjercicio5 uut (
+		.inputA(inputA), 
+		.inputB(inputB), 
+		.inputC(inputC), 
+		.inputD(inputD), 
+		.outputFunction(outputFunction)
+	);
+
+	initial begin
+		// Initialize Inputs
+		inputA = 0;
+		inputB = 0;
+		inputC = 0;
+		inputD = 0;
+
+		// Wait 100 ns for global reset to finish
+		#100;
+      inputA = 0; inputB = 0; inputC = 0; inputD = 1;
+		#100;
+      inputA = 0; inputB = 0; inputC = 1; inputD = 0;
+		#100;
+      inputA = 0; inputB = 0; inputC = 1; inputD = 1;
+		#100;
+      inputA = 0; inputB = 1; inputC = 0; inputD = 0;
+		#100;
+      inputA = 0; inputB = 1; inputC = 0; inputD = 1;
+		#100;
+      inputA = 0; inputB = 1; inputC = 1; inputD = 0;
+		#100;
+      inputA = 0; inputB = 1; inputC = 1; inputD = 1;
+		#100;
+      inputA = 1; inputB = 0; inputC = 0; inputD = 0;
+		#100;
+      inputA = 1; inputB = 0; inputC = 0; inputD = 1;
+		#100;
+      inputA = 1; inputB = 0; inputC = 1; inputD = 0;
+		#100;
+      inputA = 1; inputB = 0; inputC = 1; inputD = 1;
+		#100;
+      inputA = 1; inputB = 1; inputC = 0; inputD = 0;
+		#100;
+	   inputA = 1; inputB = 1; inputC = 0; inputD = 1;
+		#100;
+      inputA = 1; inputB = 1; inputC = 1; inputD = 0;
+		#100;
+      inputA = 1; inputB = 1; inputC = 1; inputD = 1;
+
+		// Add stimulus here
+
+	end
+      
+endmodule\end{lstlisting}\imagen[Simulación temporal]{15cm}{./imagenes/simulacionTemporalEjercicio5.png}
+

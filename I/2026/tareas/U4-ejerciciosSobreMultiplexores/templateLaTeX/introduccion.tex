@@ -1,0 +1,59 @@
+\section{INTRODUCCIÓN}
+\begin{itemize}[nosep]\item \textbf{Ejercicio 1} \end{itemize}
+\sangria{} Resolver las siguientes funciones lógicas con dos multiplexores de 4:1. Junto a cada función a resolver se encuentra la referencia a la combinación de multiplexores a utilizar. Ver la tabla de verdad para respetar las salidas correspondientes para tipo de MUX.
+\begin{center}\Large
+    \[  F_a(ABCD) = \sum (1,3,4,7,10,12,14) [Mux3, Mux1], [Mux3, Mux2], [Mux1, Mux2]   \] \\
+    \[ F_b (ABCD) = \sum (2,4,8,7,10,12,14,15)[Mux1,Mux1], [Mux3,Mux3], [Mux2, Mux2] \]
+\end{center}
+\begin{center}
+    \begin{minipage}{0.3\textwidth}\centering
+        \begin{tabular}{|cccc|}
+\hline
+\multicolumn{4}{|c|}{Mux1}                                                        \\ \hline
+\multicolumn{1}{|c|}{CE} & \multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{B} & Out \\ \hline
+\multicolumn{1}{|c|}{1}  & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{x} & 1   \\ \hline
+\multicolumn{1}{|c|}{0}  & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & In0 \\ \hline
+\multicolumn{1}{|c|}{0}  & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & In1 \\ \hline
+\multicolumn{1}{|c|}{0}  & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & In2 \\ \hline
+\multicolumn{1}{|c|}{0}  & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & In3 \\ \hline
+\end{tabular}
+    \end{minipage}
+    \begin{minipage}{0.3\textwidth}\centering
+\begin{tabular}{|cccc|}
+\hline
+\multicolumn{4}{|c|}{Mux2}                                                       \\ \hline
+\multicolumn{1}{|c|}{CE} & \multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{B} & Out \\ \hline
+\multicolumn{1}{|c|}{0}  & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{x} & 0   \\ \hline
+\multicolumn{1}{|c|}{1}  & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & In0 \\ \hline
+\multicolumn{1}{|c|}{1}  & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & In1 \\ \hline
+\multicolumn{1}{|c|}{1}  & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & In2 \\ \hline
+\multicolumn{1}{|c|}{1}  & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & In3 \\ \hline
+\end{tabular}
+    \end{minipage} 
+\begin{minipage}{0.3\textwidth}\centering
+\begin{tabular}{|cccc|}
+\hline
+\multicolumn{4}{|c|}{Mux3}                                                       \\ \hline
+\multicolumn{1}{|c|}{CE} & \multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{B} & Out \\ \hline
+\multicolumn{1}{|c|}{1}  & \multicolumn{1}{c|}{x} & \multicolumn{1}{c|}{x} & Z   \\ \hline
+\multicolumn{1}{|c|}{0}  & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & In0 \\ \hline
+\multicolumn{1}{|c|}{0}  & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & In1 \\ \hline
+\multicolumn{1}{|c|}{0}  & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & In2 \\ \hline
+\multicolumn{1}{|c|}{0}  & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & In3 \\ \hline
+\end{tabular}
+    \end{minipage}
+\end{center}
+\begin{itemize}[nosep]\item \textbf{Ejercicio 2} \end{itemize}
+\sangria{} Implementar las siguientes funciones utilizando un multiplexor de 8 a 1.
+\begin{center}\Large
+    \[ f_a(ABCD) = \sum (1,3,4,6,7)  \] \\
+    \[ f_b(ABCD) = \varPi (0,2,4,5,6,7,14,15) \] \\
+    \[ f_c(ABCD) = \sum (0,1,4,7,10,12,14 )\]
+\end{center}
+\begin{itemize}[nosep]\item \textbf{Ejercicio 3} \end{itemize}
+\sangria{} Implementar las siguientes funciones utilizando un multiplexor de 4 a 1 y compuertas lógicas.
+\begin{center}\Large
+    \[ F_a(ABCD) = \sum (1,2,3,4,8,9,10,12,14) \]
+    \[ F_b(ABCD) = \sum (0,2,3,5,7,8,9,12,14,15) \]
+    \[ F_c(ABCD) = \varPi (1,3,4,6,7) \]
+\end{center}
