@@ -1,0 +1,107 @@
+\section{RESPUESTAS}
+\subsection{Ejercicio 1}
+\subsubsection{$F_a$}
+\begin{itemize}[nosep] \item \textbf{Tabla de verdad} \end{itemize}
+\begin{center}
+    \begin{minipage}[t]{0.3\textwidth}\centering
+\begin{tabular}{cccccc}
+\rowcolor[HTML]{FFFFC7} 
+\multicolumn{6}{c}{\cellcolor[HTML]{FFFFC7}$F_a(ABCD)$}                                                                                       \\ \hline
+\rowcolor[HTML]{ECF4FF} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}$m$} & A & B & C & \multicolumn{1}{c|}{\cellcolor[HTML]{ECF4FF}D} & \cellcolor[HTML]{FFCCC9}$F_a$ \\ \hline
+\multicolumn{1}{c|}{0}                           & 0 & 0 & 0 & \multicolumn{1}{c|}{0}                         & 0                             \\
+\multicolumn{1}{c|}{1}                           & 0 & 0 & 0 & \multicolumn{1}{c|}{1}                         & 1                             \\
+\multicolumn{1}{c|}{2}                           & 0 & 0 & 1 & \multicolumn{1}{c|}{0}                         & 0                             \\
+\multicolumn{1}{c|}{3}                           & 0 & 0 & 1 & \multicolumn{1}{c|}{1}                         & 1                             \\
+\multicolumn{1}{c|}{4}                           & 0 & 1 & 0 & \multicolumn{1}{c|}{0}                         & 1                             \\
+\multicolumn{1}{c|}{5}                           & 0 & 1 & 0 & \multicolumn{1}{c|}{1}                         & 0                             \\
+\multicolumn{1}{c|}{6}                           & 0 & 1 & 1 & \multicolumn{1}{c|}{0}                         & 0                             \\
+\multicolumn{1}{c|}{7}                           & 0 & 1 & 1 & \multicolumn{1}{c|}{1}                         & 1                             \\
+\multicolumn{1}{c|}{8}                           & 1 & 0 & 0 & \multicolumn{1}{c|}{0}                         & 0                             \\
+\multicolumn{1}{c|}{9}                           & 1 & 0 & 0 & \multicolumn{1}{c|}{1}                         & 0                             \\
+\multicolumn{1}{c|}{10}                          & 1 & 0 & 1 & \multicolumn{1}{c|}{0}                         & 1                             \\
+\multicolumn{1}{c|}{11}                          & 1 & 0 & 1 & \multicolumn{1}{c|}{1}                         & 0                             \\
+\multicolumn{1}{c|}{12}                          & 1 & 1 & 0 & \multicolumn{1}{c|}{0}                         & 1                             \\
+\multicolumn{1}{c|}{13}                          & 1 & 1 & 0 & \multicolumn{1}{c|}{1}                         & 0                             \\
+\multicolumn{1}{c|}{14}                          & 1 & 1 & 1 & \multicolumn{1}{c|}{0}                         & 1                             \\
+\multicolumn{1}{c|}{15}                          & 1 & 1 & 1 & \multicolumn{1}{c|}{1}                         & 0                            
+\end{tabular}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+    \begin{itemize}[nosep]
+        \item Señal $A$ usada como conmutador entre dos MUX vía el pin enable.
+        \item Señales $B$ y $C$ van a los selectores del MUX.
+        \item Señal $D$ va a los pines de entrada del MUX.
+    \end{itemize}
+\end{minipage}
+\end{center}
+\begin{center}
+\begin{tabular}{ccccccc}
+\multicolumn{7}{c}{\cellcolor[HTML]{FFFFC7}$F_a(ABCD)$}                                                                                                                                                                                                                       \\ \hline
+\multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}$m$} & \cellcolor[HTML]{ECF4FF}A & \cellcolor[HTML]{ECF4FF}B & \cellcolor[HTML]{ECF4FF}C & \multicolumn{1}{c|}{\cellcolor[HTML]{ECF4FF}D} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCCC9}$F_a$} & Entrada al MUX                   \\ \hline
+\multicolumn{1}{c|}{0}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{1}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{2}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{3}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{4}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{5}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{6}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{7}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{8}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{9}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{10}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{11}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{12}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{13}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{14}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{15}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$}           
+\end{tabular}
+\end{center}
+
+\begin{itemize}[nosep] \item\textbf{[Mux3,Mux1]}\end{itemize}
+\sangria{} Para que el Mux3 (mintérminos 0,1,2,3,4,5,6,7) refleje las entradas, el pin chip enable (CE) debe estar en 0, por lo tanto irá con la señal $A$.
+\imagen[Mux3 Fa Ejercicio 1]{8cm}{./imagenes/ejercicio1FaMux3.png}
+\sangria{} Para que el Mux1 (mintérminos 8,9,10,11,12,13,14,15) refleje las entradas, el pin chip enable debe estar en 0, recibe la señal $A$ que estará en 1 para continuar la tabla de verdad, entonces en el pin chip enable de Mux1 debe ir un inversor.
+\imagen[Mux1 Fa Ejercicio 1]{8cm}{./imagenes/ejercicio1FaMux1.png}
+\sangria{} Para combinar ambos Mux hay que agregar varios elementos. Cuando Mux3 está reflejando la primera mitad de la tabla de verdad, Mux1 estará en 1 ($A = 0 \rightarrow inversor \rightarrow 1 \Rightarrow Mux1\quad{}en\quad{}1$). Para reflejar los 1 del Mux3, se puede poner una compuerta AND cuya entrada es la salida de los Mux 3 y 1:
+\imagen[Fa Ejercicio 1 incompleto]{12cm}{./imagenes/ejercicio1FaPre.png}
+\sangria{} Sin embargo, cuando Mux3 tiene un 1 en el chip enable, se pone en alta impedancia su salida. Se puede fijar un 1 lógico con un pull-up. De esta manera, cuando trabaje Mux1, se reflejan los 1 de la función, y cuando esté activo Mux3, va a ''ganarle'' al pull-up, reflejando lo que se espera: la salida del mux.
+\imagen[Ejercicio 1 Fa completo]{12cm}{./imagenes/ejercicio1FaCompleto.png}
+\begin{itemize}[nosep] \item\textbf{[Mux3,Mux2]}\end{itemize}
+\sangria{} Cuando Mux2 tiene un 0 en el pin chip enable, su salida se pone en 0 mientras Mux3 refleja las entradas, por lo que se podría poner una compuerta OR. Cuando el pin chip enable se pone en 1, Mux2 refleja sus entradas y Mux3 pone su salida en alta impedancia, por lo que se podría poner una resistencia pull-down para imponer un 0 lógico y que se reflejen las salidas de Mux2.
+\imagen[Ejercicio 1 Fa Mux3 y Mux2]{12cm}{./imagenes/ejercicio1FaCompletoMux3Mux2.png}
+\begin{itemize}[nosep] \item\textbf{[Mux1,Mux2]}\end{itemize}
+\sangria{} Cuando el pin enable $A$ está en 0, se activa Mux1 reflejando las entradas y Mux2 queda en 0, por lo que amerita unir las salidas con compuerta OR. Sin embargo, cuando el pin enable es 1, Mux1 se poné en 1 y Mux2 refleja las entradas. Para suprimir los 1 de Mux1 cuando $A=1$, se puede introducir una compuerta AND antes del OR, cuya entradas son la salida de Mux1 y el negado de $A$. Entonces cuando $A=0$, en la AND hay un 1 y reflejará los 1 de Mux1, que irán a la compuerta OR mientras MUx2 está en 0 (no habría problema); cuando $A=1$, en la compuerta AND habrá un 0 y no pasará el 1 del Mux1 en ese estado, dejando a la compuerta OR solo con los 1 de Mux2.
+\imagen[Ejercicio 1 Fa Mux1 y Mux2]{12cm}{./imagenes/ejercicio1FaCompletoMux1Mux2.png}
+\subsubsection{Fb}
+\begin{itemize}[nosep]\item\textbf{Tabla de verdad}\end{itemize}
+\begin{center}
+\begin{tabular}{ccccccc}
+\multicolumn{7}{c}{\cellcolor[HTML]{FFFFC7}$F_b(ABCD)$}                                                                                                                                                                                                                       \\ \hline
+\multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}$m$} & \cellcolor[HTML]{ECF4FF}A & \cellcolor[HTML]{ECF4FF}B & \cellcolor[HTML]{ECF4FF}C & \multicolumn{1}{c|}{\cellcolor[HTML]{ECF4FF}D} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCCC9}$F_b$} & Entrada al MUX                   \\ \hline
+\multicolumn{1}{c|}{0}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{1}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}              \\ \hline
+\multicolumn{1}{c|}{2}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{3}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{4}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{5}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{6}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{7}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{8}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{9}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{10}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{11}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{12}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{13}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{14}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{15}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}
+\end{tabular}\end{center}
+\begin{itemize}[nosep]\item\textbf{[Mux1,Mux1]}\end{itemize}
+\sangria{} Cuando el pin enable está en 0, trabaja el primer Mux1 reflejando a la salida los minitérminos del 0 al 7 de la tabla de verdad de $F_b$, entras que en simultáneo el segundo Mux1 está en 1. Cuando $A=1$, se invierten los roles de los Mux pero la lógica es la misma: uno devuelve un 1 mientras que el otro los minitérminos de la función, por lo que se podría unir las salidas de los Mux con una AND.
+\imagen[Ejercicio 1 Fb completo Mux1 Mux1]{12cm}{./imagenes/ejercicio1FbcompletoMux1Mux1.png}
+\begin{itemize}[nosep]\item\textbf{[Mux2,Mux2]}\end{itemize}
+\sangria{} Ambas compuertas no pueden tener un mismo valor de la señal chip enable de $A$, por lo que en Mux2 que gobierna los minitérminos del 0 al 7, tendrá invertido su valor del pin enable para reflejar las entradas mientras el segundo Mux2 (mintérminos del 8 al 15), permanece en 0. Las salidas se unen con una compuerta OR.
+\imagen[Ejercicio 1 Fb completo Mux2 Mux2]{12cm}{./imagenes/ejercicio1FbcompletoMux2Mux2.png}
+\begin{itemize}[nosep]\item\textbf{[Mux3,Mux3]}\end{itemize}
+\sangria{} El primer Mux3 recibe el 0 del pin enable $A$ mientras que el segundo Mux3, su negado. Entonces uno reflejará las entradas, mientras que el otro tendrá un pull-up dando siempre 1 lógico en alta impedancia. Las salidas se unen a una compuerta AND.
+\imagen[Ejercicio 1 Fb completo Mux3 Mux3]{12cm}{./imagenes/ejercicio1FbcompletoMux3Mux3.png}
