@@ -105,3 +105,161 @@
 \begin{itemize}[nosep]\item\textbf{[Mux3,Mux3]}\end{itemize}
 \sangria{} El primer Mux3 recibe el 0 del pin enable $A$ mientras que el segundo Mux3, su negado. Entonces uno reflejará las entradas, mientras que el otro tendrá un pull-up dando siempre 1 lógico en alta impedancia. Las salidas se unen a una compuerta AND.
 \imagen[Ejercicio 1 Fb completo Mux3 Mux3]{12cm}{./imagenes/ejercicio1FbcompletoMux3Mux3.png}
+\newpage
+\subsection{Ejercicio 2}
+\subsubsection{$f_a$}
+\begin{itemize}[nosep]\item\textbf{Tabla de verdad}\end{itemize}
+\begin{center}
+\begin{tabular}{ccccccc}
+\multicolumn{7}{c}{\cellcolor[HTML]{FFFFC7}$f_a(ABCD)$}                                                                                                                                                                                                                       \\ \hline
+\multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}$m$} & \cellcolor[HTML]{ECF4FF}A & \cellcolor[HTML]{ECF4FF}B & \cellcolor[HTML]{ECF4FF}C & \multicolumn{1}{c|}{\cellcolor[HTML]{ECF4FF}D} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCCC9}$f_a$} & Entrada al MUX                   \\ \hline
+\multicolumn{1}{c|}{0}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{1}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{2}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{3}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{4}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{5}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{6}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{7}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}              \\ \hline
+\multicolumn{1}{c|}{8}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{9}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}              \\ \hline
+\multicolumn{1}{c|}{10}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{11}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}              \\ \hline
+\multicolumn{1}{c|}{12}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{13}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}              \\ \hline
+\multicolumn{1}{c|}{14}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{15}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}             
+\end{tabular}
+\end{center}
+\begin{itemize}[nosep]\item\textbf{Implementación}\end{itemize}
+\imagen[Ejercicio 2 $f_a$]{12cm}{./imagenes/ejercicio2fa.png}
+\newpage
+\subsubsection{$f_b$}
+\begin{itemize}[nosep]\item\textbf{Tabla de verdad}\end{itemize}
+\begin{center}
+\begin{tabular}{ccccccc}
+\multicolumn{7}{c}{\cellcolor[HTML]{FFFFC7}$f_b(ABCD)$}                                                                                                                                                                                                            \\ \hline
+\multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}$m$} & \cellcolor[HTML]{ECF4FF}A & \cellcolor[HTML]{ECF4FF}B & \cellcolor[HTML]{ECF4FF}C & \multicolumn{1}{c|}{\cellcolor[HTML]{ECF4FF}D} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCCC9}$f_b$} & Entrada al MUX        \\ \hline
+\multicolumn{1}{c|}{0}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                       \\
+\multicolumn{1}{c|}{1}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$} \\ \hline
+\multicolumn{1}{c|}{2}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                       \\
+\multicolumn{1}{c|}{3}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$} \\ \hline
+\multicolumn{1}{c|}{4}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                       \\
+\multicolumn{1}{c|}{5}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}   \\ \hline
+\multicolumn{1}{c|}{6}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                       \\
+\multicolumn{1}{c|}{7}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}   \\ \hline
+\multicolumn{1}{c|}{8}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                       \\
+\multicolumn{1}{c|}{9}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}   \\ \hline
+\multicolumn{1}{c|}{10}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                       \\
+\multicolumn{1}{c|}{11}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}   \\ \hline
+\multicolumn{1}{c|}{12}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                       \\
+\multicolumn{1}{c|}{13}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}   \\ \hline
+\multicolumn{1}{c|}{14}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                       \\
+\multicolumn{1}{c|}{15}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}  
+\end{tabular}
+\end{center}
+\begin{itemize}[nosep]\item\textbf{Implementación}\end{itemize}
+\imagen[Ejercicio 2 $f_b$]{12cm}{./imagenes/ejercicio2fb.png}
+\newpage
+\subsubsection{$f_c$}
+
+\begin{itemize}[nosep]\item\textbf{Tabla de verdad}\end{itemize}
+\begin{center}
+\begin{tabular}{ccccccc}
+\multicolumn{7}{c}{\cellcolor[HTML]{FFFFC7}$f_c(ABCD)$}                                                                                                                                                                                                                       \\ \hline
+\multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}$m$} & \cellcolor[HTML]{ECF4FF}A & \cellcolor[HTML]{ECF4FF}B & \cellcolor[HTML]{ECF4FF}C & \multicolumn{1}{c|}{\cellcolor[HTML]{ECF4FF}D} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCCC9}$f_c$} & Entrada al MUX                   \\ \hline
+\multicolumn{1}{c|}{0}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{1}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}              \\ \hline
+\multicolumn{1}{c|}{2}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{3}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}              \\ \hline
+\multicolumn{1}{c|}{4}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{5}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{6}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{7}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{8}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{9}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}              \\ \hline
+\multicolumn{1}{c|}{10}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{11}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{12}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{13}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{14}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{15}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$}
+\end{tabular}
+\end{center}
+\begin{itemize}[nosep]\item\textbf{Implementación}\end{itemize}
+\imagen[Ejercicio 2 $f_c$]{12cm}{./imagenes/ejercicio2fc.png}
+\newpage
+\subsection{Ejercicio 3}
+\sangria{} La resolución de estos ejercicios estará basado en el Mux2 del ejercicio 1
+\begin{itemize}[nosep]\item\textbf{Tablas de verdad}\end{itemize}
+\begin{center}
+    \begin{minipage}[t]{0.45\textwidth}\centering
+        \begin{tabular}{ccccccc}
+\multicolumn{7}{c}{\cellcolor[HTML]{FFFFC7}$F_a(ABCD)$}                                                                                                                                                                                                                       \\ \hline
+\multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}$m$} & \cellcolor[HTML]{ECF4FF}A & \cellcolor[HTML]{ECF4FF}B & \cellcolor[HTML]{ECF4FF}C & \multicolumn{1}{c|}{\cellcolor[HTML]{ECF4FF}D} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCCC9}$F_a$} & Entrada al MUX                   \\ \hline
+\multicolumn{1}{c|}{0}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{1}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{2}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{3}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}              \\ \hline
+\multicolumn{1}{c|}{4}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{5}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{6}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{7}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}              \\ \hline
+\multicolumn{1}{c|}{8}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{9}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}              \\ \hline
+\multicolumn{1}{c|}{10}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{11}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{12}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{13}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{14}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{15}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$}
+\end{tabular}
+    \end{minipage}
+    \begin{minipage}[t]{0.45\textwidth}\centering
+\begin{tabular}{ccccccc}
+\multicolumn{7}{c}{\cellcolor[HTML]{FFFFC7}$F_b(ABCD)$}                                                                                                                                                                                                                       \\ \hline
+\multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}$m$} & \cellcolor[HTML]{ECF4FF}A & \cellcolor[HTML]{ECF4FF}B & \cellcolor[HTML]{ECF4FF}C & \multicolumn{1}{c|}{\cellcolor[HTML]{ECF4FF}D} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCCC9}$F_b$} & Entrada al MUX                   \\ \hline
+\multicolumn{1}{c|}{0}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{1}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{2}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{3}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}              \\ \hline
+\multicolumn{1}{c|}{4}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{5}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{6}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{7}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{8}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{9}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}              \\ \hline
+\multicolumn{1}{c|}{10}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{11}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}              \\ \hline
+\multicolumn{1}{c|}{12}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{13}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{14}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{15}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}             
+\end{tabular}
+    \end{minipage}
+    \begin{tabular}{ccccccc}
+\multicolumn{7}{c}{\cellcolor[HTML]{FFFFC7}$F_c(ABCD)$}                                                                                                                                                                                                                       \\ \hline
+\multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}$m$} & \cellcolor[HTML]{ECF4FF}A & \cellcolor[HTML]{ECF4FF}B & \cellcolor[HTML]{ECF4FF}C & \multicolumn{1}{c|}{\cellcolor[HTML]{ECF4FF}D} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFCCC9}$F_c$} & Entrada al MUX                   \\ \hline
+\multicolumn{1}{c|}{0}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{1}                           & 0                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{2}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{3}                           & 0                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{$\overline{D}$} \\ \hline
+\multicolumn{1}{c|}{4}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{5}                           & 0                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{$D$}            \\ \hline
+\multicolumn{1}{c|}{6}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{0}                             &                                  \\
+\multicolumn{1}{c|}{7}                           & 0                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{0}                             & \multirow{-2}{*}{0}              \\ \hline
+\multicolumn{1}{c|}{8}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{9}                           & 1                         & 0                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}              \\ \hline
+\multicolumn{1}{c|}{10}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{11}                          & 1                         & 0                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}              \\ \hline
+\multicolumn{1}{c|}{12}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{13}                          & 1                         & 1                         & 0                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}              \\ \hline
+\multicolumn{1}{c|}{14}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{0}                         & \multicolumn{1}{c|}{1}                             &                                  \\
+\multicolumn{1}{c|}{15}                          & 1                         & 1                         & 1                         & \multicolumn{1}{c|}{1}                         & \multicolumn{1}{c|}{1}                             & \multirow{-2}{*}{1}
+\end{tabular}
+\end{center}
+\newpage
+\begin{itemize}[nosep]\item\textbf{Implementación}\end{itemize}
+\imagen[Ejercicio 3 $F_a$]{12cm}{./imagenes/ejercicio3Fa.png}
+\imagen[Ejercicio 3 $F_b$]{12cm}{./imagenes/ejercicio3Fb.png}
+\imagen[Ejercicio 3 $F_c$]{12cm}{./imagenes/ejercicio3Fc.png}
