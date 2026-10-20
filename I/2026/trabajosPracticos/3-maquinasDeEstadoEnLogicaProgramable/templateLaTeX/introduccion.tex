@@ -1,0 +1,48 @@
+\section{RÚBRICA}
+
+\begin{center}
+
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{FFFFC7} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{FFFFC7}\textbf{TAREA}}        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFC7}\textbf{PUNTUACIÓN}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFC7}\textbf{MÁXIMO}} \\ \hline
+Presentación del informe con archivos correspondientes              &                                                                  & $20\%$                                                       \\ \hline
+Comprender la estructura interna y funcionamiento del inversor CMOS &                                                                  & $30\%$                                                       \\ \hline
+Comprender las etapas involucradas en el flujo de diseño analógico  &                                                                  & $30\%$                                                       \\ \hline
+Defensa de las conclusiones                                         &                                                                  & $20\%$                                                       \\ \hline
+\cellcolor[HTML]{FFFFC7}\textbf{TOTAL}                              &                                                                  & $100\%$                                                      \\ \hline
+\end{tabular}
+
+\end{center}
+
+\newpage
+
+\section{INTRODUCCIÓN}
+\sangria{} El objetivo de este informe es comprender y aplicar el flujo de diseño analógico para circuitos integrados en tecnología CMOS, así como conocer y utilizar las herramientas \textit{OpenSource} de diseño de C.I. para validar esquemáticos y layouts. Para ello nos valimos de familiarizarse con las reglas de diseño físico (DRC), simulaciones y verificaciones par agarantizar la compatibilidad con los procesos de fabricación, e integrar el conocimiento teórico con la práctica utilizando un kit de diseño: (PDK) SKY130, junto a herramientas CAD para un diseño confiable y escalable.
+
+\subsection{Condiciones de trabajo y ensayo}
+\sangria{} El sistema operativo usado en este trabajo fue Gentoo GNU/Linux. Elegido por simple comodidad.
+\imagen[Logo Gentoo]{3cm}{./imagenes/logoGentoo.png}
+\subsection{Consigna del TP: Especificaciones de diseño}
+\sangria{} El inversor CMOS está diseñado para cumplir:\\[3pt]
+\begin{itemize}[nosep]
+    \item Tecnología SKY130 ($130$ $nm$ $CMOS$)
+    \item Voltaje de alimentación $V_{DD} = 1,8V$
+    \item Especificaciones de diseño para PMOS:
+        \begin{itemize}[nosep]
+            \item $L = 0,15$ (Longitud del canal del transistor en micrómetros).
+            \item $W_p = 2,1$ (Ancho del canal del transistor en micrómetros).
+            \item $nf = 1$ (Número de fingers).
+            \item $mult = 1$ (Multiplicidad).
+            \item model: $pfet_01v8$
+        \end{itemize}
+    \item Especificaciones de diseño para NMOS:
+        \begin{itemize}[nosep]
+            \item $L = 0,15$ (Longitud del canal del transistor en micrómetros).
+            \item $W_p = 1,05$ (Ancho del canal del transistor en micrómetros).
+            \item $nf = 1$ (Número de fingers).
+            \item $mult = 1$ (Multiplicidad).
+            \item model: $nfet_01v8$
+        \end{itemize}
+    \item Tiempo de transición objetivo: $<50 ns$ (subida y bajada)
+\end{itemize}
