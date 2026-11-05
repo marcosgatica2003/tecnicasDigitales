@@ -1,0 +1,70 @@
+\usepackage{colortbl}
+\usepackage{empheq}
+\usepackage{cancel}
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[table, xcdraw, dvipsnames]{xcolor}
+\usepackage{times}
+\usepackage{tikz}
+\usepackage[top=0.75in, bottom=1in, inner=0.75in, outer=0.75in,
+            headheight=45pt, headsep=2pt, footskip=5mm]{geometry}
+\usepackage{graphicx}
+\usepackage{anyfontsize}
+\usepackage{fancyhdr}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[explicit]{titlesec}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage[labelformat=simple,labelsep=none]{caption}
+\usepackage{mathptmx}
+\usepackage{lastpage}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage[version=4]{mhchem}
+\usepackage{float}
+\usepackage{circuitikz}
+\usepackage{subcaption}
+\usepackage{changepage}
+\usepackage{eso-pic}
+\usepackage{pythontex}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{xcolor} % Necesario para los colores
+
+% Definición de colores
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Estilo para Verilog
+\lstdefinestyle{miEstiloVerilog}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize, % Fuente tipo máquina de escribir
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=Verilog % <--- Importante para que reconozca la sintaxis
+}
+
+\lstset{style=miEstiloVerilog}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, automata, babel}
