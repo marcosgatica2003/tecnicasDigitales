@@ -1,0 +1,84 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:    18:14:17 11/04/2026 
+// Design Name: 
+// Module Name:    tp3 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
+module tp3(
+    input clk,
+    output en,
+    input reset,
+    input P1, P2, P3,
+    input fc1, fc2, fc3,
+    output reg [1:0] S,
+    output reg [6:0] D
+    );
+
+assign en = 0;
+
+reg [2:0] state, nextstate;
+
+parameter piso1 = 3'b000, piso2 = 3'b010, piso3 = 3'b100;
+parameter sube2 = 3'b001, baja1 = 3'b011;
+parameter sube3 = 3'b101, baja2 = 3'b110; 
+
+always @(posedge clk or posedge reset) begin
+    if (reset) state <= piso1; 
+    else state <= nextstate;
+end
+
+always @(*) begin
+    nextstate = state;
+    S = 2'b00;
+    D = 7'b0000000;
+
+    case (state)
+        piso1: begin
+            D = 7'b0110000;
+            if (P2)      begin nextstate = sube2; S = 2'b01; D = 7'b0000000; end
+            else if (P3) begin nextstate = sube3; S = 2'b01; D = 7'b0000000; end
+        end
+        sube2: begin
+            S = 2'b01; 
+            if (fc2) begin nextstate = piso2; S = 2'b00; D = 7'b1101101; end
+        end
+        sube3: begin
+            S = 2'b01; 
+            if (fc3) begin nextstate = piso3; S = 2'b00; D = 7'b1111001; end
+        end
+        piso2: begin
+            D = 7'b1101101; 
+            if (P1)      begin nextstate = baja1; S = 2'b10; D = 7'b0000000; end
+            else if (P3) begin nextstate = sube3; S = 2'b01; D = 7'b0000000; end
+        end
+        baja1: begin
+            S = 2'b10; 
+            if (fc1) begin nextstate = piso1; S = 2'b00; D = 7'b0110000; end
+        end
+        piso3: begin
+            D = 7'b1111001;
+            if (P1)      begin nextstate = baja1; S = 2'b10; D = 7'b0000000; end
+            else if (P2) begin nextstate = baja2; S = 2'b10; D = 7'b0000000; end
+        end
+        baja2: begin
+            S = 2'b10; 
+            if (fc2) begin nextstate = piso2; S = 2'b00; D = 7'b1101101; end
+        end
+        default: nextstate = piso1;
+endcase
+end
+endmodule
